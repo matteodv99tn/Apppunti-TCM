@@ -1,0 +1,14 @@
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\contentsline {part}{I\hspace {1em}Meccanica dei solidi}{2}%
+\contentsline {chapter}{\numberline {1}Tensori}{3}%
+\contentsline {chapter}{\numberline {2}Solidi di Cauchy e analisi di tensione}{4}%
+\contentsline {section}{\numberline {2.1}Azioni di volume e di superficie}{4}%
+\contentsline {section}{\numberline {2.2}Solidi di Cauchy}{4}%
+\contentsline {chapter}{\numberline {3}Analisi di deformazione}{6}%
+\contentsline {chapter}{\numberline {4}Problema generale della meccanica dei solidi}{7}%
+\contentsline {chapter}{\numberline {5}Materiale elastico}{8}%
+\contentsline {chapter}{\numberline {6}Limiti del modello lineare elastico e crisi del componente}{9}%
+\contentsline {part}{II\hspace {1em}Analisi di elementi monodimensionali}{10}%
+\contentsline {chapter}{\numberline {7}La trave}{11}%
+\contentsline {chapter}{\numberline {8}Modello di Saint Venant}{12}%

@@ -1,0 +1,85 @@
+\chapter{Solidi di Cauchy e analisi di tensione}
+	
+	La \textbf{meccanica dei solidi}, il cui primo sviluppo fu dovuto a Cauchy, supera l'approccio particellare della \textbf{materia} che viene invece considerata come un \textbf{solido continuo}. In particolare ogni volume elementare viene scomposto in volumi elementari infinitesimi caratterizzati dalle stesse proprietà del materiale.
+	
+	\begin{nota}
+		Un volume elementare, per poter pensare che abbia una distribuzione di proprietà uniforme, prevede che esso sia composto da milioni di atomi; tuttavia questo insieme, dal punto di vista macroscopico, è molto piccolo (e dunque infinitesimo).
+	\end{nota}
+
+\section{Azioni di volume e di superficie}
+	Per effettuare la descrizione di un solido nella meccanica dei solidi è dunque necessario capire come è possibile rappresentare le azioni che agiscono sullo stesso.
+	\begin{concetto}
+		Si definiscono le \textbf{azioni di volume} tutte quelle che azioni che sono dovute al volume degli elementi infinitesimi (come per esempio la forza peso), mentre sono \textbf{azioni di superficie} quelle che si manifestano sul contorno del sistema di analisi (come per esempio la pressione di un fluido).
+		
+		\vspace{3mm}
+		
+		Definita l'\textbf{azione di volume intensiva} $\vett q_v$ che agisce sul corpo, il contributo di azione infinitesima associato ad ogni volume elementare è dunque calcolato come
+		\begin{equation}
+			d\vett F_v = \vett q_v \, dV
+		\end{equation}
+		
+		Analogamente nota l'\textbf{azione di superficie intensiva} $\vett p$ che si espleta su una superficie $\Omega$, la forza dovuta all'elemento infinitesimo può essere calcolata come
+		\begin{equation}
+			d\vett F_\Omega= \vett p \cdot d\Omega
+		\end{equation}
+	\end{concetto}
+
+\section{Solidi di Cauchy}
+	A questo punto è lecito cercare di capire quale sia l'effetto delle azioni intensive $\vett q_v$ e $\vett p$. 
+	Per iniziare ad analizzare questi effetti, si consideri un piano del corpo di versore normale $\vers n$ passante per un generico punto $A$ di area $ \Omega$. Rispetto alla superficie tagliata a livello locale si determinano delle azioni di reazione $ \vett R$ e di momento $ \vett M$; per il principio di azione reazione sulla superficie opposta $ \Omega^-$ (di versore $-\vers n$) si dovranno dunque istituire delle reazioni $ \vett R^- = -  \vett R$ e $ \vett M^- = -  \vett M$.
+	
+	L'idea è dunque quella di rendere tali relazioni sulle reazioni interne indipendenti dalla superficie effettuando i rapporti $ \vett R /  \Omega$ e $ \vett M /  \Omega$, ponendo il limite della superficie al valore infinitesimo.
+	
+	\begin{concetto}
+		Si definiscono i \textbf{solidi di Cauchy} tutti quei solidi il cui limite dell'azione interna riferita all'area tende ad un vettore univoco detto \textbf{vettore di tensione} $\ov t$, misurato in \textit{Pascal}, calcolato come
+		\begin{equation}
+			\vett t = \lim_{\Omega \rightarrow 0}  \frac {\ov R}\Omega \qquad \left[\frac N {m^2}\right] = \big[Pa\big]
+		\end{equation}
+		mentre deve essere nullo il limite rispetto al momento:
+		\[ \lim_{\Omega \rightarrow 0}  \frac {\ov M}\Omega = 0  \]
+	\end{concetto}
+	\begin{nota}
+		Esistono dei solidi, detti \textbf{polari} o \textbf{\textit{di Cosserat}} (che non vengono studiati in questo corso) per cui
+		\[ \lim_{\Omega \rightarrow 0}  \frac {\ov M}\Omega = \ov \mu \neq \ov 0  \]
+	\end{nota}
+	E' possibile osservare che il vettore della tensione $\ov t$ dipende:
+	\begin{itemize}
+		\item dalla posizione $A$ rispetto alla quale si effettua il taglio del volume, rappresentato dal vettore posizione $\ov r_A$. In questo caso essendo la tensione dipendente dalla posizione, allora a livello matematico essa è definita tramite un \textbf{campo vettoriale};
+		\item dalla direzione $\ov n$ del versore della sezione rispetto alla quale si effettua il limite.
+	\end{itemize}
+	Potendo esprimere il vettore tensione come $\ov t = \ov t\big(\ov r_A,\vers n\big)$ e per via del principio di azione-reazione sulle due facce della superficie di taglio è possibile osservare che
+	\[ \ov t\big(\ov r_A,-\vers n\big) = - \ov t \big(\ov r_A,\vers n\big) \]
+	
+	Il vettore della tensione $\ov t$ viene calcolato partendo da un versore $\vers n$ predeterminato, tuttavia a livello reale è possibile determinare infiniti valori di tensione associate alle infinite direzioni che può assumere $\vers n$.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
