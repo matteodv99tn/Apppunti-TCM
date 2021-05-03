@@ -1,1 +1,107 @@
 \chapter{Modello di Saint Venant}
+	Il modello più semplice per studiare una trave è formulato da Saint Venant che, tramite delle opportune ipotesi semplificative, permette di facilitare la descrizione del problema.
+	
+	\figura{7}{0.7}{schemasaintvenant}{schema di riferimento della trave di Saint Venant}{schemasaintvenant}
+	
+	\begin{concetto}
+		Il \textbf{solido di Saint Venant}, figura \ref{schemasaintvenant}, è descritto da una trave di lunghezza $L$ sull'asse congiungente gli estremi $A$ e $B$. La terna di riferimento per l'analisi è posta con $z$ coincidente all'asse della trave, mentre gli assi $x,y$ sono posti in modo da formare un \textbf{sistema baricentrico principale} (per cui $I_{xy} = S_x = S_y = 0$).
+		
+		Le \textbf{ipotesi semplificative} necessarie per utilizzare il modello sono:
+		\begin{itemize}
+			\item che la lunghezza $L$ dell'asse sia di molto maggiore delle lunghezze caratteristiche delle sezioni. La trave deve essere rettilinea (o con raggio di curvatura molto alto) e la sezione deve essere costante (o variare blandamente lungo l'asse) e sempre perpendicolare all'asse in ogni punto della trave;
+			\item che il mantello $\Gamma$ sia scarico e che non siano presenti azioni di volume $\ov b$. L'unico carico esterno che può essere applicato deve essere posto in corrispondenza delle basi $A$ e $B$.
+		\end{itemize}
+	\end{concetto}
+
+	In generale nota la distribuzione di azioni superficiali $\ov f_A$ su una base ($A$ in questo caso), è possibile creare un sistema staticamente equivalente di risultante $\ov R_A$ e momento $\ov M_A$ rispetto al sistema baricentrico della trave:
+	\[ \ov R_A= \int_{\Omega_A} \ov f_A\, d\Omega \qquad \ov M_A = \int_{\Omega_A} \ov r \times \ov f_A\, d\Omega \]
+	
+	In condizioni statiche è inoltre necessario che la risultante delle forze sul corpo sia nulla, da cui l'equazione $\ov R_A + \ov R_B=  \ov 0$, mentre bilanciando il momento rispetto al polo $A$ si ricava che $\ov M_A + \ov M_B + \ov O_A\ov O_B \times \ov R_B = \ov 0$.
+	
+	\begin{concetto}
+		Si definisce dunque il \textbf{postulato di Saint Venant} per il quale \textit{noto che sulle basi $A,B$ della trave la tensione interna coincide con quella applicata dalle forze distribuite $\ov f_A,\ov f_B$, ad una distanza paragonabile alla dimensione caratteristica massima della base lo stato di tensione non dipende più dalla distribuzione delle azioni $\ov f$, ma solamente dalla risultante delle forze $\ov R$ e dal momento risultante $\ov M$.} \\
+		La distanza dalla base rispetto alla quale lo stato di tensione dipende solamente dalla risultante è chiamata \textbf{distanza di estinzione}; nella fascia compresa tra base e distanza di estinzione non vale dunque il modello di Saint Venant.
+	\end{concetto}
+	\begin{osservazione}
+		La distanza di estinzione è tanto minore quanto più compatta è la sezione della trave stessa.
+	\end{osservazione}
+
+\section{Stato tensionale}
+	Nel modello di Saint Venant è possibile considerare la trave come composta da delle fibre longitutinali (lungo l'asse $z$) che possono reagire solamente a sforzi normali $\sigma_{zz}$ e ad azioni tangenziali del tipo $\tau_{xz},\tau_{yz}$; le altre azioni infatti sarebbero attivate solamente in corrispondenza di azioni sul mantello, cosa che per ipotesi del modello è scaratata. 
+	
+	In generale il modello può essere accettato fintanto che $\sxx,\syy,\txy \ll \szz,\txz\tyz$ e dunque il \textbf{tensore di Cauchy} si riduce ad uno stato tensionale piano del tipo
+	\begin{equation}
+		\S = \begin{bmatrix} \label{eq:sv:tensorecauchy}
+			0 & 0 & \txz \\ 0 & 0 & \tyz \\ \txz & \tyz & \szz
+		\end{bmatrix} \qquad \Rightarrow \quad \ov \szz = \szz \vers k \quad \ov \tau = \tyz \vers i + \txz \vers j
+	\end{equation}
+	Come è possibile osservare ogni vettore di tensione può essere scomposto in una componente normale alle sezioni $\ov \szz$ e in una componente di tipo tangenziale $\ov \tau$.
+	
+	\begin{concetto}
+		La \textbf{soluzione} del problema di Saint Venant si basa dunque sul determinare il \textbf{campo scalare} associato all'azione normale $\sigma_{zz}(x,y)$ e al \textbf{campo vettoriale} $\ov \tau(x,y)$ associato alle componenti tangenziali.
+	\end{concetto}
+
+	Per il postulato di Saint Venant è possibile osservare che le componenti da determinzare $\szz,\txz,\tyz$ (funzioni della posizione), oltre la distanza di estinzione, sono indipendente della azioni di superficie $\ov f$ ma dipendono solamente dalle risultanti delle forze $\ov R = \big(T_x,T_y,N\big)$ e dei momenti $\ov M = \big(M_x, M_y, M_z\big)$.
+	
+	\begin{concetto}
+		Nelle fasce di validità del modello di Saint Venant è dunque possibile istituire un'\textbf{equivalenza statica} tra le azioni staticamente equivalenti $\ov R,\ov M$ e lo stato di tensione interno e dunque:
+		\begin{equation} \label{eq:sv:equivstatica}
+		\begin{split}
+			T_x = \int_{\Omega_s} \txz(x,y)\, d\Omega_s  \qquad & T_y =  \int_{\Omega_s} \tyz(x,y)\, d\Omega_s \\
+			N = \int_{\Omega_s} \szz(x,y)\, d\Omega_s \qquad & M_z = \int_{\Omega_s} \Big(x\, \tyz(x,y) - y\,\txz(x,y)\Big) \, d\Omega_s \\
+			M_x = \int_{\Omega_s}y \, \szz(x,y)\, d\Omega_s \qquad & M_y = \int_{\Omega_s}x \, \szz(x,y)\, d\Omega_s \\
+		\end{split}
+		\end{equation}
+	\end{concetto}
+	\begin{osservazione}
+		Osservando l'equivalenza statica nel modello di Saint Venant (eq. \ref{eq:sv:equivstatica}) è possibile osservarae come la reazione normale $N$ e i momenti flettenti $M_x,M_y$ siano associati solamente al campo scalare $\szz$, e dunque ad un tensore del tipo
+		\[\S = \begin{bmatrix}
+			0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & \szz
+		\end{bmatrix}\]
+		
+		Al contrario il momento torcente $M_z$ è associato alla presenza delle componenti $\txz$ e $\tyz$ che, di conseguenza, generano delle azioni taglianti $T_x,T_y$; queste azioni di fatto determinano il tensore di Cauchy del tipo
+		\[\S = \begin{bmatrix}
+		0 & 0 & \txz \\ 0 & 0 & \tyz \\ \txz & \tyz & 0
+		\end{bmatrix}\]
+		
+	\end{osservazione}
+	
+	\subsection{Equilibrio indefinito, condizioni al contorno e legame costitutivo}
+		\paragraph{Equilibrio indefinito} Come visto nell'equazione \ref{eq:sv:tensorecauchy}, lo stato tensionale di una trave sotto le ipotesi di Saint Venant è piano; considerando che per ipotesi le azioni di volume sono nulle ($\ov b=\ov0$) allora è possibile riscrivere le \textbf{equazioni di equilibrio indefinito} per il problema come:
+		\[ \pd \txz z = 0 \qquad \pd \tyz z = 0 \qquad \pd \txz x + \pd \tyz y + \pd \szz z = 0 \]
+		Le prime due equazioni dimostrano dunque che le \textbf{componenti tangenziali} $\tau_{xz},\tyz$ del vettore $\ov \tau$ sono \textbf{indipendenti} dalla coordinata assiale $z$, mentre la terza equazione lega la divergenza del campo delle azioni di taglio con la variazione lungo l'asse si $\szz$:
+		\[ \textrm{div} \big(\ov \tau \big) = - \pd \szz z \begin{cases}
+			= 0 \qquad & \textrm{: campo solenoidale, linee di flusso chiuse} \\
+			\neq 0 \qquad & \textrm{: campo non solenoidale, linee di flusso aperte} \\
+		\end{cases} \]
+	
+		\paragraph{Condizioni al contorno} L'ipotesi di Saint Venant afferma che il mantello sia sempre scarico; scelto un qualsiasi punto sull contorno avente direzione normale uscente $\vers n_\Gamma = \big(\alpha_x,\alpha_y,0\big)$ al punto considerato sul mantello $\Gamma$, allora si deve verificare che lo stato di tensione in quel punto sia nullo:
+		\[  \begin{bmatrix} 
+			0 & 0 & \txz \\ 0 & 0 & \tyz \\ \txz & \tyz & \szz
+		\end{bmatrix} \begin{pmatrix}
+			\alpha_x \\ \alpha_y \\ 0 
+		\end{pmatrix} = \begin{pmatrix}
+			0 \\ 0 \\ 0
+		\end{pmatrix} \qquad \Rightarrow\quad \txz \alpha_x + \tyz \alpha_y = \ov \tau \cdot \vers n_\Gamma = 0 \quad \Leftrightarrow \quad \ov \tau \perp \vers n_\Gamma \]
+		Si osserva dunque che sul mantello il vettore delle tensioni tangenziali $\ov \tau$ deve necessariamente essere ortogonale alla normale del mantello $\vers n_\Gamma$ (e dunque deve essere tangente alla superficie del mantello $\Gamma$ stesso).
+		
+		\begin{nota}
+			In questo caso il versore $\vers n_\Gamma$ presenta l'ultima componente nulla in quanto, per ipotesi, la sezione è costante lungo l'asse della trave, e dunque il mantello non può avere componente normale nell'asse $z$. In caso di variazioni blande della sezione si avrebbe l'introduzione di tale fattore, che tuttavia sarebbe approssimabile al valore nullo.
+		\end{nota}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

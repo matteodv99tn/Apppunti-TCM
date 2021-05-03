@@ -52,9 +52,46 @@
 	
 	Il vettore della tensione $\ov t$ viene calcolato partendo da un versore $\vers n$ predeterminato, tuttavia a livello reale è possibile determinare infiniti valori di tensione associate alle infinite direzioni che può assumere $\vers n$.
 	
-	
-	
-	
+	\subsection{Componenti del vettore tensione}
+		Si consideri un piano $\Pi$ di normale $\vers n$ tagliante il solido di Cauchy nel punto $A$; su tale superficie è possibile determinare due versori $\vers r, \vers q$ mutuamente perpendicolari che, insieme al versore $\vers n$, permettono di determinare una base ortonormale dello spazio tridimensionale.
+		
+		\begin{concetto}
+			Potendo definire il vettore di tensione $\ov t_n$ rispetto al piano individuato, è possibile calcolare le \textbf{componenti di tensione} nella terna di versori $\vers n, \vers r, \vers q$ effettuando il prodotto scalare tra tensione e versore:
+			\begin{equation} \label{eq:tens:coordinate}
+				t_{nn} = \ov t_n \cdot \vers n \qquad t_{qn} = \ov t_n \cdot \vers q \qquad t_{rn} = \ov t_n \cdot \vers r 
+			\end{equation}
+			In particolare il termine $t_{nn}$ rappresenta l'\textbf{azione di trazione/compressione} che, moltiplicata per l'area di $\Pi$, agisce sulla superficie, mentre le componenti $t_{qn}$ e $t_{rn}$ rappresentano le \textbf{azioni di scorrimento}. Da queste definizione è anche possibile definire la \textbf{componente totale di scorrimento}
+			\[ |\tau_{qn}| = \sqrt{t_{qn}^2 + q_{rn}^2} \]
+			
+			\vspace{3mm}
+			Dato in generale un sistema di riferimento cartesiano è possibile esprimere il \textbf{vettore di tensione} ottenuto da una superficie di versore $\vers n$ come 
+			\begin{equation}
+				\ov t_n = \Big( t_{xn},  t_{yn}, t_{zn}\Big)
+			\end{equation}
+			
+		\end{concetto}
+		
+		\begin{nota}
+			Dato un sistema di riferimento cartesiano, ogni versore utilizzato può essere descritto da una terna dei suoi coseni direttori, ossia $\vers n = \big(\alpha_x,\alpha_y,\alpha_z\big)$, $\vers q = \big(\gamma_x, \gamma_y,\gamma_z\big)$ e $\vers r = \big(\beta_x,\beta_y,\beta_z\big)$. In maniera più esplicita il vettore di tensione di normale $\vers n$ può dunque essere espresso come
+			\[ \ov t_n = \Big( t_{nn},  t_{qn}, t_{rn}\Big) = \Big( \ov t_n \cdot \vers n,  \ov t_n \cdot \vers q, \ov t_n \cdot \vers r\Big)  \]
+		\end{nota}
+		
+	\subsection{Tensore di Cauchy}
+		Si consideri un sistema di riferimento cartesiano di versori $\vers u, \vers j, \vers k$ centrato nel punto di taglio $A$. Considerando che il piano di taglio $\Pi$ abbia versore normale il vettore $\vers i$ (piano perpendicolare all'asse $x$), allora è possibile calcolare il \textbf{vettore di tensione} rispetto a tale direzione di taglio; in particolare applicando l'equazione \ref{eq:tens:coordinate} si ricava il vettore
+		\[  \ov t_x = \big(t_{xx}, t_{yx}, t_{zx}\big) \]
+		Per analogia se si suppone di tagliare il solido rispetto ad un piano di normale $\vers j$ si ottiene il vettore $\ov t_y = \big(t_{xy}, t_{yy}, t_{zy}\big)$, mentre tagliando lungo $\vers k$ il vettore	$\ov t_z = \big(t_{xz}, t_{yz}, t_{zz}\big)$.
+		
+		\begin{concetto}
+			I vettori $\ov t_x,\ov t_y,\ov t_z$ appenda descritti rappresentano le \textbf{componenti speciali di tensione}; questi vettori rappresentano la base rispetto alla quale ogni altro vettore di tensione può essere espresso mediante combinazione lineare.
+			
+			Questi vettori danno origine al \textbf{tensore di Cauchy} $\S$ definito come
+			\[ \S = \Big[ \ \ov t_x \ | \ \ov t_y \ | \ \ov t_z \ \Big] = \begin{bmatrix}
+				\sigma_{xx} & \tau_{xy} & \tau_{xz} \\ \tau_{yz} & \sigma_{yy} & \tau_{yz} \\ \tau_{zx} & \tau_{zy} & \sigma_{zz}
+			\end{bmatrix}\]
+		\end{concetto}
+		\begin{nota}
+			E' possibile osservare dunque le componenti a trazione (del tipo $t_{xx}$) vengono sostituite dalla lettera greca $\sigma_{xx} = \sigma_x$, mentre le componenti di taglio (del tipo $t_{xy}$) vengono sostituite dall'espressione $\tau_{xy}$.
+		\end{nota}
 	
 	
 	
