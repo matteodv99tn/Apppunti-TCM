@@ -87,6 +87,7 @@
 		
 		\begin{nota}
 			In questo caso il versore $\vers n_\Gamma$ presenta l'ultima componente nulla in quanto, per ipotesi, la sezione è costante lungo l'asse della trave, e dunque il mantello non può avere componente normale nell'asse $z$. In caso di variazioni blande della sezione si avrebbe l'introduzione di tale fattore, che tuttavia sarebbe approssimabile al valore nullo.
+			
 		\end{nota}
 		
 		\paragraph{Legame costitutivo} Considerando che lo stato di tensione della trave è piano con vettore di tensione $\ov \sigma= (0,0,\szz,\tyz,\txz,0)$, allora considerando la matrice di cedevolezza $\C$ del legame costitutivo elastico lineare per il quale
@@ -107,10 +108,28 @@
 		In questa situazione gli effetti di carico sul mantello vengono trascurati in quanto irrisori rispetto alle altre azioni; in caso di carichi concentrati, come nel caso della geometria variabile, è necessario utilizzare modelli più raffinati o coefficienti correttivi introducendo un'ulteriore distanza di estinzione.
 		
 \section{Soluzione generale nelle tensioni}
+	Per risolvere il problema generale delle tensioni della trave secondo il modello di Saint Venant si utilizza un approccio semi-inverso per il quale si suppone una soluzione del problema e si verifica che la stessa sia coerente con le equazioni caratteristiche.
 	
-		
-		
+	\begin{concetto}
+		In primo luogo è possibile studiare il campo scalare $\szz(x,y)$ associato all'azione normale $N$ e ai momenti flettenti $M_x,M_y$; in assenza di momento torcente $M_z$, il campo vettoriale $\ov \tau$ sarebbe nullo solamente se i momenti flettenti fossero costanti lungo il solido, in quanto
+		\[ T_y = \frac{dM_x}{dz}=0 \qquad T_x = - \frac{dM_y}{dz} = 0 \]
+	\end{concetto}		
 	
+	\paragraph{Ipotesi deformativa} Osservando la deformazione del concio elementare che costituisce la trave si è osservato che la sezione della trave risulta sempre essere perpendicolare all'asse della trave stesso. Per le considerazioni appena mostrate, le azioni di momento flettente sono supposte costanti lungo tutta la trave e dunque rappresentano un carico simmetrico per ogni concio elementare.
+	
+	\figura{7}{0.7}{deformazioneconcio}{deformazione del concio elementare soggetto a solo forza normale (sinistra) e solo momento flettente (destra).}{deformazioneconcio}
+	
+	\figura{7}{0.7}{assedeformato}{lungo l'asse della trave ogni sezione deve essere sempre perpendicolare all'asse stesso.}{assedeformato}
+		
+	\subsection{Campo di deformazione, di tensione ed energia potenziale}
+		
+		Per quanto riguarda il \textbf{campo di deformazione}, come si osserva in figura \ref{assedeformato}, si vuol far si che le sezioni siano sempre perpendicolari all'asse della trave.
+		\begin{concetto}
+			Questo ci permette di ipotizzare che il \textbf{campo di deformazione} $\epsilon_{zz}$ sia costante o quanto meno lineare lungo gli assi $x,y$, assumendo dunque una formulazione del tipo
+			\[ \epsilon_{zz} = ax + by + c  \]
+		\end{concetto}
+		In questo modo è possibile ricondurre la sezione deformata all'equazione di un piano in coordinate $x,y$. Dalle ipotesi di simmetria del cacirco sul concio elementare è possibile asserire le seguenti relazioni per quanto riguarda le deformazioni angolari:
+		\[ \gamma_{xz} = \gamma_{yz} = 0  \]
 	
 	
 	
