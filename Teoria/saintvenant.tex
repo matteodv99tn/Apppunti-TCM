@@ -88,7 +88,28 @@
 		\begin{nota}
 			In questo caso il versore $\vers n_\Gamma$ presenta l'ultima componente nulla in quanto, per ipotesi, la sezione è costante lungo l'asse della trave, e dunque il mantello non può avere componente normale nell'asse $z$. In caso di variazioni blande della sezione si avrebbe l'introduzione di tale fattore, che tuttavia sarebbe approssimabile al valore nullo.
 		\end{nota}
+		
+		\paragraph{Legame costitutivo} Considerando che lo stato di tensione della trave è piano con vettore di tensione $\ov \sigma= (0,0,\szz,\tyz,\txz,0)$, allora considerando la matrice di cedevolezza $\C$ del legame costitutivo elastico lineare per il quale
+		\[ \exx = - \frac \nu E \szz \quad \eyy -\frac \nu E \szz \quad \epsilon_{zz} = \frac \szz E \quad \gamma_{xz} = \frac \txz G \quad \gamma_{yz} = \frac \tyz G \quad \gamma_{xy} = 0  \]
+		E' inoltre possibile ricavare la formulazione del potenziale elastico (e relativo complementare) $\phi$ e $\psi$ considerando le componenti di tensione presenti nella trave, e dunque
+		\begin{align*}
+			\phi = \psi & = \frac{\szz^2}{2E} + \frac{\txz^2}{2G} + \frac{\tyz^2}{2G} = \frac{\szz^2}{2E} + \frac{\tau^2}{2G} \\ 
+			& = \frac E 2 \epsilon_{zz}^2 + \frac G 2 \big(\gamma_{xz}^2 + \gamma_{yz}^2\big)
+		\end{align*}
+		
+	\subsection{Estensione al modello di Saint Venant}
+		Per quanto riguarda le \textbf{condizioni sull'asse} è possibile accettare come travi rettilinee tutte le trave il cui raggio di curvatura sia molto maggiore delle dimensioni caratteristiche della sezione; per quanto riguarda la \textbf{sezione} inoltre è possibile ammettere tutte le travi le cui sezioni variano molto blandamente (\textit{pendenza} locale del mantello di qualche grado). \\
+		Nel caso in cui si abbiano brusche distorsioni dell'asse e delle sezioni è necessario utilizzare dei modelli più raffinati (o integrare dei coefficienti correttivi) e considerare una nuova distanza di estinzione rispetto all'intorno rispetto al quale il modello non è accettabile.
+		
+		\vspace{3mm}
+		Per quanto riguarda le \textbf{condizioni di carico} è possibile considerare il modello come valido, in presenza di carichi distribuiti sul mantello, ogni qualvolta che 
+		\[ \sxx,\syy,\txy \ll \szz,\txz\tyz  \]
+		In questa situazione gli effetti di carico sul mantello vengono trascurati in quanto irrisori rispetto alle altre azioni; in caso di carichi concentrati, come nel caso della geometria variabile, è necessario utilizzare modelli più raffinati o coefficienti correttivi introducendo un'ulteriore distanza di estinzione.
+		
+\section{Soluzione generale nelle tensioni}
 	
+		
+		
 	
 	
 	
