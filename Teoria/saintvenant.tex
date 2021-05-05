@@ -126,7 +126,9 @@
 		Per quanto riguarda il \textbf{campo di deformazione}, come si osserva in figura \ref{assedeformato}, si vuol far si che le sezioni siano sempre perpendicolari all'asse della trave.
 		\begin{concetto}
 			Questo ci permette di ipotizzare che il \textbf{campo di deformazione} $\epsilon_{zz}$ sia costante o quanto meno lineare lungo gli assi $x,y$, assumendo dunque una formulazione del tipo
-			\[ \epsilon_{zz} = ax + by + c  \]
+			\begin{equation} \label{eq:sv:ipotesideflin}
+				\epsilon_{zz} = ax + by + c
+			\end{equation}
 		\end{concetto}
 		In questo modo è possibile ricondurre la sezione deformata all'equazione di un piano in coordinate $x,y$. Dalle ipotesi di simmetria del cacirco sul concio elementare è possibile asserire le seguenti relazioni per quanto riguarda le deformazioni angolari:
 		\[ \gamma_{xz} = \gamma_{yz} = 0  \]
@@ -137,11 +139,30 @@
 		\begin{nota}
 			In questo caso si sta discutendo il caso in cui si ha la presenza del solo campo scalare $\szz$, e non del campo vettoriale $\ov \tau$.
 		\end{nota}
-		Per ipotesi la tensione della trave $\szz$ deve essere costante, e dunque la terza equazione di equilibrio si riduce all'espressione
+		Per ipotesi la tensione della trave $\szz$ deve essere costante lungo la sezione, e dunque la terza equazione di equilibrio si riduce all'espressione
 		\[ \pd \szz z = 0 \]
+		
+		\paragraph{Equivalenza statica} Per ogni sezione di concio elementare nel modello di Saint Venant deve dunque insistere una relazione di equivalenza statica tra le azioni interne e lo stato di tensione del materiale; come ipotesi iniziale dell'analisi dello stato di tensione normale si erano considerati nulli i termini $T_x,T_y,M_z$ in quanto indipendenti da $\szz$. Al contrario è invece possibile stabilire l'equivalenza statica per l'azione normale e i momenti flettenti dipendenti dal campo scalare $\szz$ come segue:
+		\begin{align*}
+			N & = \int_A \sigma_{zz} \, dA = \int_A Eax\, dA + \int_A Eby \, dA + \int_A Ec\, dA \\
+			& = \cancel{EaS_y} + \cancel{EbS_x} + EcA  \\
+			M_x & \int_A \sigma_{zz} y \, dA = \int_A Eaxy\, dA + \int_A Eby^2 \, dA + \int_A Ecy\, dA \\
+			& = \cancel{EaI_{xy}} + EbI_{xx}+ \cancel{EcS_x}  \\
+			M_y & -\int_A \sigma_{zz} x \, dA = -\int_A Eax^2\, dA - \int_A Ebxy \, dA - \int_A Ecx\, dA \\
+			& = -EaI_{yy} -\cancel{ EbI_{xy}}- \cancel{EcS_y}  
+		\end{align*}
+		\begin{nota}
+			I termini $S_y,S_x,I_{xy}$ possono essere trascurati in quanto, come ipotesi iniziale, si era considerato il sistema di riferimento come baricentrico, e dunque tali contributi sono conseguentemente sempre nulli.
+		\end{nota}
+		
+		\begin{concetto}
+			Dalle relazioni appena riportate è dunque possibile stabilire analiticamente i coefficienti di linearità $a,b,c$ presenti in equazione \ref{eq:sv:ipotesideflin}; in particolare è possibile definire il \textbf{campo di tensione} e di \textbf{deformazione} nel caso di sola componente scalare $\szz$ di tensione come
+			\begin{equation}
+				\szz = \frac NA + \frac \Mx \Ixx y - \frac \My \Iyy x  \qquad \epsilon_{zz} = \frac N{EA} + \frac \Mx {E\Ixx} y - \frac \My {E \Iyy} x
+			\end{equation}
+		\end{concetto}
 	
-	
-	
+		\paragraph{Energia di deformazione}
 	
 	
 	
