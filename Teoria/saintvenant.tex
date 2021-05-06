@@ -91,11 +91,11 @@
 		\end{nota}
 		
 		\paragraph{Legame costitutivo} Considerando che lo stato di tensione della trave è piano con vettore di tensione $\ov \sigma= (0,0,\szz,\tyz,\txz,0)$, allora considerando la matrice di cedevolezza $\C$ del legame costitutivo elastico lineare per il quale
-		\[ \exx = - \frac \nu E \szz \quad \eyy -\frac \nu E \szz \quad \epsilon_{zz} = \frac \szz E \quad \gamma_{xz} = \frac \txz G \quad \gamma_{yz} = \frac \tyz G \quad \gamma_{xy} = 0  \]
+		\[ \exx = - \frac \nu E \szz \quad \eyy -\frac \nu E \szz \quad \varepsilon_{zz} = \frac \szz E \quad \gamma_{xz} = \frac \txz G \quad \gamma_{yz} = \frac \tyz G \quad \gamma_{xy} = 0  \]
 		E' inoltre possibile ricavare la formulazione del potenziale elastico (e relativo complementare) $\phi$ e $\psi$ considerando le componenti di tensione presenti nella trave, e dunque
 		\begin{align*}
 			\phi = \psi & = \frac{\szz^2}{2E} + \frac{\txz^2}{2G} + \frac{\tyz^2}{2G} = \frac{\szz^2}{2E} + \frac{\tau^2}{2G} \\ 
-			& = \frac E 2 \epsilon_{zz}^2 + \frac G 2 \big(\gamma_{xz}^2 + \gamma_{yz}^2\big)
+			& = \frac E 2 \varepsilon_{zz}^2 + \frac G 2 \big(\gamma_{xz}^2 + \gamma_{yz}^2\big)
 		\end{align*}
 		
 	\subsection{Estensione al modello di Saint Venant}
@@ -125,16 +125,16 @@
 		
 		Per quanto riguarda il \textbf{campo di deformazione}, come si osserva in figura \ref{assedeformato}, si vuol far si che le sezioni siano sempre perpendicolari all'asse della trave.
 		\begin{concetto}
-			Questo ci permette di ipotizzare che il \textbf{campo di deformazione} $\epsilon_{zz}$ sia costante o quanto meno lineare lungo gli assi $x,y$, assumendo dunque una formulazione del tipo
+			Questo ci permette di ipotizzare che il \textbf{campo di deformazione} $\varepsilon_{zz}$ sia costante o quanto meno lineare lungo gli assi $x,y$, assumendo dunque una formulazione del tipo
 			\begin{equation} \label{eq:sv:ipotesideflin}
-				\epsilon_{zz} = ax + by + c
+				\varepsilon_{zz} = ax + by + c
 			\end{equation}
 		\end{concetto}
 		In questo modo è possibile ricondurre la sezione deformata all'equazione di un piano in coordinate $x,y$. Dalle ipotesi di simmetria del cacirco sul concio elementare è possibile asserire le seguenti relazioni per quanto riguarda le deformazioni angolari:
 		\[ \gamma_{xz} = \gamma_{yz} = 0  \]
 		
-		Considerando invece lo \textbf{stato di tensione}, esso può essere analizzato con la legge di Hooke per la quale la tensione $\szz$ è legata alla deformazione $\epsilon_{zz}$ in funzione del modulo di Young $E$ secondo la legge $ \szz = E\epsilon_{zz} = E\big(ax + by + c\big)$; unendo a questo risultato le prime due equazioni di equilibrio si ottiene al deformazione lungo gli assi $x$ e $y$ come:
-		\[ \Rightarrow \quad \exx = \eyy = - \frac \nu E \szz = - \nu \epsilon_{zz} \]
+		Considerando invece lo \textbf{stato di tensione}, esso può essere analizzato con la legge di Hooke per la quale la tensione $\szz$ è legata alla deformazione $\varepsilon_{zz}$ in funzione del modulo di Young $E$ secondo la legge $ \szz = E\varepsilon_{zz} = E\big(ax + by + c\big)$; unendo a questo risultato le prime due equazioni di equilibrio si ottiene al deformazione lungo gli assi $x$ e $y$ come:
+		\[ \Rightarrow \quad \exx = \eyy = - \frac \nu E \szz = - \nu \varepsilon_{zz} \]
 		
 		\begin{nota}
 			In questo caso si sta discutendo il caso in cui si ha la presenza del solo campo scalare $\szz$, e non del campo vettoriale $\ov \tau$.
@@ -158,12 +158,12 @@
 		\begin{concetto}
 			Dalle relazioni appena riportate è dunque possibile stabilire analiticamente i coefficienti di linearità $a,b,c$ presenti in equazione \ref{eq:sv:ipotesideflin}; in particolare è possibile definire il \textbf{campo di tensione} e di \textbf{deformazione} nel caso di sola componente scalare $\szz$ di tensione come
 			\begin{equation} \label{eq:sv:szznormale}
-				\szz = \frac NA + \frac \Mx \Ixx y - \frac \My \Iyy x  \qquad \epsilon_{zz} = \frac N{EA} + \frac \Mx {E\Ixx} y - \frac \My {E \Iyy} x
+				\szz = \frac NA + \frac \Mx \Ixx y - \frac \My \Iyy x  \qquad \varepsilon_{zz} = \frac N{EA} + \frac \Mx {E\Ixx} y - \frac \My {E \Iyy} x
 			\end{equation}
 		\end{concetto}
 	
 		\paragraph{Energia di deformazione} A questo punto è anche possibile calcolare l'\textbf{energia di deformazione elastica} $U_e$ per un materiale elastico isotropo lineare; per questo materiale infatti è noto il  potenziale elastico $\phi$ e relativo complementare $\psi$ che, integrati sul volume, determinano l'energia elastica:
-		\[ \phi = \psi = \frac 1 2 \frac {\szz^2}E = \frac 1 2 E \epsilon_{zz}^2 \qquad \Rightarrow \quad U_e = \int_V \phi = \int_L \underbrace{\int_A \frac 1 2 \frac {\szz^2}E\, dA }_{dU_e/dz} \, dz \]
+		\[ \phi = \psi = \frac 1 2 \frac {\szz^2}E = \frac 1 2 E \varepsilon_{zz}^2 \qquad \Rightarrow \quad U_e = \int_V \phi = \int_L \underbrace{\int_A \frac 1 2 \frac {\szz^2}E\, dA }_{dU_e/dz} \, dz \]
 		
 		Avendo verificato in precedenza che la tensione $\szz$ è indipendente dalla coordinata $z$ è necessario valutare l'integrale associato alla variazione di energia lungo l'asse $dU_e/dz$. Nota l'espressione della tensione (eq. \ref{eq:sv:szznormale}) è dunque possibile valutare tale contributo come
 		\begin{equation}
@@ -195,6 +195,10 @@
 	\end{concetto}
 	In questa formulazione i termini $\big(u_0,v_0,w_0\big)$ sono delle funzioni di moto rigido dipendenti solamente dalla scelta del sistema di riferimento per per quali le equazioni di congruenza devono valere $\asmat{\partial} \ov u_0 = \ov 0$.
 	\begin{osservazione}
+		Essendo il termine $w_0$ costante e dipendente dalla scelta del sistema di riferimento, allora in generale la componente $w$ del campo di spostamento (che è la componente più \textit{importante} da analizzare in quanto descrive la compressione/estensione della trave) può essere espressa come
+		\[ w(z) = \frac N{EA}z + c \qquad c \in \mathds R \textrm{ costante}\]
+	\end{osservazione}
+	\begin{osservazione}
 		Dall'equazione \ref{eq:sv:camponormale} è possibile affermare che per una materiale standard (rapporto di Poisson $\nu$ compreso tra $0$ ed $\frac 1 2$) sottoposto a trazione ($N> 0$) la sua sezione diminuisce ($\exx, \eyy < 0$), mentre al contrario se è sottoposto a compressione ($N<0$) la sua sezione si espande ($\exx,\eyy > 0$). 
 	\end{osservazione}
 	\begin{concetto}
@@ -202,11 +206,17 @@
 	\end{concetto}
 	\begin{dimostrazione}
 		Noto che il tensore delle deformazioni $\E$ presenta solamente contributi diagonali $\exx,\eyy,\ezz$, scelta una generica retta radiale all'asse $z$ della trave di direzione $\vers r= \big(\cos\theta,\sin\theta,0\big)$, allora la sua deformazione lungo tale asse assume valore
-		\[ \epsilon_{rr} = \big(\E \vers r\big) \cdot \vers r = \exx \cos^2\theta + \eyy\sin^2\theta = - \nu \frac N{EA} \] 
-		Questo dimostra dunque che la deformazione radiale $\epsilon_{rr}$ è costante nella trave ed è indipendente dall'orientazione $\theta$ della retta $\vers r$ che si considera.
+		\[ \varepsilon_{rr} = \big(\E \vers r\big) \cdot \vers r = \exx \cos^2\theta + \eyy\sin^2\theta = - \nu \frac N{EA} \] 
+		Questo dimostra dunque che la deformazione radiale $\varepsilon_{rr}$ è costante nella trave ed è indipendente dall'orientazione $\theta$ della retta $\vers r$ che si considera.
 	\end{dimostrazione}
+
+	E' possibile calcolare inoltre la variazione di volume considerando che l'elongazione volumetrica $\varepsilon_v$ è data dalla somma dei contributi delle deformazioni principali $\exx + \eyy + \ezz$ che porta al risultato
+	\[ \varepsilon_v = \frac N{EA} ( 1 -2\nu) \qquad \Rightarrow \quad \Delta V = \int_V \varepsilon_v \, dV = \frac{NV}{EA} \big(1-2\nu\big) = \frac {NL} E \big(1-2\nu\big) \]
+	dove il risultato finale si ottiene considerando la trave di volume $V$ come rettilinea di lunghezza assiale $L$ e sezione costante di area $A$.
 	
-	
+	\begin{osservazione}
+		Per \textbf{materiali standard} (rapporto di Poisson compreso tra 0 e $\frac 1 2$) è possibile affermare che la variazione volumetrica $\Delta V$ è sempre positiva per campioni sottoposti a trazione, e dunque si parla di materiali \textbf{dilatanti}. Nel caso particolare in cui $\nu = \frac 1 2$ si osserva che $\Delta V = 0$: la \textbf{deformazione} in questo caso è dunque \textbf{plastica}.
+	\end{osservazione}
 	
 	
 	
