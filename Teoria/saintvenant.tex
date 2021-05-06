@@ -157,18 +157,54 @@
 		
 		\begin{concetto}
 			Dalle relazioni appena riportate è dunque possibile stabilire analiticamente i coefficienti di linearità $a,b,c$ presenti in equazione \ref{eq:sv:ipotesideflin}; in particolare è possibile definire il \textbf{campo di tensione} e di \textbf{deformazione} nel caso di sola componente scalare $\szz$ di tensione come
-			\begin{equation}
+			\begin{equation} \label{eq:sv:szznormale}
 				\szz = \frac NA + \frac \Mx \Ixx y - \frac \My \Iyy x  \qquad \epsilon_{zz} = \frac N{EA} + \frac \Mx {E\Ixx} y - \frac \My {E \Iyy} x
 			\end{equation}
 		\end{concetto}
 	
-		\paragraph{Energia di deformazione}
-	
-	
-	
-	
-	
-	
+		\paragraph{Energia di deformazione} A questo punto è anche possibile calcolare l'\textbf{energia di deformazione elastica} $U_e$ per un materiale elastico isotropo lineare; per questo materiale infatti è noto il  potenziale elastico $\phi$ e relativo complementare $\psi$ che, integrati sul volume, determinano l'energia elastica:
+		\[ \phi = \psi = \frac 1 2 \frac {\szz^2}E = \frac 1 2 E \epsilon_{zz}^2 \qquad \Rightarrow \quad U_e = \int_V \phi = \int_L \underbrace{\int_A \frac 1 2 \frac {\szz^2}E\, dA }_{dU_e/dz} \, dz \]
+		
+		Avendo verificato in precedenza che la tensione $\szz$ è indipendente dalla coordinata $z$ è necessario valutare l'integrale associato alla variazione di energia lungo l'asse $dU_e/dz$. Nota l'espressione della tensione (eq. \ref{eq:sv:szznormale}) è dunque possibile valutare tale contributo come
+		\begin{equation}
+		\begin{split}
+			\frac{dU_e}{dz} & = \frac 1{2E} \int_A \left(  \frac NA + \frac \Mx \Ixx y - \frac \My \Iyy x \right)^2\, dA \\
+			& \frac 1{2E} \int_A \left(\frac{N^2}{A^2} + \frac{\Mx^2}{\Ixx^2}y^2 + \frac{\My^2}{\Iyy^2}x^2 + \cancel{\textrm{altri termini}} \right)\, dA \\
+			& = \frac1 {2E} \left( \frac{N^2}A + \frac{\Mx^2}\Ixx + \frac {\My^2}\Iyy \right)
+		\end{split}
+		\end{equation}
+		\begin{nota}
+			Sviluppando opportunamente il quadrato dei contributi di $\szz$ è possibile osservare che gli altri membri, indicati come \textit{altri termini}, si elidono per via delle simmetrie nella scelta del sistema di riferimento baricentrico.
+		\end{nota}
+
+\section{Analisi della tensione normale}
+	Vigendo il principio della sovrapposizione degli effetti è possibile descrivere lo stato di tensione analizzando l'effetto che ogni azione interna ha sulla trave; partendo analizzando l\textbf{azione normale} $N$, per come visto in equazione \ref{eq:sv:szznormale}, il campo scalare di tensione e conseguentemente di deformazione associato a tale azione è descritto dalle equazioni
+	\[ \szz = \frac NA  \qquad \ezz = \frac N {EA} \qquad \exx = \eyy = -\nu \ezz = -\nu \frac N{EA} \]  
+	\begin{osservazione}
+		I termini $\sxx, \syy, \txy,\txz,\tyz, \gamma_{xy},\gamma_{xz}, \gamma_{yz}$ sono tutti nulli per tutte le ipotesi fin'ora considerate sul modello di Saint Venant.
+	\end{osservazione}
+	\begin{concetto}		
+		Per integrazione delle equazioni di congruenza (\textbf{RIFERIMENTI}) associate al \textbf{campo di spostamento} $\ov u = (u,v,w)$ è possibile determinare le componenti scalari $u,v,w$ in funzione delle coordinate $x,y,z$ dei punti della trave:
+		\begin{equation}\label{eq:sv:camponormale}
+			\ov u = \left\{ \begin{split}
+				u &= -\nu \frac N {EA} x + u_0(y,z) \\
+				v &= -\nu \frac N {EA} y + v_0(x,z) \\
+				w &= \frac N {EA} z + w_0(x,y) \\
+			\end{split} \right.
+		\end{equation}
+	\end{concetto}
+	In questa formulazione i termini $\big(u_0,v_0,w_0\big)$ sono delle funzioni di moto rigido dipendenti solamente dalla scelta del sistema di riferimento per per quali le equazioni di congruenza devono valere $\asmat{\partial} \ov u_0 = \ov 0$.
+	\begin{osservazione}
+		Dall'equazione \ref{eq:sv:camponormale} è possibile affermare che per una materiale standard (rapporto di Poisson $\nu$ compreso tra $0$ ed $\frac 1 2$) sottoposto a trazione ($N> 0$) la sua sezione diminuisce ($\exx, \eyy < 0$), mentre al contrario se è sottoposto a compressione ($N<0$) la sua sezione si espande ($\exx,\eyy > 0$). 
+	\end{osservazione}
+	\begin{concetto}
+		E' possibile osservare che la \textbf{trasformazione} associata all'azione normale $N$ è \textbf{omotetica}, ossia mantiene invariato l'angolo relativo tra due segmenti qualsiasi prima e dopo trasformazione.		
+	\end{concetto}
+	\begin{dimostrazione}
+		Noto che il tensore delle deformazioni $\E$ presenta solamente contributi diagonali $\exx,\eyy,\ezz$, scelta una generica retta radiale all'asse $z$ della trave di direzione $\vers r= \big(\cos\theta,\sin\theta,0\big)$, allora la sua deformazione lungo tale asse assume valore
+		\[ \epsilon_{rr} = \big(\E \vers r\big) \cdot \vers r = \exx \cos^2\theta + \eyy\sin^2\theta = - \nu \frac N{EA} \] 
+		Questo dimostra dunque che la deformazione radiale $\epsilon_{rr}$ è costante nella trave ed è indipendente dall'orientazione $\theta$ della retta $\vers r$ che si considera.
+	\end{dimostrazione}
 	
 	
 	
