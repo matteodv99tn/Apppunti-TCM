@@ -217,6 +217,80 @@
 	\begin{osservazione}
 		Per \textbf{materiali standard} (rapporto di Poisson compreso tra 0 e $\frac 1 2$) è possibile affermare che la variazione volumetrica $\Delta V$ è sempre positiva per campioni sottoposti a trazione, e dunque si parla di materiali \textbf{dilatanti}. Nel caso particolare in cui $\nu = \frac 1 2$ si osserva che $\Delta V = 0$: la \textbf{deformazione} in questo caso è dunque \textbf{plastica}.
 	\end{osservazione}
+
+	\subsection{Rigidezza elastica equivalente}
+		Si consideri come esempio la barra rettilinea mostrata in figura \ref{travevincolata}.
+		\figura{6}{1}{travevincolata}{trave di lunghezza $L$ vincolata ad un estremo e caricata con azione normale $N$ all'estremo opposto.}{travevincolata}
+		
+		In questa situazione \textit{standard} il la componente $w$ del campo di spostamento $\ov u$ della barra è coerentemente modellato dall'espressione $w(z) = \frac N{EA}z + c$. Dalla scelta del sistema di riferimento si osserva che all'incastro, coordinata $z=0$, si deve ipotizzare spostamento nullo ($w=0$): questo permette di determinare che la costante $c$ è nulla e il campo di spostamento vale
+		\[ w(z) = \frac N{EA}z  \]
+		La variazione di lunghezza $\Delta L$ della trave può essere calcolata semplicemente valutando il campo di spostamento valutato nell'estremo opposto della trave, e dunque
+		\[ \Delta L = w(L) = \frac{N}{EA}L \]
+		
+		\begin{concetto}
+			Si osserva che la \textbf{trave} è \textbf{modellata} come una \textbf{molla lineare}; considerando infatti che l'azione normale $N$ coincide con la forza $F$ applicata sulla molla, allora l'allungamento della molla $\Delta x$ (associato alla variazione di lunghezza $\Delta L$) dipende dalla forza secondo un coefficiente $k$ dalla relazione
+			\begin{equation}
+				F = k\, \Delta x \qquad \leftarrow \quad k = \frac {EA} L
+			\end{equation}
+			dove il coefficiente $k$ prende il nome di \textbf{rigidezza elastica equivalente} della trave.
+		\end{concetto}
+		Considerando la trave come una molla, allora essa può essere equiparata ad un'\textbf{accumulatore di energia potenziale}; infatti è possibile dimostrare che l'energia immagazzinata da una molla (e dunque dalla trave) sottoposta ad una forza $F$ e allungamento $\Delta x$ secondo la legge
+		\begin{equation}
+			U_e = \frac 1 2 F\, \Delta x = \frac 1 2 N \, \Delta L = \frac 1 2 N \frac N{EA}L  = \frac 1 2 \frac{N^2}{EA}L
+		\end{equation}
+		\begin{osservazione}
+			Per il teorema di Clapeyron è possibile osservare la relazione tra il lavoro associato alle azioni esterne e il lavoro interno dovuto alla deformazione elastica.
+		\end{osservazione}
 	
+	\subsection{Verifica e dimensionamento}
+		Nel caso si prova di pura trazione/compressione monoassiale, allora la tensione equivalente (per tutti i criteri) coincide con la tensione $\szz$ del sistema, e in particolare
+		\[ \sigma_{eq} = \szz = \frac NA \]
+		Posta la tensione critica $\sigma_{cr}$ del materiale e il coefficiente di sicurezza $\phi$ per il problema in equazione, la \textbf{verifica} si effettua invertendo la relazione $\sigma_{eq} \leq \sigma_{amm} = \sigma_{cr}\phi$, ottenendo dunque il risultato
+		\[ N \leq \frac{\sigma_{cr}}{\phi} A \]
+		
+		Al contrario il \textbf{dimensionamento} si basa sul determinare l'area $A$ minima a supportare la tensione ammissibile; per fare questo è sufficiente manipolare l'equazione precedente ottenendo il risultato
+		\[ A \geq \frac{N\phi}{\sigma_{cr}	} \]
+		
+		Le operazioni di verifica e dimensionamento possono essere anche effettuate mediante rappresentazione dello stato di tensione monoassiale sul piano di Mohr, come si osserva in figura \ref{mohrnormcrit}.
+		
+		\figura{4}{2}{mohrnormcrit}{rappresentazione dello stato di tensione nel piano di Mohr; aumentando la componente di azione normale $N$ lo stato di tensione associato (semicerchio blu) si espande fino a sovrapporsi al cerchio rappresentativo dello stato di tensione ammissibile (in rosso). }{mohrnormcrit}
+		
+	\subsection{Estensioni di validità}
+		A questo punto è possibile cercare di capire quando è possibile estendere la soluzione dell'azione normale alle travi che non rispettano le ipotesi iniziali di Saint Venant. In particolare analizzando le \textbf{variazioni di sezione è possibile affermare che}:
+		\begin{itemize}
+			\item se la sezione \textbf{varia con regolarità} blandamente lungo l'asse, allora non è necessario introdurre una distanza di estinzione; noto dunque il valore dell'area $A(z)$ funzione della coordinata della trave è possibile ipotizzare che anche lo stato tensionale $\szz$ dipenda da $z$ secondo l'espressione
+			\[ \szz (z) = \frac N {A(z)} \]
+			In questa situazione decadrebbe la condizione di mantello scarico (le tensioni $\szz$ sulle areole esterne della sezione di fatto esercitano una forza sul mantello), tuttavia l'ipotesi di variazione blanda della sezione rende trascurabile tale effetto;
+			
+			\item se la sezione \textbf{varia bruscamente} è possibile utilizzare il modello di Saint Venant introducendo delle nuove  zone di estinzione e utilizzando le equazioni negli spezzoni di trave al di fuori delle stesse, come si può osservare in figura \ref{bruscvar}. In generale i 3 spezzoni ricavati possono avere anche proprietà del materiale diverse (quale il modulo elastico $E$). In questo caso la variazione di lunghezza complessiva  della trave può essere calcolata sommando la variazione di lunghezza dei singoli spezzoni:
+			\[ \Delta L_{tot} = \Delta L_1 + \Delta L_2 + \Delta L_3 = N \sum_{i=1}^{3} \frac{L_i}{E_iA_i} \]
+			
+		\end{itemize}
+		
+		\figura{6}{2}{bruscvar}{trave con brusche variazioni di sezione; il modello di Saint Venant può essere utilizzato per coordinate $z$ distanti dalle sezioni $A$ e $B$ dove si ha la variazione brusca.}{bruscvar}
+		
+		\begin{concetto}
+			Per valutare lo stato di tensione locale di una sezione che varia bruscamente si ricorre, in generale, ad un \textbf{fattore di forma} $K_t$ che permette di calcolare lo stato di tensione massimo $\sigma_{max}$ nella sezione che varia rispetto alla tensione nominale $\sigma_{zz,i}$ di uno dei due spezzoni rispetto ai quali si ha la variazione di sezione:
+			\begin{equation}
+				K_t = \frac{\sigma_{max}}{\sigma_{zz,2}} = f\left(\frac D d, \frac r d\right)
+			\end{equation}
+			In generale il fattore di forma, per una variazione di tubazione cilindrica, dipende dal raggio di raccordo $r$ delle sezioni e dai diamtri $D$ e $d$ delle due tubazioni cilindriche, come si osserva in figura \ref{fforma}.
+		\end{concetto}
 	
+		\figura{7}{0.7}{fforma}{stati tensionali in una trave che varia sezione bruscamente.}{fforma}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
