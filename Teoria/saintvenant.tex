@@ -256,7 +256,7 @@
 		\figura{4}{2}{mohrnormcrit}{rappresentazione dello stato di tensione nel piano di Mohr; aumentando la componente di azione normale $N$ lo stato di tensione associato (semicerchio blu) si espande fino a sovrapporsi al cerchio rappresentativo dello stato di tensione ammissibile (in rosso). }{mohrnormcrit}
 		
 	\subsection{Estensioni di validità}
-		A questo punto è possibile cercare di capire quando è possibile estendere la soluzione dell'azione normale alle travi che non rispettano le ipotesi iniziali di Saint Venant. In particolare analizzando le \textbf{variazioni di sezione è possibile affermare che}:
+		\paragraph{Estensioni geometriche} A questo punto è possibile cercare di capire quando è possibile estendere la soluzione dell'azione normale alle travi che non rispettano le ipotesi iniziali di Saint Venant. In particolare analizzando le \textbf{variazioni di sezione è possibile affermare che}:
 		\begin{itemize}
 			\item se la sezione \textbf{varia con regolarità} blandamente lungo l'asse, allora non è necessario introdurre una distanza di estinzione; noto dunque il valore dell'area $A(z)$ funzione della coordinata della trave è possibile ipotizzare che anche lo stato tensionale $\szz$ dipenda da $z$ secondo l'espressione
 			\[ \szz (z) = \frac N {A(z)} \]
@@ -277,19 +277,72 @@
 			In generale il fattore di forma, per una variazione di tubazione cilindrica, dipende dal raggio di raccordo $r$ delle sezioni e dai diamtri $D$ e $d$ delle due tubazioni cilindriche, come si osserva in figura \ref{fforma}.
 		\end{concetto}
 	
-		\figura{7}{0.7}{fforma}{stati tensionali in una trave che varia sezione bruscamente.}{fforma}
+		\figura{8}{0.7}{fforma}{stati tensionali in una trave che varia sezione bruscamente.}{fforma}
 		
-		Lontano dalle zone di estinzione è dunque possibile pensare di utilizzare il modello di Saint Venant per determinare lo stato di tensione della trave (come, rispetto alla figura \ref{fform}, nelle sezioni $a'$ e $b'$). In corrispondenza della variazione di sezione si ha il massimo picco di valore dello stato di tensione $\szz$ ed è per questo che si introduce il fattore di forma per modellare questa variazione rispetto al valore nominale durante la verifica/dimensionamento.
+		Lontano dalle zone di estinzione è dunque possibile pensare di utilizzare il modello di Saint Venant per determinare lo stato di tensione della trave (come, rispetto alla figura \ref{fforma}, nelle sezioni $a'$ e $b'$). In corrispondenza della variazione di sezione si ha il massimo picco di valore dello stato di tensione $\szz$ ed è per questo che si introduce il fattore di forma per modellare questa variazione rispetto al valore nominale durante la verifica/dimensionamento.
 		
-		In generale il fattore di forma è ottenuto sperimentalmente e i risultati vengono posti in opportuni diagrammi, come quello in figura \textbf{figura}
+		In generale il fattore di forma è ottenuto sperimentalmente e i risultati vengono posti in opportuni diagrammi, come quello in figura \ref{fforma-b}.
 		
-		\textbf{aggiungere figura}
-		
-		
+		\figura{5}{1}{fforma-b}{fattore di forma $K_t$ in funzione dei rapporti $D/d$ e $r/d$.}{fforma-b}
 		
 		
+		\paragraph{Estensioni al carico} Come è stato possibile effettuare delle estensioni sulla geometria della trave rispetto alle quali risulta possibile considerare valida la teoria di Saint Venant, analoghe estensioni possono essere fatte per quanto riguarda i \textbf{carichi}:
+		\begin{itemize}
+			\item nel caso di \textbf{carichi concentrati}, analogamente alle sezioni che variano bruscamente, si ricorre all'aggiunta di un'ulteriore zona di estinzione in prossimità del nuovo carico applicato; tramite il diagramma di azione interna è dunque poi possibile stabilire lo stato tensionale $\szz$ nei vari spezzone di trave, come nelle immagini che seguono.
+			\begin{center}
+				\includegraphics[width = 0.48 \linewidth]{fconc-a}
+				\includegraphics[width = 0.35 \linewidth]{fconc-b}
+			\end{center}
+			
+			\item la teoria di Saint Venant può essere considerata valida anche per \textbf{carichi distribuiti} lungo l'asse della trave (carichi che possono modellare, per esempio, le azioni di volume come la forza peso).
+		\end{itemize}
 		
+		\begin{esempio}{: trave soggetta a carichi distribuiti}
+			Si consideri la trave in figura come segue incastrata sulla superficie superiore sul soffitto.
+			\begin{center}
+				\includegraphics[width=4cm]{az-vol}
+			\end{center}
+			Della trave è possibile modellare l'azione di volume dovuta al peso come un'azione interna $n(z)$ distribuita di valore $\rho g A$. Per integrazione lungo l'asse è possibile calcolare sia la reazione $R$ in corrispondenza dell'incastro (che rende il sistema statico), sia l'azione interna $N$ in funzione della coordinata $z$ della trave:
+			\[ R = \int_0^L n(z)\, dz = \rho g AL \qquad \Rightarrow \quad N(z) = R- \int_0^z n(z')\,dz' = \rho g A\big(L-z\big) = R \left(1 - \frac z L\right) \]
+			
+			Lo \textbf{stato di tensione} (e conseguentemente di \textbf{deformazione}) si può dunque determinare effettuando il rapporto dell'azione interna $N(z)$ in funzione della posizione nella trave e l'area $A$ della sezione della trave:
+			\[ \szz(z) = \frac{N(z)}{A} = \frac RA\left(1- \frac z L\right)  \qquad \Rightarrow \qquad \ezz(z) = \frac{\szz(z)}{E} = \frac R{EA}\left(1- \frac z L\right) \]
+			
+			La \textbf{variazione di lunghezza} $\Delta L$ può essere determinata sempre tramite integrazione dell'elongazione $\ezz$, con il risultato che
+			\[ \Delta L = \int_0^L \ezz(z)  \, dz = \int_0^L \frac{\rho g \big(L-z\big)}{E} \, dz = \frac{\rho gL}{2E} = \frac{RL}{2EA} \]
+			L'energia potenziale elastica accumulata dalla trave può essere determinata per integrazione dei potenziali elastici del materiale lineare isotropo lineare:
+			\[ U_e = \int_V \psi \, dV \quad \xrightarrow{\psi = \frac{\szz^2}{2E}}\quad \int_0^L \int_A \frac 1 {2E} \frac{R^2}{E^2} \left(1 - \frac z L\right)^2\, dZ\, dz = \frac{R^2L}{6EA} \]
+		\end{esempio}
+
+\section{Soluzione di problemi iperstatici}
+	\begin{concetto}
+		Dato un \textbf{problema} di \textbf{travi vincolate iperstaticamente}, è possibile risolvere lo stesso applicando in maniera sistematica il principio di sovrapposizione degli effetti.
+	\end{concetto}
+	Per spiegare come risolvere problemi iperstatici verranno mostrati 4 metodi esemplificati nel caso di presenza di sola azione normale $N$, ma i metodi possono essere applicati anche per tutte le altre analisi che verranno mostrate.
+	
+	In particolare i metodi mostrati si basano tutti sulla risoluzione del problema iperstatico mostrato in figura \ref{fig:sv:traveiperstatica-a}.
+	
+	\begin{figure}[bht]
+		\centering
+		\begin{subfigure}{0.48\linewidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{iperstat-a} \caption{}
+		\end{subfigure}
+		\begin{subfigure}{0.48\linewidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{iperstat-b} \caption{}
+		\end{subfigure}
+		\caption{trave vincolata iperstaticamente (a) e relativo schema di corpo libero (b).} \label{fig:sv:traveiperstatica-a}
+	\end{figure}
+	
+	\subsection{Metodo delle forze}
+		\begin{concetto}
+			Il \textbf{metodo delle forze} si basa sulla sostituzione di un vincolo iperstatico con una cosiddetta \textbf{\textit{incognita iperstatica}} $X$; il metodo termina con la risoluzione nelle incognite iperstatiche per rendere congruenti i sistemi ricavati.
+		\end{concetto}
 		
+		Facendo riferimento allo schema in figura \ref{fig:sv:traveiperstatica-a}, è possibile scegliere come incognita iperstatica $X$ la reazione $R_{Bz}$ assiale della trave nella cerniera $B$ e sostituendo la stessa con un pattino (che è libero di traslare).
+		
+		\figura{7}{0.7}{iperstat-c}{trave dell'esempio in cui viene sostituita la reazione $R_{Bz}$ con l'incognita iperstatica $X$.}{iperstat-c}
 		
 		
 		

@@ -227,13 +227,13 @@
 \newcounter{esempi}
 \numberwithin{esempi}{chapter}
 \newenvironment{esempio}[1]{
+	\bfcolor{Periwinkle}
 	\noindent
 	\refstepcounter{esempi}
-	{\color{Periwinkle}\textbf{Esempio \theesempi#1} \\ } 
-	
+	{\color{Periwinkle}\textbf{Esempio \theesempi#1}  } 
+	\vspace{3mm}
 	
 	\noindent
-	\renewcommand{\de}[1]{\textbf{\textcolor{Periwinkle}{#1}}}
 }{
 }
 
