@@ -344,12 +344,51 @@
 		
 		\figura{7}{0.7}{iperstat-c}{trave dell'esempio in cui viene sostituita la reazione $R_{Bz}$ con l'incognita iperstatica $X$.}{iperstat-c}
 		
+		A questo punto è necessario analizzare due sistemi distinti che dovranno poi essere posti congruenti per determinare l'incognita iperstatica:
+		\begin{itemize}
+			\item il primo sistema, pedice 0, considera che l'unica forza applicata è l'azione esterna $F$ applicata nel punto $C$; in questo caso il diagramma di azione interna è mostrato in questa figura:
+			\begin{center}
+				\includegraphics[width=6.5cm]{iperstat-c1}			
+			\end{center}
+			Osservando che lo stato di tensione $\szz$ è presente, uniformemente, solamente nel tratto $AC$, allora lo spostamento $w_{B0}$ del punto $B$ (dove è applicata l'incognita iperstatica) dipende solamente dalla deformazione del tratto $AC$; considerando che in tale tratto il campo di deformazione vale $\ezz = \frac F{EA}$ allora si determina
+			\[ w_{B0} = \frac F{EA} a \] 
+			
+			\item considerando invece un secondo sistema (pedice 1) dove l'unica azione presente è associata all'incognita iperstatica $X$, facendo riferimento al diagramma di azione interna che segue si osserva che l'elongazione costante in tutto il tratto $AB$ della trave vale $\ezz = - \frac{X}{EA}$ (il segno negativo è dovuto al verso di azione di $X$) che, integrato su tutta la lunghezza dell'asta, determina un campo di spostamento del punto $B$ pari a 
+			\[ w_{B1} = - \frac X {EA} \big(a + b\big) \]
+			\begin{center}
+				\includegraphics[width=6.5cm]{iperstat-c2}			
+			\end{center}
+			
+		\end{itemize}
+		Per via del principio di sovrapposizione degli effetti lo spostamento $w_B$ del punto $B$ è dato dalla somma dei contributi di spostamento del primo e del secondo sistema: $w_B = w_{B0} + w_{B1}$. Considerando che il vincolo iperstatico impone che lo spostamento del punto $B$ sia nullo  ($w_B = 0$), allora è possibile risolvere il sistema per determinare l'incognita iperstatica $X = R_{Bz}$ e conseguentemente la reazione nel punto $A$:
+		\[ \underbrace{\frac F{EA} a - \frac X{EA} (a+b)}_{w_{B0}+w_{B1}} = 0 \qquad \Rightarrow \quad X = R_{Bz}= F \frac a {a+b} \quad,\quad R_{Az} = F - X = F \frac b{a+b}   \] 
 		
+		\begin{osservazione}
+			Tra tutti i sistemi questo è il più \textit{intuitivo} in quanto si cerca tra tutti gli infiniti valori della reazione incognita l'unico che produce una soluzione congruente.
+		\end{osservazione}
+	
+	\subsection{Metodo degli spostamenti}
+		\begin{concetto}
+			Il \textbf{metodo degli spostamenti} si basa sul cercare le azioni che rendono plausibile lo spostamento di un punto preciso della trave.
+		\end{concetto}
+		Facendo riferimento all'esempio in figura \ref{fig:sv:traveiperstatica-a}, l'incognita iperstatica può essere associata allo spostamento $w_C$ del punto $C$ riferito sia ai tratti $AC$ che $CB$; è inoltre necessario imporre che, all'equilibrio, $F= R_{Az} + R_{Bz}$.
 		
+		Facendo riferimento allo schema di azione interna della trave (fig. \ref{iperstat-d1}) è possibile determinare lo stato di tensione nei due spezzoni che compongono la trave ipotizzando la deformazione $\ezz$ dovuta allo spostamento $w_C$ del punto $C$. In particolare considerando il primo tratto $AC$ si può osservare che
+		\[ \varepsilon_{zz,AC} = \frac {w_C} a \quad \rightarrow \quad \sigma_{zz,AC} = E \frac {w_C}a \quad \rightarrow \quad N_{AC} = AE \sigma_{zz,AC} =AE\frac{w_C}a = R_{Az}   \]  
+		Le stesse considerazioni possono anche essere estese al secondo tratto di trave $CB$, determinando il nuovo stato di tensione al suo interno che risulta valere
+		\[ \varepsilon_{zz,CB} = -\frac {w_C} b \quad \rightarrow \quad \sigma_{zz,CB} = -E \frac {w_C}b \quad \rightarrow \quad N_{CB} = -AE \sigma_{zz,CB} =AE\frac{w_C}a = -R_{Bz}   \]  
+		\figura{6}{1}{iperstat-d1}{schema di corpo libero e di azione interna per il metodo degli spostamenti.}{iperstat-d1}
 		
+		In condizioni statiche stazionarie, come affermato in precedenza, è necessario imporre l'equilibrio delle forze: questo permette dunque di esplicitare lo spostamento $w_C$ del punto $C$ in funzione dei parametri del problema:
+		\[ F = R_{Az} + R_{Bz} = AE \frac{w_C}{A} + AE \frac{w_C}{b} \qquad \Rightarrow \quad w_C = \frac F{AE} \frac{ab}{a+b} \]
+		Sostituendo il risultato ottenuto per $w_C$ nelle equazioni determinate in precedenza, è possibile esplicitare il valore delle reazioni vincolari nei punti $A$ e $B$ che risultano valere
+		\[ R_{Az} = AE\frac{w_C}{a} = F \frac{b}{a+b} \qquad R_{Vz} = AE\frac{w_C}{b} = F \frac{a}{a+b} \]
 		
-		
-		
+		\begin{osservazione}
+			Questo metodo è meno intuitivo in quanto cerca tra gli infiniti valori dello spostamento $w_C$ quello che produce l'unica soluzione equilibrata; questo metodo è tuttavia comodo in quanto più facilmente implementabile numericamente.
+		\end{osservazione}
+
+	\subsection{Metodo della deformata elastica}		
 		
 		
 		
