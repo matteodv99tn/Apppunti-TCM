@@ -426,15 +426,36 @@
 		E' comunque possibile osservare come entrambi i campi di spostamento $w_1,w_2$ abbiano valore uguale nel punto di \textit{contatto} $C$ (coordinata $z=a$) pari a valore $\frac F{EA} \frac{ab}{a+b}$; il campo di spostamento in funzione della coordinata assiale è mostrato in figura \ref{iperstat-f}.
 		\figura{5}{1.2}{iperstat-f}{campo di spostamento $w(z)$ in funzione della coordinata $z$ dell'asse.}{iperstat-f}
 		
-		\textbf{Considerazioni energetiche} possono essere effettuate utilizzando il teorema di Clapeyron per il quale 
+		\textbf{Considerazioni energetiche} possono essere effettuate utilizzando il teorema di Clapeyron per il quale la metà del lavoro delle forze esterne coincide con l'energia elastica immagazzinata dal corpo; considerando infatti che la sola posizione finale del corpo, l'unico lavoro è dovuto alla forza $F$ applicata nel punto $C$ per la quale
+		\[ L^\textrm{ext} = F\, w(a) = \frac{F^2}{EA} \frac{ab}{a+b} \]
+		Potendo calcolare per integrazione l'energia potenziale elastica della trave, si verifica l'uguaglianza formulata da Clapeyron:
+		\[ U_e = \int_V \psi\, dV = \frac 1 2 \frac{N_1^2}{EA}a + \frac 1 2 \frac{N_2^2}{EA}b = \frac{F^2}{2EA} \left(\frac{b^2a}{(a+b)^2} + \frac{a^2b}{(a+b)^2} \right) = \frac 1 2\frac{F^2}{EA} \frac{ab}{a+b} = \frac 1 2 L^\textrm{ext} \]
+	
+	\subsection{Effetti della temperatura}
+		Un aumento di temperatura $\Delta T$ rispetto ad una situazione iniziale provoca una dilatazione che, tramite il \textbf{coefficiente di dilatazione termica lineare} $\alpha$, determina uno stato di deformazione $\exx = \eyy = \ezz = \alpha\, \Delta T$. Questo significa che se la differenza di temperatura $\Delta T$ è uniforme su ogni sezione, allora le stesse si mantengono piane e lungo la direzione assiale si ha un'\textbf{espansione/contrazione omotetica} (senza variazione di angoli) che può essere misurata come
+		\[ \Delta L = \int_0 ^L \ezz \, dz = \int_0^L \alpha(z) \, \Delta T(z) \, dz \]
+		Nel caso particolare in cui il coefficiente $\alpha$ sia indipendente dalla posizione e che la differenza di temperatura $\Delta T$ sia uguale per ogni sezione, l'espressione precedente si riduce all'espressione $\Delta L = \alpha\, \Delta T\, L$.
 		
+		\figura{6}{1}{iperstat-temp}{schema, diagramma di corpo libero e di azione interna di una trave vincolata iperstaticamente soggetta ad una variazione di temperatura.}{iperstat-temp}
 		
+		Considerando ora l'esempio di una trave vincolata iperstaticamente soggetta ad una variazione di temperatura, come in figura \ref{iperstat-temp}, è possibile pensare di determinare le reazioni vincolari utilizzando il metodo della deformata elastica. Assegnando alla reazione $R_{Bz}$ l'incognita iperstatica $X$, lo spostamento $w_{B,X}$ del punto $B$ dovuto a tale azione (ricavato dall'equazione \ref{eq:sv:wnormale}, pag. \pageref{eq:sv:wnormale}) è determinato dall'equazione
+		\[ w_{B,X} = - \frac X{EA}L \]
+		Lo spostamento dovuto all'aumento di temperatura, come osservato in precedenza, risulta valere $w_{B,\Delta T} = \alpha\, \Delta T \, L$; applicando il principio di sovrapposizione degli effetti il campo di spostamento totale è dato dalla somma dei contributi dovuti all'azione $X$ e alla temperatura $\Delta T$; dovendo, per via del vincolo nel punto $B$, essere nullo il campo di spostamento in tale posizione è possibile determinare l'incognita iperstatica $X$ e il conseguente stato di tensione:
+		\[  w_{B,tot} =  w_{B,X} + w_{B, \Delta T} = - \frac X{EA}L + \alpha\, \Delta T \, L \qquad \Rightarrow X = EA \alpha\, \Delta T \qquad \Rightarrow  \szz = -E\alpha\,\Delta T  \]
+		Questo stato di tensione $\szz$ è dunque dato solamente dall'aumento di temperatura $\Delta T$ del corpo (in quanto si ipotizza che per $\Delta T=0$ lo stato di tensione sia nullo).
 		
+		\vspace{3mm}
 		
+		Lo stesso problema si poteva risolvere utilizzando il metodo di Castigliano, considerando che il potenziale $\psi$ può essere espresso come $\frac 1 2 E \ezz$. In questo caso lo stato di deformazione $\ezz$ è dovuto a due contribuiti: quello dell'incognita iperstatica $X$ e quello dovuto all'aumento di temperatura
+		\[ \ezz = - \frac X{EA} + \alpha\, \Delta T \]
 		
-		
-		
-		
+		Potendo calcolare l'energia potenziale elastica $U_e= \int_v\psi\, dV$ tramite integrazione, applicando il metodo di castigliano  derivando tale energia rispetto all'incognita iperstatica $X$ (e ponendo il risultato pari a zero in quanto nel punto $B$ non si deve avere spostamento), è possibile ottenere lo stesso risultato ottenuto con il metodo degli spostamenti:
+		\[ \pd{U_e}X = EA \int_L \left(- \frac X {EA} + \alpha\,\Delta T\right)\left(-\frac 1 {EA}\right)\, dz = 0 \qquad \Rightarrow \quad X = EA\alpha\, \Delta T \]
+	
+	\subsection{Equazione di Poisson}
+		Una trave sottoposta a carico assiale distribuito $n(z)$ non presenta più un'azione normale $N(z)$ costante lungo la trave; analizzando infatti un concio elementare (rappresentato in figura \ref{sv-concio-poisson}) è possibile bilanciare le forze agenti sullo stesso arrivando alla conclusione che
+		\[ N + \frac{dN}{dz}dz - N + n(z) = 0 \qquad \Rightarrow \quad \frac {dN} {dz} = -n(z) \]
+		\figura{4}{1.5}{sv-concio-poisson}{azioni sul concio elementare di una trave soggetta a carico distribuito.}{sv-concio-poisson}
 		
 		
 		
