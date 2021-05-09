@@ -454,9 +454,22 @@
 	
 	\subsection{Equazione di Poisson}
 		Una trave sottoposta a carico assiale distribuito $n(z)$ non presenta più un'azione normale $N(z)$ costante lungo la trave; analizzando infatti un concio elementare (rappresentato in figura \ref{sv-concio-poisson}) è possibile bilanciare le forze agenti sullo stesso arrivando alla conclusione che
-		\[ N + \frac{dN}{dz}dz - N + n(z) = 0 \qquad \Rightarrow \quad \frac {dN} {dz} = -n(z) \]
+		\begin{equation} \label{eq:sv:temp1}
+			N + \frac{dN}{dz}dz - N + n(z) = 0 \qquad \Rightarrow \quad \frac {dN} {dz} = -n(z)
+		\end{equation}
 		\figura{4}{1.5}{sv-concio-poisson}{azioni sul concio elementare di una trave soggetta a carico distribuito.}{sv-concio-poisson}
 		
+		In generale l'azione normale $N(z)$, riarraniagiando l'equazione \ref{eq:sv:wnormale} (pag. \pageref{eq:sv:wnormale}) dipende sia dal modulo di Young $E$ che dall'area $A(z)$ della sezione (parametri che lungo la trave possono variare in generale), e dunque
+		\[ dN = E(z)A(z) \frac {dw}{dz}\]
+		\begin{concetto}
+			Considerando un caso particolare in cui sia il modulo $E$ che l'area $A$ sono costanti lungo la trave, invertendo opportunamente l'espressione appena ricavato è possibile riscrivere l'equazione \ref{eq:sv:temp1} per ottenere la cosiddetta \textbf{equazione di Poisson}:
+			\begin{equation}
+				\frac{dN}{dz} \frac d {dz} \left(EA \frac{dw}{dz}\right) = - n(z) \qquad \Rightarrow \quad \frac{d^2w}{dz^2} = - \frac{n(z)}{EA}
+			\end{equation}
+		\end{concetto}
+		Noto dunque il profilo della forza distribuita $n(z)$ lungo la trave tramite doppia integrazione è possibile determinare direttamente la componente $w$ del campo di spostamento della trave; nel caso particolare di carico distribuito costante $n(z) = n_0$, per integrazione è possibile dimostrare che
+		\[ EA\, w = -n_0 \frac {z^2}2 + c_1 z + c_2\]
+		dove le costanti $c_1,c_2$ dipendono dai vincoli sulla trave (per esempio se essa è vincolata, lo spostamento deve essere nullo, se essa è libera la sua derivata deve essere nulla).
 		
 		
 		
