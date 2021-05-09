@@ -196,7 +196,9 @@
 	In questa formulazione i termini $\big(u_0,v_0,w_0\big)$ sono delle funzioni di moto rigido dipendenti solamente dalla scelta del sistema di riferimento per per quali le equazioni di congruenza devono valere $\asmat{\partial} \ov u_0 = \ov 0$.
 	\begin{osservazione}
 		Essendo il termine $w_0$ costante e dipendente dalla scelta del sistema di riferimento, allora in generale la componente $w$ del campo di spostamento (che è la componente più \textit{importante} da analizzare in quanto descrive la compressione/estensione della trave) può essere espressa come
-		\[ w(z) = \frac N{EA}z + c \qquad c \in \mathds R \textrm{ costante}\]
+		\begin{equation} \label{eq:sv:wnormale}
+			 w(z) = \frac N{EA}z + c \qquad c \in \mathds R \textrm{ costante}
+		\end{equation}
 	\end{osservazione}
 	\begin{osservazione}
 		Dall'equazione \ref{eq:sv:camponormale} è possibile affermare che per una materiale standard (rapporto di Poisson $\nu$ compreso tra $0$ ed $\frac 1 2$) sottoposto a trazione ($N> 0$) la sua sezione diminuisce ($\exx, \eyy < 0$), mentre al contrario se è sottoposto a compressione ($N<0$) la sua sezione si espande ($\exx,\eyy > 0$). 
@@ -389,6 +391,54 @@
 		\end{osservazione}
 
 	\subsection{Metodo della deformata elastica}		
+		\begin{concetto}
+			Il \textbf{metodo della deformata elastica} si basa sulla sostituzione dei vincoli iperstatici con delle rispettive incognite iperstatiche $X$ in modo da rendere il sistema isostatico. Per risolvere il sistema si procede dunque a bilanciare la deformata elastica in alcuni punti particolari.
+		\end{concetto}
+		Considerando lo schema di esempio in figura \ref{fig:sv:traveiperstatica-a}, sostituendo alla reazione $R_{Bz}$ sovrabbondante l'incognita iperstatica $X$ si ottiene uno schema di corpo libero e di azione interna come in questa figura:
+		\begin{center}
+			\includegraphics[width=6cm]{iperstat-e}
+		\end{center}
+		Considerando che nel primo tratto di trave $AC$ l'azione interna $N_1$ vale $F-X$, per sostituzione è possibile ricavare il campo di spostamento $w_1$ nel primo tratto della trave (eq. \ref{eq:sv:wnormale}, pag. \pageref{eq:sv:wnormale}) che risulta valere
+		\[ w_1(z) = \frac {N_1}{EA}z + c_1 = \frac{F-X}{EA}z  + c_1 \]
+		Per determinare il coefficiente di integrazione $c_1$ è sufficiente considerare che il valore del campo di spostamento nel punto $A$ ($z=0$) debba essere nullo ($w_1(0)=0$): questo permette di affermare che la costante $c_1$ deve essere nulla. Analogamente per il secondo tratto di trave $CB$ il campo di spostamento è determinato come
+		\[ w_2(z) = \frac{N_2}{EA}z +c_2  = \frac{-X}{EA}z +c_2  \]
+		Dovendo essere il punto $B$ ($z=a+b$) fisso per via dell'iperstaticità del problema, è necessario che anche il relativo campo di spostamento sia nullo: questo permette di determinare la costante di integrazione $c_2$ che risulta valere $\frac{X}{EA}(a+b)$. A questo punto per risolvere il problema è sufficiente imporre che gli spostamenti $w_1,w_2$ nel punto $C$ ($z=a$) abbiano lo stesso valore e dunque:
+		\[ w_1(a) = w_2(a)  \qquad \rightarrow \qquad \frac{F-X}{EA} z = \frac{X}{EA} \big(a+b-z\big) \]
+		\[ \Rightarrow \qquad X = R_{Bz} = F \frac a {a+b} \qquad R_{Az} = F-X = F \frac b {a+b} \]
+		
+	\subsection{Metodo di Castsigliano}
+		\begin{concetto}
+			Il \textbf{metodo di Castigliano} si basa sull'omonimo teorema energetico e anche in questo caso (come per il metodo delle forze/deformata elastica) si ricorre alla sostituzione delle reazioni sovrabbondanti con incognite iperstatiche $X$.
+		\end{concetto}
+		Noto che per il teorema di Castigliano lo spostamento di direzione $\ov \eta_i$ associato ad una forza generalizzata $\ov Q_i$ coincide con la derivata parziale dell'energia potenziale elastica rispetto alla forza stessa ($\partial U_e / \partial \ov Q_i = \ov \eta_i$), allora è possibile sfruttare tale principio imponendo che la derivata parziale rispetto all'incognita iperstatica $X$ dell'energia potenziale sia nulla in quanto non si deve avere spostamento del punto $B$ che è vincolato iperstaticamente.
+		
+		In primo luogo è dunque necessario calcolare l'energia potenziale elastica $U_e$ della trave considerando che essa è composta da due spezzoni $AC$ e $CB$ con stati tensionali distinti e dunque:
+		\[  U_e = \frac 1 2 \frac{N_1^2}{EA}a + \frac 1 2 \frac{N_2^2}{EA}b = \frac 1 2 \frac{\big(F-X\big)^2 a + X^2 b}{EA}  \]
+		Come appena affermato, per risolvere il problema è sufficiente porre nulla la derivata dell'energia potenziale $U_e$ rispetto a $X$, risolvendo per l'incognita iperstatica:
+		\[ \pd {U_e}X = \frac{\big(F-X) a (-1) + Xb\big)}{EA} = 0 \qquad \Rightarrow \qquad X = R_{Bz} = F\frac a {a+b} \quad R_{Az} = F-X = F \frac b {a+b} \]
+	
+	\subsection*{Considerazioni finali}
+		Appurato che le soluzioni del problema sono composte dalle reazioni $R_{Az} = F \frac b {a+b}$ e $R_{Bz} = F \frac a {a+b}$ è possibile calcolare lo stato di tensione interno $\szz$ (dal quale consegue lo stato di deformazione $\ezz$) e conseguentemente il campo di spostamento nei due spezzoni di trave:
+		\begin{align*}
+			&& \textrm{tratto } AC \qquad \sigma_{zz,1} & = \frac F A \frac b{a+b} & w_1(z) &= \frac F{EA} \frac b {a+b} z \\
+			&& \textrm{tratto } CB \qquad \sigma_{zz,2} & = \frac F A \frac a{a+b} & w_2(z) &= \frac F{EA} \frac a {a+b} \big(a+b-z\big) 
+		\end{align*}
+		E' comunque possibile osservare come entrambi i campi di spostamento $w_1,w_2$ abbiano valore uguale nel punto di \textit{contatto} $C$ (coordinata $z=a$) pari a valore $\frac F{EA} \frac{ab}{a+b}$; il campo di spostamento in funzione della coordinata assiale è mostrato in figura \ref{iperstat-f}.
+		\figura{5}{1.2}{iperstat-f}{campo di spostamento $w(z)$ in funzione della coordinata $z$ dell'asse.}{iperstat-f}
+		
+		\textbf{Considerazioni energetiche} possono essere effettuate utilizzando il teorema di Clapeyron per il quale 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
