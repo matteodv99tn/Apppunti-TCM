@@ -527,7 +527,7 @@
 		\end{concetto}
 		\begin{concetto}
 			Integrando le equazioni di congruenza (\textbf{RIFERIMENTO}) è possibile determinare il \textbf{campo di spostamento} $\ov u(u,v,w)$ che, a meno di uno spostamento rigido arbitrario, risulta valere
-			\begin{equation}
+			\begin{equation} \label{eq:sv:campoflessione}
 			\ov u = \left\{ 
 			\begin{split}
 				u &= -\nu \, U(x,y) \\
@@ -543,9 +543,31 @@
 			I termini indipendenti dal rapporto di Poisson $\nu$ sono nominati \textbf{campo primario}, mentre gli altri termini dipendenti da $\nu$ ($U,V$) rappresentano il \textbf{campo secondario}.
 		\end{concetto}
 		
+		Essendo il corpo in analisi una trave, allora è possibile affermare che in generale la coordinata assiale $z$ sia molto più grande delle coordinate delle sezioni ($z\gg x,y$): questo permette di affermare che nel campo di spostamento molto rilevante è il campo primario (che dipende da $z$ direttamente), mentre il campo di spostamento secondario è meno impattante e di fatto permette di definire l'\textit{inclinazione} della sezione deformata rispetto a quella originaria.
 		
+		A tal proposito è dunque possibile definire il \textbf{piano di flessione} appartenente al piano $y,z$ (dovuto alle componenti $v,w$ del campo di spostamento primario) rispetto al quale si ha la deformazione dell'asse della trave. In particolare $v$ rappresenta la traslazione dell'asse mentre $w$ modella l'effetto della rotazione della sezione che, per le ipotesi di Eulero-Bernoulli, deve essere sempre perpendicolare all'asse.
 		
-		
+		\vspace{3mm}
+		A questo punto è anche possibile calcolare l'angolo $\theta_x$ che la sezione della trave forma con l'asse verticale in funzione della coordinata $z$ tramite le equazioni di congruenza applicate al campo scalare definito in equazione \ref{eq:sv:campoflessione}:
+		\[ \theta_x = \left( \pd w y - \pd v z \right) = \frac \Mx{E\Ixx} z \]
+		\begin{concetto}
+		    Essendo  la pendenza dell'asse della trave misurata dalla relazione $\partial v / \partial z = -\theta_x = - \frac{\Mx}{E\Ixx} z$, tramite integrazione è possibile osservare che l'\textbf{asse deformato} assume una \textbf{forma parabolica}:
+    		\[ v = - \frac{\Mx}{2E\Ixx} z^2 + c \qquad c \in \mathds R \]
+		\end{concetto}
+		\begin{osservazione}
+		    Rispetto all'ipotesi iniziale di deformata assiale circolare, questo risultato potrebbe sembrare incoerente, tuttavia per piccoli gradienti del campo di spostamento è possibile approssimare le due soluzioni come equivalenti.
+		\end{osservazione}
+		\begin{dimostrazione}
+		    L'osservazione appena riportata può essere dimostrata considerando l'angolo $\theta_x$ sarebbe più correttamente modellato dall'espressione $ \arctan \big( - \partial v / \partial z\big)$. A questo punto è possibile calcolare la curvatura della trave come
+		    \begin{align*}
+		        k_x &=\frac{d\theta_x}{ds} = \frac{d\theta_x}{dz} \frac{dz}{ds} = \frac d {dz} \left[ \arctan \left( - \pd v z \right)\right] \frac{dz}{ds} \\
+		        &= \frac{- \frac{d^2v}{dz^2}}{\Big[ 1 
+		         \big(dv/dz\big)^2 \Big]^{3/2}}
+		    \end{align*}
+		    Nell'ipotesi di piccoli gradienti del campo di spostamento il termine $dv/dz \ll 1$ può essere trascurato: in questo caso il denominatore si riduce all'unità e la curvatura può essere approssimata dall'espressione 
+		    \[ k_x \approx = - \pd{^2v}{z^2} = -\frac{\Mx}{E\Ixx} \]
+		    ossia ad un arco di parabola, come si voleva dimostrare.
+		\end{dimostrazione}
 		
 		
 		
