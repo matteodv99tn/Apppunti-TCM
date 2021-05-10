@@ -177,7 +177,7 @@
 			Sviluppando opportunamente il quadrato dei contributi di $\szz$ è possibile osservare che gli altri membri, indicati come \textit{altri termini}, si elidono per via delle simmetrie nella scelta del sistema di riferimento baricentrico.
 		\end{nota}
 
-\section{Analisi della tensione normale}
+\section{Analisi della tensione normale} \label{sec:sv:normale}
 	Vigendo il principio della sovrapposizione degli effetti è possibile descrivere lo stato di tensione analizzando l'effetto che ogni azione interna ha sulla trave; partendo analizzando l\textbf{azione normale} $N$, per come visto in equazione \ref{eq:sv:szznormale}, il campo scalare di tensione e conseguentemente di deformazione associato a tale azione è descritto dalle equazioni
 	\[ \szz = \frac NA  \qquad \ezz = \frac N {EA} \qquad \exx = \eyy = -\nu \ezz = -\nu \frac N{EA} \]  
 	\begin{osservazione}
@@ -470,10 +470,82 @@
 		Noto dunque il profilo della forza distribuita $n(z)$ lungo la trave tramite doppia integrazione è possibile determinare direttamente la componente $w$ del campo di spostamento della trave; nel caso particolare di carico distribuito costante $n(z) = n_0$, per integrazione è possibile dimostrare che
 		\[ EA\, w = -n_0 \frac {z^2}2 + c_1 z + c_2\]
 		dove le costanti $c_1,c_2$ dipendono dai vincoli sulla trave (per esempio se essa è vincolata, lo spostamento deve essere nullo, se essa è libera la sua derivata deve essere nulla).
-		
-		
-		
-		
-		
-		
 	
+\section{Analisi della flessione}
+	Osservando l'equazione \ref{eq:sv:szznormale} (pag. \pageref{eq:sv:szznormale}) è possibile osservare che la tensione scalare $\szz$ (e conseguentemente lo stato di deformazione) dipende da contribuiti di azione normale $N$ (descritta a partire da pag. \pageref{sec:sv:normale}) e da dei contributi dipendenti dai \textbf{momenti flettenti} $M_x$ ed $M_y$ agenti sulla trave; essi risultano essere dipendenti dalla posizione sulla trave in quanto l'equazione originaria prevede una formulazione
+	\[\szz = \frac NA + \frac \Mx \Ixx y - \frac \My \Iyy x \]
+	\begin{concetto}
+		Quando si ha l'applicazione di un solo momento flettente ($M_x = 0$ con $M_y\neq 0$ oppure $M_x\neq 0$ con $M_y=0$) si parla di \textbf{flessione retta}, mentre se entrambe le componenti di momento sono applicate si parla di \textbf{flessione deviata}.
+	\end{concetto}
+	\begin{osservazione}
+		Per via della simmetricità delle formulazioni per la flessione retta dovuta ad $M_x$ e ad $M_y$, è sufficiente studiare uno solo dei due casi e, per dualità, determinare i risultati associati all'altro caso.
+	\end{osservazione}
+	
+	\subsection{Analisi della flessione retta}
+		\begin{concetto}
+			Considerando la sola flessione retta determinata dal momento $M_x$ ($M_y$), l'\textbf{equazione di Navier} (ripresa dall'equazione \ref{eq:sv:szznormale}, pag. \pageref{eq:sv:szznormale}) permette di determinare lo stato di tensione di sola componente $\szz$ (e relativo stato di tensione) come
+			\begin{equation} \label{eq:sv:statoflettente}
+				\szz = \frac \Mx \Ixx y \qquad \ezz = \frac \Mx {E\Ixx} y \qquad \exx = \eyy = -\nu \frac \Mx{E\Ixx} y
+			\end{equation} 
+		\end{concetto}
+		\begin{osservazione}
+			Nel caso di presenza di solo stato momento flettente $M_y$ ($M_x=0$) gli stati di tensione/deformazioni risultanti sarebbero valsi
+			\[ \szz = -\frac \My \Iyy x \qquad \ezz =-\frac \My {E\Iyy} x \qquad \exx = \eyy = \nu \frac \My{E\Iyy} x \]
+		\end{osservazione}
+		\begin{concetto}
+			Il campo scalare $\szz$ è lineare lungo la direzione $y$:; in particolare pungo la retta orizzontale $x$ (di equazione $y=0$) lo stato di tensione è nullo: tale direzione prende il nome di \textbf{asse neutro}.
+		\end{concetto}
+	
+		\paragraph{Prove sperimentali} Un modo per testare sperimentalmente la risposta a pura flessione retta è quella di effettuare una \textbf{prova di flessione a 4 punti}, mostrata in figura \ref{fless4punti}. Un altra prova che si può utilizzare per analizzare la flessione è quella di incernierare un provino ad un estremo e applicare una coppia di forze sull'altra estremità, come in figura \ref{provaflessione}.
+		
+		\figura{6}{1}{fless4punti}{prova di flessione a 4 punti.}{fless4punti}
+		\figura{6}{1}{provaflessione}{prova di flessione ottenuta tramite applicazione di una coppia di forze.}{provaflessione}
+		
+	\subsubsection{Campo di spostamento}
+		Lo stato di deformazione di una trave sottoposta a momento flettente è già stato analizzato in precedenza in equazione \ref{eq:sv:statoflettente}; inoltre per le ipotesi iniziali poste da Saint Venant è altresì possibile affermare che le componenti di deformazione angolare $\gamma_{xy}, \gamma_{xz},\gamma_{yz}$ sono nulle.
+		
+		Considerando il \textbf{concio elementare}, essendo la tensione $\szz$ distribuita in modo triangolare rispetto all'asse $y$ l'elemento infinitesimo tende a contrarsi nella zona in cui la tensione è negativa, mentre tende ad estendersi dove la tensione è positiva; lungo l'asse orizzontale $x$, essendo $\szz = 0$, la deformazione complessiva deve essere nulla.
+		
+		\figura{4}{1}{flettconcioelem}{concio elementare deformato da un momento flettente $M_x$.}{flettconcioelem}
+		
+		\begin{concetto}
+			Si ipotizza dunque che un concio elementare sottoposto a solo momento flettente $M_x$ tende a \textbf{deformarsi} in modo da diventare un \textbf{arco di circonferenza} di \textbf{curvatura} $k_x = 1/R_x$ (dove $R_x$ è il \textbf{raggio di curvatura}). L'angolo al centro della circonferenza associato al concio deformato è generalmente indicato $d\theta_x$.
+		\end{concetto}
+		
+		Facendo riferimento al segmento orizzontale $AB = dz = ds =R_x\, d\theta_x$ posto ad una distanza $y$ dall'asse $x$, come in figura \ref{flettconcioelem}, è possibile determinare la lunghezza che avrà tale segmento dopo deformazione e dunque l'\textbf{elongazione specifica} $\ezz$ rispetto all'asse $z$:
+		\begin{align*}
+			A'B' & = \big(R_x + y\big) d\theta_x \\
+			\Rightarrow \quad \ezz  & = \frac{A'B'-AB}{AB} = \frac{\big(R_x+y\big) d\theta_x - dz }{dz} = \frac{\big(R_x + y\big)d\theta_x - R_x \, d\theta_x}{R_x \, d\theta_x} \\
+			& = \frac y {R_x}
+		\end{align*}
+		Unendo questo risultato con l'espressione dello stato di deformazione $\ezz$ mostrato in equazione \ref{eq:sv:statoflettente} (pag. \pageref{eq:sv:statoflettente}) è possibile determinare in modo esplicito la curvatura (e il rispettivo raggio) del concio elementare in funzione dei parametri del materiale e del carico applicato:
+		\begin{equation}
+			\ezz = \frac y {R_x} =\frac \Mx {E\Ixx} y \qquad \Rightarrow \quad k_x = \frac \Mx{E\Ixx} \qquad R_x = \frac {E\Ixx} \Mx
+		\end{equation}
+		\begin{concetto}
+			L'\textbf{ipotesi deformativa di Eulero-Bernoulli} ci permette di affermare che se il momento flettente applicato $M_x$ è costante lungo tutta la trave, allora lo stato di deformazione $\ezz$ è uguale in ogni tratto elementare di trave e dunque la trave deformata presenta una curvatura costante.
+		\end{concetto}
+		\begin{concetto}
+			Integrando le equazioni di congruenza (\textbf{RIFERIMENTO}) è possibile determinare il \textbf{campo di spostamento} $\ov u(u,v,w)$ che, a meno di uno spostamento rigido arbitrario, risulta valere
+			\begin{equation}
+			\ov u = \left\{ 
+			\begin{split}
+				u &= -\nu \, U(x,y); \\
+				v &= -\frac \Mx {2E\Ixx} z^2 - \nu \, V(x,y); \\
+				w &= - \frac{\Mx}{2E\Ixx} zy
+			\end{split}\right.
+			\qquad \leftarrow \left\{ 
+			\begin{split}
+				U(x,y) & = \frac{\Mx}{E\Ixx} xy \\
+				V(x,y) & = \frac{\Mx}{E\Ixx} \big(y^2 - x^2\big) \\
+			\end{split}\right.
+			\end{equation}
+			I termini indipendenti dal rapporto di Poisson $\nu$ sono nominati \textbf{campo primario}, mentre gli altri termini dipendenti da $\nu$ ($U,V$) rappresentano il \textbf{campo secondario}.
+		\end{concetto}
+		
+		
+		
+		
+		
+		
+		
