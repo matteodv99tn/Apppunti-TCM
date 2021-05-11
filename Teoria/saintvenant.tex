@@ -492,7 +492,7 @@
 			Nel caso di presenza di solo stato momento flettente $M_y$ ($M_x=0$) gli stati di tensione/deformazioni risultanti sarebbero valsi
 			\[ \szz = -\frac \My \Iyy x \qquad \ezz =-\frac \My {E\Iyy} x \qquad \exx = \eyy = \nu \frac \My{E\Iyy} x \]
 		\end{osservazione}
-		\begin{concetto}
+		\begin{concetto} \label{conc:sv:asseneutro}
 			Il campo scalare $\szz$ è lineare lungo la direzione $y$:; in particolare pungo la retta orizzontale $x$ (di equazione $y=0$) lo stato di tensione è nullo: tale direzione prende il nome di \textbf{asse neutro}.
 		\end{concetto}
 	
@@ -561,7 +561,7 @@
 		    L'osservazione appena riportata può essere dimostrata considerando l'angolo $\theta_x$ sarebbe più correttamente modellato dall'espressione $ \arctan \big( - \partial v / \partial z\big)$. A questo punto è possibile calcolare la curvatura della trave come
 		    \begin{align*}
 		        k_x &=\frac{d\theta_x}{ds} = \frac{d\theta_x}{dz} \frac{dz}{ds} = \frac d {dz} \left[ \arctan \left( - \pd v z \right)\right] \frac{dz}{ds} \\
-		        &= \frac{- \frac{d^2v}{dz^2}}{\Big[ 1 
+		        &= \frac{- \frac{d^2v}{dz^2}}{\Big[ 1 + 
 		         \big(dv/dz\big)^2 \Big]^{3/2}}
 		    \end{align*}
 		    Nell'ipotesi di piccoli gradienti del campo di spostamento il termine $dv/dz \ll 1$ può essere trascurato: in questo caso il denominatore si riduce all'unità e la curvatura può essere approssimata dall'espressione 
@@ -569,6 +569,38 @@
 		    ossia ad un arco di parabola, come si voleva dimostrare.
 		\end{dimostrazione}
 		
-		\paragraph{Analisi del campo di spostamento secondario} 
+		\paragraph{Analisi del campo di spostamento secondario} Il campo di spostamento secondario modella la variazione della sezione della trave sottoposta a momento flettente ed è composto dalle componenti $u = - \nu \frac \Mx {E\Ixx}xy$ e $v = - \nu \frac{\Mx}{E\Ixx} (y^2-x^2)$. \\
+		Considerando l'esempio di una trave rettangolare di dimensione $b\times h$, allora lungo l'asse verticale $x=0$ ($\forall y$) il campo $u$ è nullo, mentre agli estremi della trave (coordinate $x=\pm \frac b2$) il relativo campo di spostamento vale
+		\[ u = \pm \nu \frac{\Mx}{E\Ixx} \frac b 2 y   \]
 		
+		Considerando invece l'asse orizzontale di equazione $y=0$, allora il campo di spostamento $v$ descrive un arco di parabola che, come nel caso precedente, può essere approssimato ad un arco di circonferenza di curvatura $k_y$ pari a:
+		\begin{equation} \label{eq:sv:curvantielastica}
+			v = -\nu \frac{\Mx}{E\Ixx} \big(-x^2\big) \qquad \Rightarrow \qquad k_y = \frac 1 {\rho_y} = - \nu \frac{\Mx}{E\Ixx}
+		\end{equation}
+		\begin{concetto}
+			Il coefficiente $k_y$ in equazione \ref{eq:sv:curvantielastica} prende il nome di \textbf{curvatura antielastica} e il \textbf{raggio} $\rho_y$ rappresenta la coordinata sull'asse $y$ rispetto alla quale la sezione sembra diventare un arco di circonferenza.
+		\end{concetto}
+		\begin{nota}
+			Essendo in generale $\nu \simeq 0.33$ per molti materiali, allora è possibile osservare che il raggio di curvatura $\rho_y$ è circa $\frac 1 3$ del raggio di curvatura $R_x$ dell'asse della trave, quindi l'effetto è molto meno evidente.
+		\end{nota}
+	
+	\subsection{Verifica e dimensionamento, modulo di resistenza}
+		Come affermato nel concetto \ref{conc:sv:asseneutro} (pag. \pageref{conc:sv:asseneutro}) l'asse neutro è quello verticale (di equazione $y=0$) ed è possibile osservare come esso sia baricentrico (per via della scelta iniziale del sistema di riferimento). Per effettuare dunque le operazioni di verifica e dimensionamento, note le tensioni $\sigma_{cr}^+,\sigma_{cr}^-$ del materiale, è sufficiente calcolare la distanza massima della sezione del corpo dall'asse neutro, in quanto essa rappresenta il punto di massima tensione $\szz$.
+		
+		Per effettuare le operazioni di verifica (e per analogia di dimensionamento) noto il fattore di sicurezza $\phi$ è sufficiente verificare le relazioni
+		\begin{align*}
+			\max \big\{ \szz \quad y \in \big[y_{min}, y_{max}\big]\big\} & \leq \frac{\sigma_{cr}^+}{\phi} \\
+			\min \big\{ \szz \quad y \in \big[y_{min}, y_{max}\big]\big\} & \geq  \frac{\sigma_{cr}^-}{\phi}
+		\end{align*}
+		
+		Note dunque le coordinate estremali $y_0, y_1$ delle sezioni è possibile pensare di calcolare gli stati di tensione massimi utilizzando tali valori:
+		\[ \sigma_{zz,max} = \frac \Mx \Ixx y_1 \qquad \sigma_{zz,min} = \frac \Mx \Ixx y_0 \]
+		L'idea sarebbe quella dunque di trovare un parametro che permette di \textit{riassumere} le informazioni geometriche sulla trave e permetta di determinare più agilmente lo stato di tensione massimo/minimo sulla sezione della trave.
+		
+		\begin{concetto}
+			Si definisce il rapporto $W_x = \Ixx / y_{cr}$ tra momento di inerzia $\Ixx$ e la coordinata critica della sezione $y_{cr}$ il \textbf{modulo di resistenza}; potendo tabulare tale parametro per molte sezioni, le operazioni di verifica/dimensionamento vengono facilitate in quanto per calcolare la tensione massima critica sulla sezione è sufficiente effettuare l'operazione
+			\begin{equation}
+				\sigma_{zz,cr} = \frac{\Mx}{W_x}
+			\end{equation}
+		\end{concetto} 
 		
