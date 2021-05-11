@@ -271,7 +271,7 @@
 		
 		\figura{6}{2}{bruscvar}{trave con brusche variazioni di sezione; il modello di Saint Venant può essere utilizzato per coordinate $z$ distanti dalle sezioni $A$ e $B$ dove si ha la variazione brusca.}{bruscvar}
 		
-		\begin{concetto}
+		\begin{concetto} \label{conc:sv:fattoreforma}
 			Per valutare lo stato di tensione locale di una sezione che varia bruscamente si ricorre, in generale, ad un \textbf{fattore di forma} $K_t$ che permette di calcolare lo stato di tensione massimo $\sigma_{max}$ nella sezione che varia rispetto alla tensione nominale $\sigma_{zz,i}$ di uno dei due spezzoni rispetto ai quali si ha la variazione di sezione:
 			\begin{equation}
 				K_t = \frac{\sigma_{max}}{\sigma_{zz,2}} = f\left(\frac D d, \frac r d\right)
@@ -520,7 +520,7 @@
 		\end{align*}
 		Unendo questo risultato con l'espressione dello stato di deformazione $\ezz$ mostrato in equazione \ref{eq:sv:statoflettente} (pag. \pageref{eq:sv:statoflettente}) è possibile determinare in modo esplicito la curvatura (e il rispettivo raggio) del concio elementare in funzione dei parametri del materiale e del carico applicato:
 		\begin{equation}
-			\ezz = \frac y {R_x} =\frac \Mx {E\Ixx} y \qquad \Rightarrow \quad k_x = \frac \Mx{E\Ixx} \qquad R_x = \frac {E\Ixx} \Mx
+			\ezz = \frac y {R_x} =\frac \Mx{E\Ixx} y \qquad \Rightarrow \quad k_x = \frac \Mx{E\Ixx} \qquad R_x = \frac {E\Ixx} \Mx
 		\end{equation}
 		\begin{concetto}
 			L'\textbf{ipotesi deformativa di Eulero-Bernoulli} ci permette di affermare che se il momento flettente applicato $M_x$ è costante lungo tutta la trave, allora lo stato di deformazione $\ezz$ è uguale in ogni tratto elementare di trave e dunque la trave deformata presenta una curvatura costante.
@@ -584,6 +584,16 @@
 			Essendo in generale $\nu \simeq 0.33$ per molti materiali, allora è possibile osservare che il raggio di curvatura $\rho_y$ è circa $\frac 1 3$ del raggio di curvatura $R_x$ dell'asse della trave, quindi l'effetto è molto meno evidente.
 		\end{nota}
 	
+		\subsubsection{Flessione retta associata sull'asse y}
+			Analizzando la flessione retta associata all'azione del solo momento $M_y$ ($M_x=0$), i cui stati di tensione/deformazione sono descritti dalle equazioni $\szz = - \frac \My \Iyy x$, $\ezz = \szz/E$, $\exx=\eyy = \nu \frac{\My}{E\Iyy}x$, allora l'asse neutro associato a tale flessione è quello verticale di equazione $x = 0$.
+			
+			Analogamente si determinano le curvature dell'asse e l'equazione della deformata elastica che misura lo spostamento nella componente $u$ come
+			\[ k_y = \frac 1 {R_y}  = - \frac{\My}{E\Iyy} \qquad \frac{d^2u}{dz^2} = \frac{\My}{E\Iyy}  \]
+			Il campo di spostamento $\ov u = \big(u,v,w\big)$ associato a tale flessione è espresso dalle componenti
+			\[ u = \frac{\My}{2E\Iyy} z^2 + \nu \frac{\My}{2E\Iyy} \big(x^2-y^2\big) \qquad v = \nu \frac{\My}{E\Iyy}xy \qquad w = - \nu \frac \My{E\Iyy} xz \]
+			
+			
+			
 	\subsection{Verifica e dimensionamento, modulo di resistenza}
 		Come affermato nel concetto \ref{conc:sv:asseneutro} (pag. \pageref{conc:sv:asseneutro}) l'asse neutro è quello verticale (di equazione $y=0$) ed è possibile osservare come esso sia baricentrico (per via della scelta iniziale del sistema di riferimento). Per effettuare dunque le operazioni di verifica e dimensionamento, note le tensioni $\sigma_{cr}^+,\sigma_{cr}^-$ del materiale, è sufficiente calcolare la distanza massima della sezione del corpo dall'asse neutro, in quanto essa rappresenta il punto di massima tensione $\szz$.
 		
@@ -603,4 +613,92 @@
 				\sigma_{zz,cr} = \frac{\Mx}{W_x}
 			\end{equation}
 		\end{concetto} 
+		\begin{osservazione}
+			Per materiali asimmetrici per i quali la tensione critica a compressione è diversa da quella a trazione, è necessario specificare due valori di moduli di resistenza diversi.
+		\end{osservazione}
+		\begin{esempio}{: modulo di resistenza di una sezione rettangolare} \label{es:sv:modresrettangolo}
+			Una sezione rettangolare di dimensioni $b\times h$ ($b$ sull'asse orizzontale delle $x$) ha momento di inerzia $\Ixx$ noto pari a $\frac 1 {12} bh^3$. La coordinata $y_{cr}$  della sezione, per costruzione, è possibile osservare che vale $ y_{cr} = \pm \frac h 2$: questo permette dunque di stabilire il \textbf{modulo di resistenza} della sezione rettangolare come
+			\[ W_x = \frac{\Ixx}{y_{cr}} = \frac 1 6 bh^2 =  \frac 1 6 A h  \]
+		\end{esempio}
+		\begin{esempio}{: modulo di resistenza di una sezione circolare}
+			Analogamente al caso precedente, di una sezione circolare di diametro $d$ è noto sia l'inerzia $\Ixx =\frac \pi {64}d^4$, sia la distanza critica dall'asse neutro $y_{cr} = \frac d 2$ che permette di ricavare il modulo di resistenza della sezione circolare come
+			\[ W_x = \frac{\Ixx}{y_{cr}} = \frac \pi {32} d^3  \]
+	\end{esempio}
 		
+		Facendo riferimento all'esempio \ref{es:sv:modresrettangolo}, è possibile osservare che una scelta diversa della geometria della sezione può comportare un miglioramento della risposta della trave al momento flettente. In particolare, a parità di area $A$, aumentando la distanza del materiale dall'asse neutro (aumento di $h$) è possibile aumentare il modulo di resistenza $W_x$:
+		\[ W_x \propto h  \]
+		\begin{nota}
+			Questo concetto può essere esteso solamente entro certi limiti, in quanto per esempio la base $b$ non può essere \textit{troppo piccola}; inoltre aumentando il modulo di resistenza $W_x$, contestualmente diminuisce il modulo di resistenza $W_y = \frac 1 6 A b$ (a parità di area $A$ di materiale usato per la sezione).
+		\end{nota}
+		Un modo per massimizzare il modulo di resistenza è quello di incrementare il momento di inerzia $\Ixx$ spostando l'area il più possibile dall'asse neutro $x$; la situazione limite di questo concetto è mostrata in figura \ref{sv-maxwx} dove l'area $A$ della sezione viene separata in due metà che possono essere poste ad una distanza $h$ dall'asse neutro arbitrariamente elevata.
+		
+		Tuttavia questa soluzione non è la migliore in quanto di fatto si ha la divisione della trave in due sottotravi, la cui faccia soggetta a compressione è particolarmente instabile (in quanto tenderebbe a deformarsi \textit{come un foglio di carta}).
+		
+		\figura{5}{1.5}{sv-maxwx}{sezione che, a parità di area $A$, permette di massimizzare $W_x$.}{sv-maxwx}
+		
+		Una soluzione tecnologica per ovviare a questo tipo di problema è dunque di congiungere queste due sezioni con un elemento verticale centrale, in quello che prende il nome di \textbf{\textit{profilo a doppia T}} (figura \ref{trave-sezionet}).
+		
+		\figura{4}{1.8}{trave-sezionet}{sezione di una trave con profilo a doppia $T$ (o anche denominata sezione ad $H$).}{trave-sezionet}
+		
+		Questo tipo di sezione presenta delle inerzie $\Ixx \gg \Iyy$, quindi è molto efficace a resistere a momenti $M_x$, mentre non è possibile affermare altrettanto per momenti $M_y$: per migliorare la risposta del materiale ad entrambe le sollecitazioni (pur mantenendo la stessa area superficiale) è possibile utilizzare dei profilati a sezione cava, come in figura \ref{trave-profilati}.
+		\figura{6}{1}{trave-profilati}{esempi di profilati con sezioni cave.}{trave-profilati}
+		
+		Il vantaggio di queste sezioni è che, nonostante la risposta alla flessione non sia ottimale come nel caso dei profili a doppia T, questo tipo di sezioni sono ottimali per resistere alla torsione.
+		
+	\subsection{Estensione dei risultati a travi più generiche}
+		
+		Come nell'analisi della flessione normale è possibile estendere i risultati ottenuti per:
+		\begin{itemize}
+			\item sezioni ad asse non rettilineo ma per il quale il raggio di curvatura $R$ è molto maggiore della dimensione caratteristica $d$ della sezione; in particolare per $\frac dR = \frac 1 20$ (quindi per un rapporto neanche \textit{troppo elevato}) l'errore che si commette nel valutare lo stato di tensione $\szz$ è di circa $1.7\%$ e dunque il modello può essere ritenuto valido. Per travi con curvatura elevata è opssibile utilizzare delle teorie correttive rispetto all'approccio di Navier: in questo caso si osserva che l'asse neutro non è più baricentrico;
+			
+			\item se la sezione della trave varia blandamente lungo l'asse, la trave può essere considerata valida (se la generatrice del cono associato alla variazione di asse presenta un angolo di $5^\circ$, l'errore che si commette nel valutare lo stato di tensione è inferiore al $0.15\%$);
+			
+			\item nel caso di momenti flettenti concentrati anche in questo caso è possibile utilizzare il modello di Saint Venant introducendo delle congrue zone di estinzione;
+			
+			\item se le sezioni variano bruscamente è necessario introdurre delle zone di estinzione e utilizzare dei fattori di forma $k_t$ come descritti a pagina \pageref{conc:sv:fattoreforma} (concetto \ref{conc:sv:fattoreforma});
+		\end{itemize}
+	
+	\subsection{Analisi della flessione deviata}
+		In generale una trave è sottoposta ad un momento $\ov M = M_x \vers i + M_y\vers j$ di orientazione non necessariamente principale. Definito $M$ il modulo del momento $\ov M$ e scelto $\gamma$ l'angolo che tale vettore genera con l'asse $x$, allora le componenti possono essere espresse come $M_x = M \cos\gamma$ e $M_y = M\sin\gamma$.
+		
+		\begin{concetto}
+			Utilizzando il principio di sovrapposizione degli effetti è possibile determinare lo stato di tensione $\szz$ dovuto alla composizione degli stati dovuti ad $M_x$ e $M_y$; è dunque matematicamente possibile determinare l'equazione dell'\textbf{asse neutro} di una trave soggetto a flessione deviata tramite l'espressione
+			\begin{equation} \label{eq:sv:asseneutrodeviata}
+				y = \frac \My \Mx \frac \Ixx \Iyy x = \underbrace{\tan\gamma\, \frac \Ixx \Iyy}_{\tan\beta} x
+			\end{equation}
+			In questa espressione $\beta$ rappresenta dunque l'inclinazione dell'asse neutro della trave soggetta a flessione deviata.
+		\end{concetto}
+		\begin{dimostrazione}
+			L'equazione \ref{eq:sv:asseneutrodeviata} può essere dimostrata considerando che l'asse neutro è quello per il quale $\szz = 0$; l'equazione da dimostrare è ottenuta per inversione dell'espressione della tensione ottenuta considerando il principio di sovrapposizione degli effetti:
+			\[ \szz = \sigma_{zz,M_x} + \sigma_{zz, M_y} = \frac \Mx \Ixx y - \frac \My \Iyy x = 0\]
+		\end{dimostrazione}
+		\begin{osservazione}
+			Nel caso di flessione retta è possibile osservare che l'asse neutro e l'asse del momento coincidono sempre, mentre questo non vale in generale per la flessione deviata! In particolare si osserva che se $\Ixx > \Iyy$ allora $\beta > \gamma$, se $\Ixx < \Iyy$ allora $\beta < \gamma$, mentre è solo nella situazione in cui $\Ixx = \Iyy$ che $\beta = \gamma$  (come nel caso della flessione retta).
+		\end{osservazione}
+	
+		Determinata dunque la direzione $\vers n$ dell'asse neutro, allora l'andamento di $\szz$ sarà lineare a partire dall'asse neutro, come è possibile osservare in figura \ref{tens-fless-dev}.
+	
+		\figura{5}{1.5}{tens-fless-dev}{valore della tensione $\szz$ in una trave soggetta a momento flettente di asse neutro $\vers n$.}{tens-fless-dev}
+		
+		Il \textbf{campo di spostamento} dovuto alla flessione retta si potrebbe ricavare per integrazione delle equazioni di congruenza, tuttavia risulta più immediato applicare il principio di sovrapposizione degli effetti per determinare le componenti del campo $\ov u$:
+		\begin{equation} \label{eq:sv:campodeviato}
+		\ov u = \left\{ 
+		\begin{split}
+		u &= \frac \My{2E\Iyy}z^2 + \nu \left[ -\frac{\Mx}{E\Ixx}xy + \frac{\My}{E\Iyy}\big(x^2-y^2\big) \right]\\
+		v &= -\frac \Mx{2E\Ixx}z^2 + \nu \left[ \frac{\Mx}{E\Ixx}\big(x^2-y^2\big) + \frac{\My}{E\Iyy}xy \right] \\
+		w &= \left( \frac \Mx{E\Ixx} y - \frac{\My}{E\Iyy}x \right)z
+		\end{split}\right.
+		\end{equation}
+		Anche in questo caso è possibile osservare che $\ov u$ presenta le \textbf{componenti primarie} (indipendenti da $\nu$) e le \textbf{componenti secondarie} (dipendenti da $\nu$).
+		
+		\begin{concetto}
+			Il rapporto tra le componenti del campo primario $u$ e $v$ (eq. \ref{eq:sv:campodeviato}) permette di determinare l'inclinazione $\beta'$ dell'\textbf{asse di flessione} che risulta valere
+			\begin{equation}
+				\frac u v = -\frac \Mx \My \frac \Iyy \Ixx = \tan\beta'
+			\end{equation}
+		\end{concetto}
+		\begin{osservazione}
+			Considerando i risultati sull'asse neutro (la cui inclinazione $\beta$ è descritta dall'equazione \ref{eq:sv:asseneutrodeviata}), è possibile verificare che asse neutro e di flessione sono mutuamente ortogonali, in quanto
+			\[ \tan \beta \, \tan \beta' = -1 \qquad \Leftrightarrow \qquad \beta \perp \beta'  \]
+		\end{osservazione}
+	
