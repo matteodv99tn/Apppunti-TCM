@@ -701,7 +701,32 @@
 			Considerando i risultati sull'asse neutro (la cui inclinazione $\beta$ è descritta dall'equazione \ref{eq:sv:asseneutrodeviata}), è possibile verificare che asse neutro e di flessione sono mutuamente ortogonali, in quanto
 			\[ \tan \beta \, \tan \beta' = -1 \qquad \Leftrightarrow \qquad \beta \perp \beta'  \]
 		\end{osservazione}
-		L'asse deformato giace dunque nel piano perpendicolare all'asse neutro ed è possibile valutare lo spostamento $\delta$ di un punto dall'asse neutro e l'inclinazione $d\delta/dz$ dell'asse come
+		L'asse deformato, di inclinazione $\beta'$, giace dunque nel piano perpendicolare all'asse neutro (in quanto esso ha inclinazione $\beta\perp\beta'$); scelto come sistema di riferimento quello determinato da questi due assi è possibile valutare lo spostamento $\delta$ dei punti dall'asse neutro e l'inclinazione $d\delta/dz$ dell'asse lungo la trave come
 		\[ \delta = \sqrt{u^2+v^2} = \frac {z^2}{2E} \sqrt{ \left( \frac {\Mx}\Ixx\right)^2 + \left( \frac {M_y}\Iyy\right)^2}\qquad \frac{d\delta}{dz} = \frac z {2E}\sqrt{ \left( \frac {M_x}\Ixx\right)^2 + \left( \frac {M_y}\Iyy\right)^2 } \]
-	    
-	    
+		E' anche possibile definire la curvatura $k_f$ nel piano di flessione come
+		\[ k_f = \frac 1 E \sqrt{ \left( \frac {\Mx}\Ixx\right)^2 + \left( \frac {M_y}\Iyy\right)^2} \]
+		
+		\begin{concetto}
+			Definiti $m$ l'\textbf{asse del momento} (di angolo $\gamma$), $s$ l'\textbf{asse di sollecitazione} (angolo $\gamma'$), $n$ l'\textbf{asse neutro} (di inclinazione $\beta$) e $f$ l'\textbf{asse di flessione} (angolo $\beta'$) è possibile affermare che $m\perp s$ e $n\perp f$ e l'inclinazione $\beta$ si ricava da $\gamma$ tramite le relazioni
+			\[ \tan\beta = \tan\gamma \frac \Ixx \Iyy \qquad \leftrightarrow\qquad \tan\beta \tan\gamma' = - \frac \Ixx \Iyy \]
+			Da queste relazioni è possibile dunque affermare che che asse di sollecitazione e asse neutro sono coniugati rispetto all'ellissoide centrale di inerzia e può dunque essere ricavato per via grafica:
+			\begin{center}
+				\includegraphics[width=5cm]{sv-assiconiugati}
+			\end{center}			
+		\end{concetto}
+		Dato dunque l'asse dei momenti $m$ si determina l'asse di sollecitazione $s$ ad esso ortogonale: l'asse neutro $n$, passante per l'origine, avrà dunque direzione parallela alle rette tangenti l'ellissoide di inerzia nei punti di intersezione con $s$.
+		
+	\subsection{Analisi dell'azione normale eccentrica}
+		Nel caso di trave sottoposta ad azioni interne di componenti $N, \Mx,\My$ allora l'asse neutro non è più baricentrico (per via dell'azione $N$); invertendo il campo di tensione $\szz$ in questo caso (eq. \ref{eq:sv:szznormale}, pag. \pageref{eq:sv:szznormale}) è possibile determinare l'equazione dell'asse neutro imponendo che il campo scalare deve essere nullo, ottenendo la relazione
+		\[ y = x\, \tan\beta + y_0 \qquad \leftarrow\quad \tan\beta= \frac \My \Mx \frac \Ixx \Iyy \quad y_0 = - \frac N A \frac \Ixx \Mx  \]
+		
+	    Avendo dunque la presenza simultanea dell'azione normale $N$ e dei momenti flettenti $M_x,M_y$, tutti applicati nel centro del baricentro della trave (coordinate $x=y=0$), l'idea è quella di considerare una sola azione normale eccentrica $N$ in un punto preciso in modo da ottenere un sistema staticamente equivalente. Definito tale punto $C$ di coordinate $(x_C, y_C)$, allora per equivalenza statica è possibile determinare il punto:
+	    \begin{align*}
+	    	y_C \ &| \ N y_C = M_x \qquad  & \Rightarrow \quad y_C &= \frac \Mx N \\
+	    	x_C \ &| \ N x_C = -M_y \qquad & \Rightarrow \quad x_C &= - \frac \My N 
+	    \end{align*}
+    	A questo punto è possibile riscrivere l'equazione dello stato di tensione $\szz$ nel caso di azione normale eccentrica utilizzando le espressioni appena determinate per esprimere i momenti in funzione del centro di applicazione $C$:
+    	\[ \szz = \frac N A + \frac {Ny_C}\Ixx y + \frac{Nx_C}{\Iyy}x  \]
+    	
+    
+    	    
