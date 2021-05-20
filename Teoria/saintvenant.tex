@@ -783,7 +783,7 @@
     	    \end{equation}
     	\end{concetto}
     	Si dimostra che questa deformazione non comporta elongazione specifica ($\exx = \eyy = \ezz = 0$) mentre si ha l'introduzione di distorsioni angolari che possono essere ricavate dalle equazioni di congruenza:
-    	\[ \gxz = \pd u z + \pd w x = -\Thete y \qquad \gyz = \pd v z + \pd w u =\Theta x \qquad \gxy = \pd u y + \pd v x = 0 \]
+    	\[ \gxz = \pd u z + \pd w x = -\Theta y \qquad \gyz = \pd v z + \pd w u =\Theta x \qquad \gxy = \pd u y + \pd v x = 0 \]
     	Dall'analisi delle distorsioni angolari è possibile stabilire le componenti dello \textbf{stato di tensione} che risultano valere $\txz = G \gxz = - G \Theta y$ e $\tyz =G \gyz =G \Theta y$.
     	
     	Con questo stato di tensione è possibile verificare che anche le condizioni al contorno sono rispettate, in quanto in ogni punto della circonferenza presenta uno stato di tensione tangente al mantello.
@@ -791,14 +791,35 @@
     	\begin{dimostrazione}
     	    Scelto un punto $P$ sul mantello di posizione $\ov r_P=\big( x_P, y_P\big)$, allora il versore $\vers n_\Gamma$ normale al mantello può essere ottenuto dalla normalizzazione dello stesso:
     	    \[ \vers n_\Gamma = \left( \frac{x_P}{r_P} \ , \ \frac{y_P}{r_P} \right)  \]
-    	    Noto che lo stato di tensione nel punto vale $\ov \tau = \big( - G\Theta y_P, G\Theta x_P\big)$ allora effettuando il prodotto scalare $\vers n_\Gamma \cdot \ov \tau$ si osserva che esso risulta essere sempre nullo, e dunque $\ov \tau$ è perpendicolare a $\ov \vers n_\Gamma$ (e conseguentemente tangenziale al mantello).
+    	    Noto che lo stato di tensione nel punto vale $\ov \tau = \big( - G\Theta y_P, G\Theta x_P\big)$ allora effettuando il prodotto scalare $\vers n_\Gamma \cdot \ov \tau$ si osserva che esso risulta essere sempre nullo, e dunque $\ov \tau$ è perpendicolare a $\vers n_\Gamma$ (e conseguentemente tangenziale al mantello).
     	\end{dimostrazione}
     	In generale è anche possibile calcolare il modulo del campo $\ov \tau$ utilizzando il teorema di Pitagora, dimostrando che esso dipende direttamente dalla distanza $r$ del punto rispetto al quale si valuta lo stato di tensione rispetto all'origine secondo l'equazione:
     	\[ \|\ov \tau \| = \sqrt{\txz ^2 + \tyz^2} =G\Theta \sqrt{x^2+y^2}=G\Theta r \]
     	Da questa relazione si ricava che il valore massimo di tensione lo si trova in corrispondenza del mantello (punto che massimizza la distanza $r$ dall'origine della terna di riferimento).
     	
-    	\paragraph{Calcolo del gradiente di torsione} 
+    	\paragraph{Calcolo del gradiente di torsione} Per calcolare il gradiente di torsione $\Theta$ causato dal momento torcente $M_z$, dipendente dalla geometria della sezione, è sufficiente considerare le equivalenze statiche che gli stati di tensione generano; in particolare essendo il sistema baricentrico, il campo vettoriale $\ov \tau$ genera delle azioni interne $T_x, T_y$ sempre nulle.
+    	\begin{dimostrazione}
+    		Per equivalenza statica si dimostra infatti che
+    		\[ T_x = \int_A \txz \, dA = -G\Theta\int_A y\, dA = - G\Theta S_x \xrightarrow{S_x = 0} 0 \]
+    		Questo vale in quanto il sistema cartesiano di riferimento è baricentrico; dimostrazione analoga si può effettuare per calcolare $T_y$ che risulta valere $G\Theta S_y = 0$.
+    	\end{dimostrazione}
+    
+    	A questo punto impostando l'equivalenza statica per il momento torcente si osserva che esso può essere definito a partire del \textbf{momento polare} $I_p$:
+    	\[ M_z = \int_A \Big( \tyz x - \txz y\Big)\, dA = G\Theta \int_A\big(x^2 + y^2\big)\, dA = G\Theta \big(\Ixx + \Iyy\big) = G\Theta I_p  \]
     	
+    	\begin{concetto}
+    		Invertendo l'equazione precedente è possibile stabilire il \textbf{gradiente di torsione} di una trave a sezione circolare sottoposta a momento torcente costante tramite la relazione
+    		\begin{equation}
+    			\Theta = \frac{d\theta_z}{dz}= \frac{M_z}{G I_p}
+    		\end{equation}
+    		Sfruttando questa relazione è possibile riscrivere le componenti scalari della tensione $\ov \tau$ e il campo di spostamento secondo le relazioni
+    		\begin{equation}
+    			\txz = -G\Theta y = - \frac{M_z}{I_p}y \qquad \tyz = G\Theta x = \frac{M_z}{I_p}x \qquad
+    			\ov u = \begin{cases}
+    				u =- \frac{M_z}{GI_p} z y \\ v =\frac{M_z}{GI_p} z x \\ w =0
+    			\end{cases}
+    		\end{equation}
+    	\end{concetto}
     	
     	
     	
