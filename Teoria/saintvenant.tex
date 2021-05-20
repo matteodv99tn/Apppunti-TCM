@@ -725,8 +725,76 @@
 	    	y_C \ &| \ N y_C = M_x \qquad  & \Rightarrow \quad y_C &= \frac \Mx N \\
 	    	x_C \ &| \ N x_C = -M_y \qquad & \Rightarrow \quad x_C &= - \frac \My N 
 	    \end{align*}
-    	A questo punto è possibile riscrivere l'equazione dello stato di tensione $\szz$ nel caso di azione normale eccentrica utilizzando le espressioni appena determinate per esprimere i momenti in funzione del centro di applicazione $C$:
-    	\[ \szz = \frac N A + \frac {Ny_C}\Ixx y + \frac{Nx_C}{\Iyy}x  \]
+    	A questo punto è possibile riscrivere l'equazione dello stato di tensione $\szz$ nel caso di azione normale eccentrica utilizzando le espressioni appena determinate per esprimere i momenti in funzione del centro di applicazione $C$; in particolare considerando le relazioni che legano i momenti di inerzia con i relativi raggi, è possibile verificare le seguenti relazioni per quanto riguarda lo stato di tensione $\szz$:
+    	\begin{equation} \label{eq:sv:tensioneeccentrica}
+	    	\szz = \frac N A + \frac {Ny_C}\Ixx y + \frac{Nx_C}{\Iyy}x = \frac N A \left( 1 + \frac{y_C}{\rho_x^2}y + \frac{x_C}{\rho_y^2}x \right)
+    	\end{equation}
+    	
+    	Equivalentemente è possibile riscrivere l'energia potenziale elastica $U_e$ considerando la posizione eccentrica di $N$ in modo che la stessa possa considerare i contributi di momenti $\Mx$ ed $\My$:
+    	\[ U_e = \frac{N^2}{2EA}L \left( 1 + \frac{y_C^2}{\rho_x^2} + \frac{x_C^2}{\rho_y^2} \right)  \]
+    	
+    	\paragraph{Asse neutro} A questo punto per determinare l'asse neutro, ossia la retta per la quale $\szz = 0$, è sufficiente porre uguale a zero il termine tra parentesi in equazione \ref{eq:sv:tensioneeccentrica}:
+    	\[ 1 +\frac{y_C}{\rho_x^2} y + \frac{x_C}{\rho_y^2}x = 0 \qquad \Rightarrow \quad \frac{y}{-\rho_x^2/y_C} + \frac x {-\rho_y^2/x_C} = \frac y {y_0} + \frac{x}{x_0} = 1  \]
+    	Di questa relazione è possibile verificare che $x_0,y_0$ rappresentano i valori delle intercette dell'asse neutro con i rispettivi assi cardinali e che deve verificarsi $y_0 y_C = -\rho_x^2 $ e $x_0x_C = \rho_y^2$. 
+    	\begin{osservazione}
+    		Dovendo essere le grandezze $\rho_{x,y}^2$ strettamente positive, allora è possibile osservare che il punto di coordinate $\big(x_0,y_0\big)$ si trova nel quadrante opposto al centro di sollecitazione $C = \big(x_C,y_C\big)$.
+    	\end{osservazione}
+    	
+    	\begin{osservazione}
+    		Tanto più vicino il punto $C$ è all'origine, tanto più lontano risulterà essere l'asse neutro: infatti se il punto tende a sovrapporsi al baricentro ci si trova in una situazione in cui $\Mx,\My \approx 0$ e l'unica azione presente è quella dovuta all'azione $N$ della quale si può pensare che l'asse neutro è posto ad una distanza infinita dal corpo stesso.
+    	\end{osservazione}
+    	
+    	\begin{concetto}
+    		Si definisce \textbf{nocciolo d'inerzia} il luogo dei punti $C$ di applicazione del carico eccentrico che producono assi neutri che sono esterni alla struttura.
+    	\end{concetto}
+    	Il nocciolo d'inerzia è importante in quanto permette di stabilire per quali punti di applicazione del carico eccentrico la struttura si trova con uno stato di tensione di sola compressione/trazione.
+    	
+\section{Analisi della torsione}
+	Come visto a pagina \pageref{eq:sv:equivstatica} ad un \textbf{momento torcente} $M_z$ è associato non più il campo di tensione scalare $\szz$, ma bensì il campo vettoriale di tensioni tangenziali $\ov \tau = \tyz \vers i + \txz \vers j$.
+	
+	Studiare il campo $\tau$ analiticamente risulta essere complesso in maniera generale, per questo la soluzione esatta si ricava per geometrie relativamente semplice, mentre soluzioni approssimate possono essere ricavate per sezioni a forma compatta o a parete sottile.
+	
+	\subsection{Sezione circolare}
+		La risposta alla torsione di una trave a sezione circolare venne inizialmente proposta da Coulomb e si basa sull'osservazione sperimentale che che le sezioni della trave stessa, dopo deformazione, risultano essere inalterate (in forma) seppur variando l'orientazione relativa rispetto all'asse del cilindro stesso.
+		
+		Avendo ipotizzato dunque che lo spostamento $\ov u_P$ di un punto $P$ descritto dal vettore $\ov r_P$ della trave sia rigido, allora è possibile definire lo stesso tramite la relazione $\ov u_P = \cancel{\ov u_G} + \ov \theta_z \times \ov r_p$ (essendo per ipotesi il sistema baricentrico e sapendo che lo stesso non si muove, allora $\ov u_G = 0$) e dunque si può esprimere come $\ov u_P = \ov \theta_z \times \ov r_P$ con $\ov \theta_z = \theta_z(z) \vers k$. Espandendo il prodotto vettoriale è possibile calcolare in maniera estesa il campo di spostamento del punto $P$ di coordinate $(x,y,z)$ come
+		\[ \ov u_P = \begin{pmatrix}
+			-\theta_z y \\ \theta_z x \\ 0
+		\end{pmatrix} \]
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     	
     
-    	    
