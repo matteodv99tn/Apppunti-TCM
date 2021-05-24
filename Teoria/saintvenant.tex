@@ -824,14 +824,35 @@
     			\frac{dU_e}{dz} = \int_A\psi \, dA = \frac{M_z^2}{2GI_p^2} \int_Ar^2\, dA  = \frac{M_z^2}{2GI_p}
     		\end{equation}
     	\end{concetto}
-    	
-    	\paragraph{Modulo di resistenza a torsione} Noto il diametro $d$ della sezione, il valore del momento polare di inerzia vale $I_p = \frac \pi {32}d^4$
+    	\begin{concetto}
+    		Noto il diametro $d$ della sezione, allora ne consegue che il valore del momento polare di inerzia vale $I_p = \frac \pi {32}d^4$; osservando che la distanza $r$ che massimizza il modulo dello stato di tensione $\ov \tau$ è associata alla distanza $d/2$ (mantello della sezione circolare), è possibile ricavare che
+    		\begin{equation} \label{eq:sv:modulotorsione}
+    			\tau_{max} = \frac{M_z}{I_p} \frac d 2 = \frac{M_z}{\frac{\pi}{32}d^4} \frac d 2 =\frac{16 M_z}{\pi d^3} = \frac{M_z}{W_t}  \qquad \leftarrow \quad W_t = \frac{\pi d^3}{16}
+    		\end{equation}
+    		In questa relazione il termine parametrico $W_t$ prende il nome di \textbf{modulo di resistenza a torsione}.
+    	\end{concetto}
     	
     \subsection{Sezioni cave a parete sottile}
     	Considerando una tubazione a sezione circolare cava con diametro esterno $d_e$ ed interno $d_i$ con spessore sottile $s$, se lo stesso è molto piccolo è possibile approssimare la sezione ad una circonferenza con diametro $d$ pari al valor medio della sezione stessa:
     	\[ d_e \simeq d_i \simeq d = \frac{d_e - d_i}{2}\]
     	
-    	L'equazione della sezione circolare piena prevede che il valore massimo di tensione tangenziale $\tau_{max}$ sia misurato in corrispondenza del mantello ad una distanza $r = d/2$, secondo la relazione $\frac{M_z}{I_p}\frac d 2$; noto che il momento polare di inerzia $I_p$ della corona circolare vale $\frac{\pi}{32}$
+    	Come nel caso della sezione circolare cava è possibile supporre che l'andamento della tensione $\ov \tau$ sia sempre perpendicolare al vettore di posizione $\ov r$ del punto che si sta considerando, confermando l'ipotesi di tangenza al mantello. A questo punto è possibile ricalcolare la tensione $\tau_{max}$ tramite l'equazione \ref{eq:sv:modulotorsione} considerando che in questo caso il momento polare di inerzia vale $\frac \pi {32} \big(d_e^4-d_i^4\big)$:
+    	\begin{align*}
+    		\tau_{max} &= \frac{32 M_z}{\pi\big(d_e^4 - d_i^4\big)} \frac { d_e}2  \simeq \frac{16}{\pi} \frac{M_z  d}{  \underbrace{\big(d_e-d_i\big)}_{=2s} \underbrace{\big(d_e + d_i\big)}_{=2d} \underbrace{\big(d_e^2 + d_i^2\big)}_{=2d^2}  } = \frac{8M_z}{\pi sd^2} \\
+    		& \simeq \frac{M_z}{2s \Omega} \qquad \leftarrow \Omega =  \dfrac{\pi d^2}{4}
+    	\end{align*}
+    
+    	\begin{concetto}
+    		In generale per travi a sezione cave di parete sottile si approssima la tensione $\ov \tau$ ad un valore uniforme costante pari a 
+    		\begin{equation}
+    			\tau = \frac{M_z}{2s\Omega}
+    		\end{equation}
+    		dove $M_z$ è il momento torcente applicato, $s$ è lo spessore della sezione e $\Omega$ è l'\textbf{area media} della sezione stessa. Anche in questo caso è possibile rilevare il \textbf{gradiente di torsione} $\Theta$ come dipendente dal carico applicato e dal momento polare della sezione:
+    		\[ \Theta = \frac{d\theta_z}{dz} = \frac{M_z}{GI_p} \]
+    	\end{concetto}
+    	\begin{nota}
+    		In una situazione in cui $s\backsim 0.1d_e$ l'errore che si commette nell'asserire tale semplificazione nel valutare lo stato di tensione è di circa il $9\%$, valore che scende al $4.8\%$ (e dunque errore \textit{accettabile}) per $s\backsim 0.05 d_e$. Si ricorda che entro il $10\%$ di errore in generale lo stesso è accettabile.
+    	\end{nota}
     	
     	
     	
