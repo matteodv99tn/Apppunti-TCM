@@ -854,9 +854,33 @@
     		In una situazione in cui $s\backsim 0.1d_e$ l'errore che si commette nell'asserire tale semplificazione nel valutare lo stato di tensione è di circa il $9\%$, valore che scende al $4.8\%$ (e dunque errore \textit{accettabile}) per $s\backsim 0.05 d_e$. Si ricorda che entro il $10\%$ di errore in generale lo stesso è accettabile.
     	\end{nota}
     	
+    	\paragraph{Molla di torsione} A questo punto è possibile considerare una trave di sezione circolare (eventualmente cava) come una molla torsionale che si deforma con una rotazione uniforme in funzione del momento $M_z$ applicato; in particolare per integrazione del gradiente di torsione si ricava la rotazione $\theta_z(z)$ del concio elementare tramite l'equazione $\frac{M_z}{GI_p} z + c$. Supponendo che per $z=0$ l'angolo $\theta_z$ sia nullo si determina dunque che anche la costante di integrazione vale $c=0$. A questo punto è possibile osservare che
+    	\[ \theta_z(L) = \frac{M_z}{G I_p} L \quad \rightarrow \quad M_z = k_t \theta_z(L)  \]
+    	dove $k_t = \frac{G I_p}{L}$ rappresenta il fattore di \textbf{rigidezza torsionale}.
     	
+    \subsection{Rappresentazione dello stato di tensione}
+    	Il modo più comodo per rappresentare lo stato di tensione di una sezione cilindrica (eventualmente cava) è quello di usare, per l'appunto, un sistema di riferimento in coordinate cilindriche di paramatri $r,\theta,z$: rispetto a tale terna infatti si dimostra che il campo di tensione $\ov \tau$ è rappresentato dall'unica componente $\tau_{\theta z}$ che rappresenta il vettore perpendicolare al raggio $r$ inclinato dell'angolo $\theta$.
+    	\[ \textrm{sistema } x,y,z: \ \ov \tau = \big(\txz, \tyz,0\big) \quad \leftrightarrow \quad \textrm{sistema } r,\theta,z: \ \ov \tau = \big(0, \ttz,0\big)  \]	
     	
+    	A questo punto è possibile affermare, per reciprocità, che se la tensione di componente $\ttz$ effettua un'azione normale al generico raggio $r$ inclinato dell'angolo $\theta$, allora esiste una componente $\tzt$ che agisce sul piano passante per l'asse della trave inclinato dell'angolo $\theta$.
     	
+    	\textbf{FIGURA}
+    	
+    	In base alla scelta del sistema di riferimento è possibile ottenere dei tensori di Cauchy diversi: in particolare infatti la relativa matrice per un sistema di riferimento cilindrico può essere ridotta ad una dimensione $2\times 2$
+    	\[ \textrm{sistema } x,y,z: \begin{bmatrix}
+    		0 & 0 & \txz \\ 0 & 0 & \tyz \\ \txz & \tyz & 0
+    	\end{bmatrix} \quad \leftrightarrow \quad \textrm{sistema } r,\theta,z: \begin{bmatrix}
+    		0 & 0 & 0 \\ 0 & 0 & \ttz \\ 0 & \ttz & 0 
+    	\end{bmatrix} \Rightarrow \begin{bmatrix}
+    		0 & \ttz \\ \ttz & 0
+    	\end{bmatrix} \]	
+    	
+    	Usando le regole di trasformazione per rotazione dei tensori è possibile calcolare le componenti lungo gli assi $z',\theta'$ di un sistema di riferimento ottenuto per rotazione di un angolo $\phi$ rispetto al sistema principale:
+    	\[ L = \begin{bmatrix}
+    		\cos\phi & -\sin\phi \\ \sin\phi & \cos\phi
+    	\end{bmatrix} \qquad \rightarrow \quad \S' = L^t \S L = \begin{bmatrix}
+    		\ttz \sin(2\phi) & \ttz \cos(2\phi) \\ \ttz \cos(2\phi) & \ttz \sin(2\phi)
+    	\end{bmatrix}\]
     	
     	
     	
