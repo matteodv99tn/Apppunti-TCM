@@ -786,6 +786,8 @@
     	\[ \gxz = \pd u z + \pd w x = -\Theta y \qquad \gyz = \pd v z + \pd w u =\Theta x \qquad \gxy = \pd u y + \pd v x = 0 \]
     	Dall'analisi delle distorsioni angolari è possibile stabilire le componenti dello \textbf{stato di tensione} che risultano valere $\txz = G \gxz = - G \Theta y$ e $\tyz =G \gyz =G \Theta y$.
     	
+    	\figura{3.2}{2}{sv-statotorsione}{distribuzione del campo di tensione $\ov \tau$ in una sezione circolare piena.}{sv-statotorsione}
+    	
     	Con questo stato di tensione è possibile verificare che anche le condizioni al contorno sono rispettate, in quanto in ogni punto della circonferenza presenta uno stato di tensione tangente al mantello.
     	
     	\begin{dimostrazione}
@@ -864,7 +866,7 @@
     	
     	A questo punto è possibile affermare, per reciprocità, che se la tensione di componente $\ttz$ effettua un'azione normale al generico raggio $r$ inclinato dell'angolo $\theta$, allora esiste una componente $\tzt$ che agisce sul piano passante per l'asse della trave inclinato dell'angolo $\theta$.
     	
-    	\textbf{FIGURA}
+    	\figura{4}{2}{sv-recip-polare}{stato di tensione in una trave sottoposta a momento torcente $M_z$ in un sistema di riferimento cilindrico; è possibile osservare, per reciprocità, l'esistenza della componente $\tzt$ dovuta a $\ttz$.}{sv-recip-polare}
     	
     	In base alla scelta del sistema di riferimento è possibile ottenere dei tensori di Cauchy diversi: in particolare infatti la relativa matrice per un sistema di riferimento cilindrico può essere ridotta ad una dimensione $2\times 2$
     	\[ \textrm{sistema } x,y,z: \begin{bmatrix}
@@ -874,18 +876,29 @@
     	\end{bmatrix} \Rightarrow \begin{bmatrix}
     		0 & \ttz \\ \ttz & 0
     	\end{bmatrix} \]	
+    
+    	\figura{6}{1}{sv-recip-rappresentazione}{rappresentazioni delle azioni agenti su un volume elementare nel sistema di riferimento cilindrico.}{sv-recip-rappresentazione}
     	
-    	Usando le regole di trasformazione per rotazione dei tensori è possibile calcolare le componenti lungo gli assi $z',\theta'$ di un sistema di riferimento ottenuto per rotazione di un angolo $\phi$ rispetto al sistema principale:
+    	Usando le regole di trasformazione per rotazione dei tensori è possibile calcolare le componenti lungo gli assi $z',\theta'$ di un sistema di riferimento ottenuto per rotazione di un angolo $\phi$ rispetto al sistema $z,\theta$ iniziale (figura \ref{sv-recip-rappresentazione}):
     	\[ L = \begin{bmatrix}
     		\cos\phi & -\sin\phi \\ \sin\phi & \cos\phi
     	\end{bmatrix} \qquad \rightarrow \quad \S' = L^t \S L = \begin{bmatrix}
     		\ttz \sin(2\phi) & \ttz \cos(2\phi) \\ \ttz \cos(2\phi) & \ttz \sin(2\phi)
     	\end{bmatrix}\]
+    	\figura{6}{1}{sv-recip-rotazione}{componenti di tensione ottenute dalla rotazione del sistema di riferimento iniziale.}{sv-recip-rotazione}
+    	
+    	Come si può osservare in figura \ref{sv-recip-rotazione} dalla rotazione è possibile osservare la costituzione di componenti di tensione diagonali $\sigma_{\theta'\theta'} = \ttz \sin(2\phi)$ e $\sigma_{z'z'} = - \ttz \sin(2\phi)$. A questo punto è possibile calcolare la rotazione $\phi$ del sistema che rende il sistema principale (ossia per cui $\ttz = 0$), osservando che esso coincide con l'angolo $\phi = \pm \frac \pi 4$ (figura \ref{sv-torc-normale}). Lungo queste direzioni le fibre sono sottoposte ad azioni di pura trazione o compressione: disponendo lungo tali direzioni delle fibre è possibile massimizzare la risposta a torsione della trave.
+    	
+    	\figura{6}{1}{sv-torc-normale}{traiettorie principali di compressione e trazione per una trave sottoposta a momento torcente.}{sv-torc-normale}
     	
     	
-    	
-    	
-    	
+    	\paragraph{Calcolo a resistenza e rigidezza} Per materiali duttili è possibile utilizzare come criterio di \textbf{verifica a resistenza} quello di Von Mises o quello di Guest-Tresca; per quest'ultimo criterio si dimostra che la tensione equivalente $\seq$ coincide con il valore $2\ttz$: nota la tensione ammissibile $\samm$ è possibile esplicitare il vincolo di rigidezza come
+    	\[ \seq = 2\ttz \leq \samm \qquad \Rightarrow \quad \ttz \leq \frac{\sys}{2} \frac 1 \phi\]
+    	Per quanto riguarda il criterio di Von Mises è necessario calcolare esplicitamente il valore della tensione equivalente utilizzando il sistema di tensione non principale in figura \ref{sv-recip-rappresentazione}:
+    	\begin{align*}
+    		\seq & = \frac 1 {\sqrt 2} \sqrt{ \cancel{\big(\sxx - \syy\big)^2} + \cancel{\big(\syy - \szz\big)^2} + \cancel{\big(\szz - \sxx\big)^2} + 6\big( \txy^2 + \txz^2+ \tyz^2 \big)  } \\ & = \sqrt 3\ttz
+    	\end{align*}
+    	dalla quale si ricava che il criterio di verifica a resistenza è $\ttz \leq \frac \scr {\sqrt 3 \phi} = \frac \samm{\sqrt 3}$.
     	
     	
     	
