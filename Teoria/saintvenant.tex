@@ -919,7 +919,7 @@
     	
     	In questo modo il \textbf{campo di spostamento} $\ov u = (u,v,w)$ è modellato dal gradiente di torsione $\Theta$ e dalla funzione di ingobbamento $\psi(x,y)$ e dunque
     	\[ u = - \Theta yz \qquad v = \Theta xz \qquad w = \Theta \psi(x,y) \]
-    	Tramite manipolazione algebrica delle condizioni imposte matematicamente è possibile giungere al cosiddetto \textbf{problema differenziale di Newmann} che permette di descrivere completamente la funzione di ingobbamento $\psi$ della sezione della trave:
+    	Tramite manipolazione algebrica delle condizioni imposte matematicamente è possibile giungere al cosiddetto \textbf{problema differenziale di Neumann} che permette di descrivere completamente la funzione di ingobbamento $\psi$ della sezione della trave:
     	\begin{equation}
     		\left\{ \begin{aligned}
     			& \frac{\partial^2 \psi}{\partial x^2} + \frac{\partial^2 \psi}{\partial y^2} = 0 \\
@@ -929,13 +929,13 @@
     	\begin{dimostrazione}
     		Questo sistema di equazioni è ottenuto considerando che le elongazioni specifiche lungo gli assi principali debbano essere nulle, ossia $\exx = \dfrac{\partial u}{\partial x} = 0$, $\eyy = \dfrac{\partial v}{\partial y} = 0$ e $\ezz = \dfrac{\partial w}{\partial z} = 0$; a questo punto è possibile osservare anche le relazioni differenziali delle distorsioni angolari, imponendo che $\gxy = \dfrac {\partial u}{\partial y} + \dfrac{\partial v}{\partial x} = 0$, mentre si ricava le altre relazioni essere $\gxz = \dfrac {\partial u}{\partial z} + \dfrac{\partial w}{\partial x} = -\Theta y 	+ \Theta \dfrac{\partial \psi}{\partial x}$ e $\gyz = \dfrac {\partial c}{\partial z} + \dfrac{\partial w}{\partial y} = \Theta x 	+ \Theta \dfrac{\partial \psi}{\partial y}$.
     		
-    		Imponendo ora che le componenti di tensioni $\sxx, \syy, \szz,\txy $ debbano essere nulle è possibile ricavare la prima equazione differenziale di Newmann:
+    		Imponendo ora che le componenti di tensioni $\sxx, \syy, \szz,\txy $ debbano essere nulle è possibile ricavare la prima equazione differenziale di Neumann:
     		\[ \txz = G\gxz = G\Theta \left(\pd \psi x - y\right) \quad \tyz = G\gyz = G\Theta \left(\pd \psi y +x\right) \quad \]
     		\[ \xrightarrow[\textrm{indefinito}]{\textrm{equilibrio}}  \pd \txz x + \pd \tyz y = \textrm{div}\ov \tau = \frac{\partial ^2 \psi}{\partial x ^2}  + \frac{\partial ^2 \psi}{\partial y ^2} = 0  	 \]
-    		Questa relazione si ottiene considerando che le linee di flusso del campo $\ov \tau$ debbano essere chiuse, e dunque il campo associato solenoidale. La seconda equazione di Newmann viene determinata imponendo le condizioni al contorno: scelta la normale (nel piano) al mantello $\vers n_\Gamma = (\alpha_x,\alpha_y)$ 	si deve imporre che il prodotto $\vers n_\Gamma \cdot \ov \tau$ sia nullo.   		
+    		Questa relazione si ottiene considerando che le linee di flusso del campo $\ov \tau$ debbano essere chiuse, e dunque il campo associato solenoidale. La seconda equazione di Neumann viene determinata imponendo le condizioni al contorno: scelta la normale (nel piano) al mantello $\vers n_\Gamma = (\alpha_x,\alpha_y)$ 	si deve imporre che il prodotto $\vers n_\Gamma \cdot \ov \tau$ sia nullo.   		
     	\end{dimostrazione}
     	
-    	La soluzione della funzione di ingobbamento per il problema differenziale di Newmann si dimostra esistere ed essere unica (a meno di una costante di integrazione associata ad un moto rigido, ossia se $\psi^*(x,y)$ è soluzione allora anche $\psi^*(x,y) + k$ è soluzione). Per determinare tra le infinite costanti di integrazione il campo di ingobbamento associato coerente con la realtà è sufficiente imporre  che la media integrale $w_m$ del campo di spostamento $w$ sia nulla:
+    	La soluzione della funzione di ingobbamento per il problema differenziale di Neumann si dimostra esistere ed essere unica (a meno di una costante di integrazione associata ad un moto rigido, ossia se $\psi^*(x,y)$ è soluzione allora anche $\psi^*(x,y) + k$ è soluzione). Per determinare tra le infinite costanti di integrazione il campo di ingobbamento associato coerente con la realtà è sufficiente imporre  che la media integrale $w_m$ del campo di spostamento $w$ sia nulla:
     	\[ w_m = \frac 1 A \int_A w(x,y)\, dA = 0 \]
     	
     	\begin{concetto}
@@ -943,6 +943,11 @@
     		\begin{equation}
     			M_z = \int_A\big(\tyz x  - \txz y\big)\, dA = G\Theta \underbrace{\int_A \Big( \underbrace{x^2 + y^2}_{I_p} + x \pd \psi y - y \pd \psi x \Big)\, dA}_{J_t} = G\Theta J_t
     		\end{equation}
+    		Utilizzando il fattore introdotto è anche possibile calcolare la densità di energia potenziale della trave in uno spessore $dz$:
+    		\begin{equation}
+    			\frac{dU_e}{dz} = \frac{M_z^2}{2GJ_t}
+    		\end{equation}
+    		
     	\end{concetto}
     	\begin{osservazione}
     		Osservando che il fattore di rigidezza torsionale $J_t$ contiene al suo interno il termine legato al momento polare di inerzia $I_p$, allora $J_t \geq I_p$ per ogni sezione: questo significa che la risposta di una trave di sezione generica $A$ è sempre peggiore rispetto ad una sezione circolare di area equivalente. A parità di area e momento $M_z$ applicato infatti si verifica che il gradiente di torsione $\Theta$ è più grande per la sezione generica rispetto a quella circolare.
@@ -965,8 +970,18 @@
     		Se la sezione presenta un asse di simmetria, allora il centro di torsione $C$ deve necessariamente giacere sullo stesso. Se la sezione presenta invece 2 assi di simmetria allora il centro di torsione $C$ è univocamente determinato dall'intersezione degli stessi e dunque coincide con il baricentro della sezione della trave.
     	\end{osservazione}
     	
-    	
-    	
+    	\subsubsection{Funzione delle tensioni}
+    		Una strategia che si può applicare per determinare la funzione di ingobbamento $\psi$ è quella di rappresentare lo stato di tensione tramite la cosiddetta \textbf{funzione delle tensioni}. Tale funzione $F$, la cui esistenza è ipotizzata, dovrebbe permettere di ricavare le componenti di tensione per derivazione secondo le equazioni:
+    		\[ \txz = G\Theta\left(\pd \psi x - y\right) = \pd F y \qquad \tyz = G\Theta \left(\pd \psi y +x \right) = -\pd F x\]
+    		Tramite manipolazione algebrica è possibile correlare le due grandezze per arrivare alla relazione
+    		\[ \pd{^2F}{x^2} + \pd{^2F}{y^2} = -2G\Theta \]
+    		\begin{dimostrazione}
+    			La relazione appena mostrata è ottenuta combinando i risultati derivando $\txz$ in $y$ e $\tyz$ in $x$ in quanto
+    			\[ \pd \txz y = G\Theta\left(\pd {\psi^2} {y \partial x} - y\right) = \pd{^2F}{y^2} \qquad \pd \tyz x = G\Theta\left(\pd {\psi^2} {x \partial y} +x\right) = \pd{^2F}{x^2}  \]
+    			Osservando che $\pd {\psi^2} {y \partial x} = \pd {\psi^2} {x \partial y}$, invertendo opportunamente le relazioni esplicitando tali termini si ottiene la relazione che segue (che verifica l'equazione da dimostrare):
+    			\[ \frac 1{G\Theta} \pd {^2F}{y^2} + 1 = - \frac 1{G\Theta} \pd {^2F}{x^2} - 1  \]
+    			
+    		\end{dimostrazione}
     	
     	
     	
