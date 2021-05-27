@@ -944,6 +944,44 @@
     			M_z = \int_A\big(\tyz x  - \txz y\big)\, dA = G\Theta \underbrace{\int_A \Big( \underbrace{x^2 + y^2}_{I_p} + x \pd \psi y - y \pd \psi x \Big)\, dA}_{J_t} = G\Theta J_t
     		\end{equation}
     	\end{concetto}
+    	\begin{osservazione}
+    		Osservando che il fattore di rigidezza torsionale $J_t$ contiene al suo interno il termine legato al momento polare di inerzia $I_p$, allora $J_t \geq I_p$ per ogni sezione: questo significa che la risposta di una trave di sezione generica $A$ è sempre peggiore rispetto ad una sezione circolare di area equivalente. A parità di area e momento $M_z$ applicato infatti si verifica che il gradiente di torsione $\Theta$ è più grande per la sezione generica rispetto a quella circolare.
+    	\end{osservazione}
+    	In generale determinare in maniera esplicita la funzione di ingobbamento $\psi$ è complesso e dunque è determinata in forma chiusa solo per sezioni relativamente semplici (come sezioni ellittiche e rettangolari).
+    	
+    	\paragraph{Applicazione del momento torcente} In generale l'azione torcente $M_z$ può non essere applicata sull'asse baricentrico $G$ ma in un generico punto $C$: si dimostra tuttavia che la soluzione ricavata per determinare la torsione è indipendente dal polo rispetto al quale l'azione è applicata. In particolare gli stati di tensione e deformazione rimangono costanti, mentre cambia solamente il campo di spostamento associato secondo una roto-traslazione rigida.
+    	
+    	\begin{concetto}
+    		Si definisce dunque il \textbf{centro di torsione} $C$ il punto nella sezione per il quale il moto rigido di traslazione intorno agli assi $x$ (rotazione media $\theta_{xz}$) e $y$ (rotazione $\theta_{yz}$) sia nulla, ossia tale che la funzione di ingobbamento $\psi_c$ verifichi
+    		\[ w_m = \int_A \psi_c(x,y)\, dA \qquad \theta_{ym} = \int_A x \psi_c(x,y) \, dA \qquad \theta_{xm} \int_A y \psi_c(x,y)\, dA \]
+    		Si dimostra che l'ingobbamento $\psi_c$ misurato nel centro di torsione è correlato alla funzione $\psi$ misurata nel sistema baricentrico secondo la relazione $\psi_c(x,y) = \psi(x,y) - y_Cx + x_Cy + k$, dove $k$ è una costante reale.
+    	\end{concetto}
+    	
+    	Dalle relazioni precedenti è dunque possibile ricavare le coordinate del centro di torsione utilizzando le relazioni
+    	\begin{equation}
+    		x_C = - \frac 1 \Ixx \int_A y \psi(x,y)\, dA \qquad y_C = \frac 1  \Iyy \int_A x \psi(x,y)\, dA
+    	\end{equation}
+    	\begin{osservazione}
+    		Se la sezione presenta un asse di simmetria, allora il centro di torsione $C$ deve necessariamente giacere sullo stesso. Se la sezione presenta invece 2 assi di simmetria allora il centro di torsione $C$ è univocamente determinato dall'intersezione degli stessi e dunque coincide con il baricentro della sezione della trave.
+    	\end{osservazione}
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     	
     	
     	
