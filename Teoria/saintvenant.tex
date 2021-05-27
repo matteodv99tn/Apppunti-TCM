@@ -900,12 +900,50 @@
     	\end{align*}
     	dalla quale si ricava che il criterio di verifica a resistenza è $\ttz \leq \frac \scr {\sqrt 3 \phi} = \frac \samm{\sqrt 3}$.
     	
+    	Per fare una \textbf{verifica a rigidezza} scelto il gradiente di torsione ammissibile $\theta_{amm}$ agli estremi della trave è sufficiente verificare che
+    	\[ \theta_z(L) = \frac{M_z}{GI_p} \leq \theta_{amm} \]
     	
+    	\paragraph{Estensione a casi generali} Come nei casi di azione normale e flessione, anche in questo caso è possibile fare delle estensioni rispetto alle ipotesi iniziali di Saint Venant; nel caso di geometrie della sezione che variano bruscamente è necessario introdurre delle zone di estinzione ed eventualmente dei coefficienti correttivi, come per quanto riguarda l'applicazione di carichi concentrati. Per quanto riguarda geometrie variabili blandamente e carichi distribuiti è possibile accettare la soluzione fin'ora descritta.
     	
+    \subsection{Sezioni compatte di forma qualsiasi}
+    	Per sezioni compatte di forma qualsiasi (esempio più semplice è la sezione rettangolare) decade, in generale, l'ipotesi di Coulomb per la quale la deformazione $\varepsilon$ è proporzionale alla distanza dal baricentro della sezione e perpendicolare al vettore posizione; in particolare viene meno la condizione di mantello nullo in quanto, considerando l'analisi delle sezioni circolari, si ottiene $\vers n_\Gamma  \cdot \ov \tau \neq 0$.
     	
+    	Saint Venant riuscì dunque a dimostrare, nel 1833, che le sezioni trasversali di una trave si modificano non rimanendo dunque più piane (al contrario di quanto visto fino ad ora per le sezioni circolari ed eventualmente cave), come in figura \ref{effetto-torsione}.
     	
+    	\figura{5}{1.3}{effetto-torsione}{trave a sezione rettangolare prima (a sinistra) e dopo (destra) deformazione dovuta a momento torcente $M_z$.}{effetto-torsione}
     	
+    	\begin{concetto}
+    		L'\textbf{effetto} che provoca la deformazione del piano è detta dunque di \textbf{ingobbamento} (\textit{\textbf{warping}}); l'ipotesi di Saint Venant fu dunque di integrare alla rotazione rigida dipendente dalla coordinata $z$ (fin'ora descritta) un campo di spostamento $w$ lungo la direzione assiale proprio per modellare questo fenomeno di ingobbamento.
+    	\end{concetto}
+    	Per la costruzione del campo $w$ si parte dalla considerazione che vicino al baricentro della sezione la deformazione deve essere pressoché nulla ($\ezz \approx 0$); inoltre in corrispondenza degli spigoli si deve preservare l'angolo tra i due segmenti che lo costituiscono, e dunque deve essere nulla la distorsione angolare $\gxy$: in questo modo il campo $\ov \tau$ si annulla in corrispondenza degli spigoli.
     	
+    	In questo modo il \textbf{campo di spostamento} $\ov u = (u,v,w)$ è modellato dal gradiente di torsione $\Theta$ e dalla funzione di ingobbamento $\psi(x,y)$ e dunque
+    	\[ u = - \Theta yz \qquad v = \Theta xz \qquad w = \Theta \psi(x,y) \]
+    	Tramite manipolazione algebrica delle condizioni imposte matematicamente è possibile giungere al cosiddetto \textbf{problema differenziale di Newmann} che permette di descrivere completamente la funzione di ingobbamento $\psi$ della sezione della trave:
+    	\begin{equation}
+    		\left\{ \begin{aligned}
+    			& \frac{\partial^2 \psi}{\partial x^2} + \frac{\partial^2 \psi}{\partial y^2} = 0 \\
+    			& \left(\pd \psi x - y\right) \alpha_x + \left(\pd \psi y + x\right) \alpha_y = 0
+    		\end{aligned} \right.
+    	\end{equation}
+    	\begin{dimostrazione}
+    		Questo sistema di equazioni è ottenuto considerando che le elongazioni specifiche lungo gli assi principali debbano essere nulle, ossia $\exx = \dfrac{\partial u}{\partial x} = 0$, $\eyy = \dfrac{\partial v}{\partial y} = 0$ e $\ezz = \dfrac{\partial w}{\partial z} = 0$; a questo punto è possibile osservare anche le relazioni differenziali delle distorsioni angolari, imponendo che $\gxy = \dfrac {\partial u}{\partial y} + \dfrac{\partial v}{\partial x} = 0$, mentre si ricava le altre relazioni essere $\gxz = \dfrac {\partial u}{\partial z} + \dfrac{\partial w}{\partial x} = -\Theta y 	+ \Theta \dfrac{\partial \psi}{\partial x}$ e $\gyz = \dfrac {\partial c}{\partial z} + \dfrac{\partial w}{\partial y} = \Theta x 	+ \Theta \dfrac{\partial \psi}{\partial y}$.
+    		
+    		Imponendo ora che le componenti di tensioni $\sxx, \syy, \szz,\txy $ debbano essere nulle è possibile ricavare la prima equazione differenziale di Newmann:
+    		\[ \txz = G\gxz = G\Theta \left(\pd \psi x - y\right) \quad \tyz = G\gyz = G\Theta \left(\pd \psi y +x\right) \quad \]
+    		\[ \xrightarrow[\textrm{indefinito}]{\textrm{equilibrio}}  \pd \txz x + \pd \tyz y = \textrm{div}\ov \tau = \frac{\partial ^2 \psi}{\partial x ^2}  + \frac{\partial ^2 \psi}{\partial y ^2} = 0  	 \]
+    		Questa relazione si ottiene considerando che le linee di flusso del campo $\ov \tau$ debbano essere chiuse, e dunque il campo associato solenoidale. La seconda equazione di Newmann viene determinata imponendo le condizioni al contorno: scelta la normale (nel piano) al mantello $\vers n_\Gamma = (\alpha_x,\alpha_y)$ 	si deve imporre che il prodotto $\vers n_\Gamma \cdot \ov \tau$ sia nullo.   		
+    	\end{dimostrazione}
+    	
+    	La soluzione della funzione di ingobbamento per il problema differenziale di Newmann si dimostra esistere ed essere unica (a meno di una costante di integrazione associata ad un moto rigido, ossia se $\psi^*(x,y)$ è soluzione allora anche $\psi^*(x,y) + k$ è soluzione). Per determinare tra le infinite costanti di integrazione il campo di ingobbamento associato coerente con la realtà è sufficiente imporre  che la media integrale $w_m$ del campo di spostamento $w$ sia nulla:
+    	\[ w_m = \frac 1 A \int_A w(x,y)\, dA = 0 \]
+    	
+    	\begin{concetto}
+    		Impostando una relazione di equivalenza statica tra campo di tensione $\ov \tau$ e momento torcente applicato $\Mz$ è possibile osservare che lo stesso può essere modellato da un \textbf{fattore di rigidezza torsionale} $J_t$ rispetto al gradiente di torsione $\Theta$ secondo l'equazione
+    		\begin{equation}
+    			M_z = \int_A\big(\tyz x  - \txz y\big)\, dA = G\Theta \underbrace{\int_A \Big( \underbrace{x^2 + y^2}_{I_p} + x \pd \psi y - y \pd \psi x \Big)\, dA}_{J_t} = G\Theta J_t
+    		\end{equation}
+    	\end{concetto}
     	
     	
     	
