@@ -974,18 +974,52 @@
     		Una strategia che si può applicare per determinare la funzione di ingobbamento $\psi$ è quella di rappresentare lo stato di tensione tramite la cosiddetta \textbf{funzione delle tensioni}. Tale funzione $F$, la cui esistenza è ipotizzata, dovrebbe permettere di ricavare le componenti di tensione per derivazione secondo le equazioni:
     		\[ \txz = G\Theta\left(\pd \psi x - y\right) = \pd F y \qquad \tyz = G\Theta \left(\pd \psi y +x \right) = -\pd F x\]
     		Tramite manipolazione algebrica è possibile correlare le due grandezze per arrivare alla relazione
-    		\[ \pd{^2F}{x^2} + \pd{^2F}{y^2} = -2G\Theta \]
+    		\begin{equation}\label{eq:sv:funzionetensioni}
+    			\pd{^2F}{x^2} + \pd{^2F}{y^2} = -2G\Theta 
+    		\end{equation}
     		\begin{dimostrazione}
     			La relazione appena mostrata è ottenuta combinando i risultati derivando $\txz$ in $y$ e $\tyz$ in $x$ in quanto
     			\[ \pd \txz y = G\Theta\left(\pd {\psi^2} {y \partial x} - y\right) = \pd{^2F}{y^2} \qquad \pd \tyz x = G\Theta\left(\pd {\psi^2} {x \partial y} +x\right) = \pd{^2F}{x^2}  \]
     			Osservando che $\pd {\psi^2} {y \partial x} = \pd {\psi^2} {x \partial y}$, invertendo opportunamente le relazioni esplicitando tali termini si ottiene la relazione che segue (che verifica l'equazione da dimostrare):
     			\[ \frac 1{G\Theta} \pd {^2F}{y^2} + 1 = - \frac 1{G\Theta} \pd {^2F}{x^2} - 1  \]
-    			
     		\end{dimostrazione}
-    	
-    	
-    	
-    	
+    		L'equazione \ref{eq:sv:funzionetensioni} si dimostra  soddisfare l'equilibrio indefinito in quanto la sua formulazione coincide a scrivere $\pd \txz x + \pd \tyz y = 0$; a questo punto è necessario riscrivere le condizioni al contorno per le quali, noto il versore $\vers n_\Gamma= (\alpha_x,\alpha_y)$ normale al mantello, afferma che $\ov \tau \cdot \vers n_\Gamma = 0$: questa relazione, definita la coordinata curvilinea $s$ del bordo, può essere riscritta come
+    		\begin{equation} \label{eq:sv:funzionetensioni-2}
+    			\pd F s = 0
+    		\end{equation} 
+    		ossia che la funzione $F$ è costante lungo tutto il mantello $\Gamma$.
+    		
+    		Il sistema composto dalle equazioni \ref{eq:sv:funzionetensioni} e \ref{eq:sv:funzionetensioni-2} rappresenta dunque il \textbf{problema di Diriclet}; utilizzando inoltre la funzione delle tensioni è possibile calcolare il momento $M_z$ sulla sezione imponendo un'equivalenza statica che si riduce all'espressione
+    		\[ M_z = 2\int_A F\, dA \]
+    		
+    		In generale il calcolo della funzione $F$ in forma chiusa analitica è piuttosto complessa, quindi spesso si preferisce modellare il problema tramite delle analogie sperimentali.
+    		
+    		\paragraph{Analogia della membrana} Si consideri una membrana uniformemente tesa ai bordi con un'azione distribuita $s\ [N/mm]$ soggetta ad una pressione $p \ [N/mm^3]$ ortogonale al piano stesso, come mostrato in figura \ref{sv-analogia-membrana}.
+    		
+    		\figura{6}{1}{sv-analogia-membrana}{membrana di sezione rettangolare uniformemente tesa ai bordi soggetta ad una pressione normale.}{sv-analogia-membrana}
+    		
+    		In questa configurazione è possibile determinare il sistema di equazioni differenziali e la relativa condizione di Cauchy per la soluzione specifica dell'integrale che permette di stabilire il campo di spostamento normale al piano $w(x,y)$ che risulta essere:
+    		\[ \begin{cases}
+    			\pd {^2w}{x^2} + \pd{^2w}{y^2} = -\frac p s \qquad & \textrm{sulla sezione} \\
+    			w = 0 \qquad & \textrm{sul perimetro} \\
+    		\end{cases} \]
+    		Da questo sistema è possibile osservare delle analogie con il problema di Diriclet, in particolare è possibile correlare $F \leftrightarrow w$ e $2G\Theta\leftrightarrow p/s$. Scelta una pressione $p$ da applicare nell'esperimento è dunque possibile calcolare il campo di spostamento $w(x,y)$ che permette di definire puntualmente la funzione delle tensioni e dunque
+    		\[ \txz = \pd F y \qquad \tyz = -\pd F x \]
+    		In particolare i gradienti locali della deformata della membrana (e conseguentemente della funzione $F$) sono uguali alle tensioni. In figura \ref{fig:sv:tensione-torsione-rettangolo} è possibile osservare i risultati sperimentali per quanto riguarda le tensioni in una sezione rettangolare.
+    		
+    		\begin{figure}
+    		\centering
+    		\begin{subfigure}{0.48\linewidth}
+    			\centering
+    			\includegraphics[width=6.5cm]{sv-torsione-rett-a} \caption{}
+    		\end{subfigure}
+	    	\begin{subfigure}{0.48\linewidth}
+		    	\centering
+		    	\includegraphics[width=4.5cm]{sv-torsione-rett-b} \caption{}
+		    \end{subfigure}
+	    	\caption{linee di livello della funzione delle tensioni e profili di tensione sui bordi (a) e andamento delle tensioni lungo 3 direzioni (b) nel caso di una sezione rettangolare.}
+	    	\label{fig:sv:tensione-torsione-rettangolo}
+    		\end{figure}
     	
     	
     	
