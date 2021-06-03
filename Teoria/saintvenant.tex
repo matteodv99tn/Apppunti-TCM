@@ -1021,11 +1021,39 @@
 	    	\label{fig:sv:tensione-torsione-rettangolo}
     		\end{figure}
     	
-    		Facendo sempre riferimento alla distribuzione di tensione mostrata in figura \ref{fig:sv:tensione-torsione-rettangolo}.b è possibile misurare il modulo $\tau_{max}$ delle tensioni in corrispondenza delle estremità assiali (punti $A,B$) che può essere modellato tramite dei coefficienti $\alpha,\alpha'$ dipendenti dal rapporto $b/h$ delle dimensioni caratteristiche della sezione:
-    		\[ \tau_{max,A} = \frac{\Mz}{\alpha h b^2} \qquad \tau_{max,B} = \frac{\Mz}{\alpha'hb^2}  \]
+    		Facendo sempre riferimento alla distribuzione di tensione mostrata in figura \ref{fig:sv:tensione-torsione-rettangolo}.b è possibile misurare il modulo $\tau_{max}$ delle tensioni in corrispondenza delle estremità assiali (punti $A,B$) che può essere modellato tramite dei coefficienti $\alpha,\alpha'$ dipendenti dal rapporto $b/h$ (figura \ref{sv-coeff-tors}) delle dimensioni caratteristiche della sezione:
+    		\begin{equation} \label{eq:sv:tmax-torsione}
+    			\tau_{max,A} = \frac{\Mz}{\alpha h b^2} \qquad \tau_{max,B} = \frac{\Mz}{\alpha'hb^2}
+    		\end{equation}
     		Analogamente è anche possibile calcolare un coefficiente $\beta$ (anch'esso dipendente dal rapporto $b/h$) che permette di approssimare il modulo di rigidezza torsionale al valore
-    		\[ J_t \simeq \beta h b^3 \qquad \Rightarrow \quad \Theta = \frac M_z {\beta G hb^3}  \]
+    		\[ J_t \simeq \beta h b^3 \qquad \Rightarrow \quad \Theta = \frac \Mz {\beta G hb^3}  \]
     		
+    		\figura{4.5}{2}{sv-coeff-tors}{coefficienti $\alpha,\alpha',\beta$ in funzione del rapporto $b/h$ delle dimensioni caratteristiche della sezione.}{sv-coeff-tors}
+    	
+	\subsection{Sezioni rettangolari a parete sottile e affini}
+		
+		Nel caso di una sezione rettangolare a parete sottile (la cui dimensione caratteristica della base $b$ è molto maggiore dell'altezza $h$), il rapporto $b/h$ tende a valore infinito: osservando i diagrammi che relazionano tale parametro adimensionale con i coefficienti $\alpha, \beta$ si osserva che entrambi tendono ad assumere il valore $\frac 1 3$.
+		
+		\begin{concetto}
+			In questo caso è possibile osservare che il valore massimo di tensione $\tau_{max}$ può essere calcolato partendo dall'equazione \ref{eq:sv:tmax-torsione} tramite l'espressione
+			\begin{equation}
+				\tau_{max} = \frac \Mz {\frac 1 3 h b^2} = \frac \Mz \Jt b \qquad \leftarrow \quad \Jt = \frac 1 3 h b^3
+			\end{equation}
+			Per questo tipo di sezione è possibile inoltre approssimare la funzione delle tensioni $F$, utilizzando l'analogia della membrana mostrata in figura \ref{distribuzione-funzione-tensione}, come lineare rispetto alla coordinata $y$, mentre può essere costante rispetto alla coordinata $x$ (se non nelle zone ai terminali della sezione). 
+			
+		\end{concetto}
+		
+		\figura{6}{1}{distribuzione-funzione-tensione}{funzione delle tensioni $F$ sui bordi di una sezione rettangolare a parete sottile.}{distribuzione-funzione-tensione}
+		
+		In particolare la funzione delle tensioni, tramite l'analogia della membrana, è approssimata dalla funzione $F$ come segue che permette di determinarne la componente $\txz$ come
+		\[ F= \left( \frac{b^2}{4} - y^2\right) G\Theta \qquad \Rightarrow \quad \txz = \pd F y = -2G\Theta y  \]
+		Sfruttando inoltre il fatto che il momento torcente $M_z$ può essere calcolato come $2\int_A F\, dA$, è possibile determinare il gradiente di torsione in maniera esplicita secondo la relazione
+		\begin{equation}
+			\Theta = \frac{3\Mz}{Gb^3 h} = \frac{\Mz}{G\Jt} \qquad \leftarrow \quad J_t = \frac 1 3 b^3h
+		\end{equation}
+		
+		
+    			
     	
     	
     	
