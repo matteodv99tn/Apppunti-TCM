@@ -66,7 +66,7 @@
 		
 	\end{osservazione}
 	
-	\subsection{Equilibrio indefinito, condizioni al contorno e legame costitutivo}
+	\subsection{Equilibrio indefinito, condizioni al contorno e legame costitutivo} \label{sec:sv:equilibrioindefinito}
 		\paragraph{Equilibrio indefinito} Come visto nell'equazione \ref{eq:sv:tensorecauchy}, lo stato tensionale di una trave sotto le ipotesi di Saint Venant è piano; considerando che per ipotesi le azioni di volume sono nulle ($\ov b=\ov0$) allora è possibile riscrivere le \textbf{equazioni di equilibrio indefinito} per il problema come:
 		\[ \pd \txz z = 0 \qquad \pd \tyz z = 0 \qquad \pd \txz x + \pd \tyz y + \pd \szz z = 0 \]
 		Le prime due equazioni dimostrano dunque che le \textbf{componenti tangenziali} $\tau_{xz},\tyz$ del vettore $\ov \tau$ sono \textbf{indipendenti} dalla coordinata assiale $z$, mentre la terza equazione lega la divergenza del campo delle azioni di taglio con la variazione lungo l'asse si $\szz$:
@@ -834,7 +834,7 @@
     		In questa relazione il termine parametrico $W_t$ prende il nome di \textbf{modulo di resistenza a torsione}.
     	\end{concetto}
     	
-    \subsection{Sezioni cave a parete sottile}
+    \subsection{Sezioni cave a parete sottile} \label{sec:torst:paretesottile}
     	Considerando una tubazione a sezione circolare cava con diametro esterno $d_e$ ed interno $d_i$ con spessore sottile $s$, se lo stesso è molto piccolo è possibile approssimare la sezione ad una circonferenza con diametro $d$ pari al valor medio della sezione stessa:
     	\[ d_e \simeq d_i \simeq d = \frac{d_e - d_i}{2}\]
     	
@@ -913,14 +913,14 @@
     	\figura{5}{1.3}{effetto-torsione}{trave a sezione rettangolare prima (a sinistra) e dopo (destra) deformazione dovuta a momento torcente $M_z$.}{effetto-torsione}
     	
     	\begin{concetto}
-    		L'\textbf{effetto} che provoca la deformazione del piano è detta dunque di \textbf{ingobbamento} (\textit{\textbf{warping}}); l'ipotesi di Saint Venant fu dunque di integrare alla rotazione rigida dipendente dalla coordinata $z$ (fin'ora descritta) un campo di spostamento $w$ lungo la direzione assiale proprio per modellare questo fenomeno di ingobbamento.
+    		L'\textbf{effetto} che provoca la deformazione del piano è detta dunque di \textbf{ingobbamento} (\textit{\textbf{warping}}) e viene descritto tramite la relativa funzione $\psi(x,y)$; l'ipotesi di Saint Venant fu dunque di integrare alla rotazione rigida dipendente dalla coordinata $z$ (fin'ora descritta) un campo di spostamento $w$ lungo la direzione assiale proprio per modellare questo fenomeno di ingobbamento.
     	\end{concetto}
     	Per la costruzione del campo $w$ si parte dalla considerazione che vicino al baricentro della sezione la deformazione deve essere pressoché nulla ($\ezz \approx 0$); inoltre in corrispondenza degli spigoli si deve preservare l'angolo tra i due segmenti che lo costituiscono, e dunque deve essere nulla la distorsione angolare $\gxy$: in questo modo il campo $\ov \tau$ si annulla in corrispondenza degli spigoli.
     	
     	In questo modo il \textbf{campo di spostamento} $\ov u = (u,v,w)$ è modellato dal gradiente di torsione $\Theta$ e dalla funzione di ingobbamento $\psi(x,y)$ e dunque
     	\[ u = - \Theta yz \qquad v = \Theta xz \qquad w = \Theta \psi(x,y) \]
     	Tramite manipolazione algebrica delle condizioni imposte matematicamente è possibile giungere al cosiddetto \textbf{problema differenziale di Neumann} che permette di descrivere completamente la funzione di ingobbamento $\psi$ della sezione della trave:
-    	\begin{equation}
+    	\begin{equation} \label{eq:tors:neumann}
     		\left\{ \begin{aligned}
     			& \frac{\partial^2 \psi}{\partial x^2} + \frac{\partial^2 \psi}{\partial y^2} = 0 \\
     			& \left(\pd \psi x - y\right) \alpha_x + \left(\pd \psi y + x\right) \alpha_y = 0
@@ -1036,7 +1036,7 @@
 		
 		\begin{concetto}
 			In questo caso è possibile osservare che il valore massimo di tensione $\tau_{max}$ può essere calcolato partendo dall'equazione \ref{eq:sv:tmax-torsione} tramite l'espressione
-			\begin{equation}
+			\begin{equation} \label{eq:tors:tensmax}
 				\tau_{max} = \frac \Mz {\frac 1 3 h b^2} = \frac \Mz \Jt b \qquad \leftarrow \quad \Jt = \frac 1 3 h b^3
 			\end{equation}
 			Per questo tipo di sezione è possibile inoltre approssimare la funzione delle tensioni $F$, utilizzando l'analogia della membrana mostrata in figura \ref{distribuzione-funzione-tensione}, come lineare rispetto alla coordinata $y$, mentre può essere costante rispetto alla coordinata $x$ (se non nelle zone ai terminali della sezione). 
@@ -1052,23 +1052,115 @@
 			\Theta = \frac{3\Mz}{Gb^3 h} = \frac{\Mz}{G\Jt} \qquad \leftarrow \quad J_t = \frac 1 3 b^3h
 		\end{equation}
 		
-		
-    			
+		\begin{nota}
+			Si può osservare che il momento torcente $M_z$ è dovuto per meta alla componente $\txz$ (che ha modulo elevato ma braccio limitato) e meta dalla componente $\tyz$ (il cui modulo è basso ma presenta un grande valore di braccio rispetto al centro della sezione).
+		\end{nota}
+    	Dall'analisi della seconda relazione di Neumann (eq. \ref{eq:tors:neumann}) è anche possibile stabilire in forma chiusa il valore della funzione del campo di ingobbamento $\psi$ per una sezione rettangolare:
+    	\[ G\Theta \left( \pd \psi x - y\right) = \pd Fy \quad \textrm e \quad G\Theta\left(\pd \psi y+x\right) = \pd F x \qquad \Rightarrow \quad \psi(x,y) = -xy  \]
     	
+    	\subsubsection{Sezioni "complesse" a parete sottile}
+    		
+    		Per sezioni a parete sottile di sezione qualsiasi aperta è possibile sfruttare la solenoidalità del campo delle tensioni $\ov \tau$: in questo caso per risolvere questo tipo di problemi (come mostrato in figura \ref{paretesottile}) si \textit{sviluppa} la sezione in modo da riportarla al caso di una sezione rettangolare a parete sottile che può essere analizzata tramite le equazioni descritte in precedenza.
     	
+    		\figura{8}{0.6}{paretesottile}{esempio di sviluppo di una sezione ad "U" a parete sottile per giungere ad una sezione rettangolare "standard".}{paretesottile}
     	
+    		Facendo riferimento alla sezione d'esempio si osserva che lo sviluppo determina una sezione rettangolare di base $a+2c$ e altezza $b$ e dunque il \textbf{fattore di rigidezza torsionale} $J_t$ associato alla sezione risulta valere
+    		\[ J_t = \frac{b^3\big(a+2c\big)}{3} \]
+    		Considerando invece lo sviluppo di una sezione circolare aperta (figura \ref{paretesottile-b}) allora il relativo fattore di rigidezza torsionale può essere calcolato come
+    		\[ J_t = \frac{b^3\big(\pi D\big)}{3}\]
+    		
+    		\figura{8}{1}{paretesottile-b}{esempio di sviluppo di una sezione circolare a parete sottile per giungere ad una sezione rettangolare "standard"; si osserva che la sezione non è composta da un pezzo unico.}{paretesottile-b}
+    		
+    		Sezioni di trave più complesse, che tuttavia possono essere scomposte in una serie di elementi rettangolari a parete sottile, possono essere analizzate considerando che il fattore di rigidezza torsionale complessivo $J_{t,tot}$ sarà pari alla somma di tutti i contributi $J_{t,i}$ che ogni parte elementare determina:
+    		\[ J_{t,tot} = \sum_i J_{t,i} = \sum_i \frac 1 3 b^3_ih_i \]
+    		
+    		\begin{dimostrazione}
+    			In una trave sottoposta a momento torcente complessivo $M_z$, allora il gradiente di torsione $\Theta$ deve essere costante e uguale per ogni elemento rettangolare \textit{base} che compone la sezione della trave. Ogni componente elementare scaricherà parte del momento torcente applicato in modo da mantenere costante tale gradiente, ossia
+    			\[ \Theta = \frac{\Mz}{GJ_{tot}} = \frac{M_{z,i}}{GJ_{t,i}} \qquad \Rightarrow \quad M_{z,i} = \Mz \frac{J_{t,i}}{J_{t,tot}} \]
+    			Potendo calcolare i fattori di rigidezza torsionale $J_{t,i}$ dei singoli contributi elementari, e dovendo  staticamente valere che la somma dei momenti $M_{z,i}$ applicati sugli stessi sia uguale all'azione interna di torsione, allora si ricava che
+    			\[ \Mz = \sum_i M_{z,i} = \sum_i \Mz \frac{J_{t,i}}{J_{t,tot}} \qquad \Rightarrow \quad J_{t,tot} = \sum_i J_{t,i} \]
+    		\end{dimostrazione}
     	
+    		\paragraph{Distribuzione di tensione agli angoli} Fino ad ora si è analizzata la distribuzione di tensione $\ov \tau$ considerando la funzione delle tensioni $F$ e ricavando, tramite delle approssimazioni, i profili delle componenti $\txz,\tyz$ che risultano essere triangolari, rispettando soprattutto la condizione di tangenza al mantello. Tuttavia considerando gli \textit{angoli} delle sezioni si osserva che risulta difficile determinare un campo tangente a tale punto (tramite le leggi fino ad ora definite). In figura \ref{angoli-torsione} è possibile infatti vedere come la distribuzione di tensione in tale punto non sia più triangolare, ma fortemente non lineare: questo porta ad un aumento della tensione massima $\tau_{max,angolo}$ che è maggiore della tensione $\tau_{max}$ calcolata nell'equazione \ref{eq:tors:tensmax} (pag. \pageref{eq:tors:tensmax}).
+    		    	
     	
+    		\figura{4}{1.5}{angoli-torsione}{distribuzione di tensione in un angolo di una sezione a parete sottile.}{angoli-torsione}
+    		
+    		Per valutare il picco di tensione nel profilo si ricorre dunque all'introduzione di termini correttivi $k_t$ dipendenti dallo spessore $b_i$ della sezione e dal raggio di curvatura $r_i$ della trave:
+    		\[ \tau_{max,angolo} = k_t \tau_{max} \qquad \leftarrow \quad \begin{aligned}
+    			& \textrm{Treffer: } k_t= 1.74 \sqrt{\frac{b_i}{r_i}} \\
+    			& \textrm{Timoshenko: } k_t = 1 + \frac{b_i}{4r_i}
+    		\end{aligned} \]
+    		\begin{nota}
+    			I profilati di uso comune (rispettanti dunque le principali normative) presentano dei raccordi tali da rendere il coefficiente correttivo $k_t$ pressoché unitario, permettendo dunque di trascurare l'aumento di tensione nell'angolo.
+    		\end{nota}
+    		
+    		\paragraph{Sezioni a spessore variabile} E' possibile analizzare le sezioni a spessore $b$ variabile lungo la coordinata generalizzata curvilinea $s$ introducendo un'espressione integrale per il calcolo del fattore di rigidezza torsionale $J_t$ secondo la relazione
+    		\[ J_t = \frac 1 3 \int_\Gamma b^3(s) \, ds \]
+    		In questo il valore massimo del modulo della tensione dipenderà dalla posizione e varrà $\tau_{max}(s) = \frac \Mz \Jt b(s)$.
     	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    
+    	\subsection{Sezioni chiuse a pareti sottili di forma qualsiasi}
+    		L'analisi di sezioni chiuse di forma qualsiasi a pareti sottili presenta delle analogie con lo stato di tensione per sezioni cave a parete sottile (pag. \pageref{sec:torst:paretesottile}) già vista. In particolare data una sezione chiusa, si indica con $\lambda$ la sua coordinata curvilinea, con $\vers i$ il versore (applicato sulla linea media della sezione) che è perpendicolare al vettore $\ov r$ che determina la posizione del punto della sezione rispetto al baricentro. Lo spessore $b(\lambda)$ può in generale dipendere dalla posizione nella trave.
+    		
+    		\figura{4}{1.5}{sottile-chiusa}{rappresentazione schematica di una sezione chiusa a parete sottile e le grandezze necessarie alla sua descrizione.}{sottile-chiusa}
+    		
+    		\begin{concetto}
+    			L'analisi di questo tipo di sezione si basa sulle \textbf{ipotesi di Bredt} per le quali:
+    			\begin{itemize}
+    				\item il campo $\ov \tau$ è solenoidale e può essere rappresentato mediante la coordinata curvilinea $\lambda$;
+    				\item dato il versore $\vers i_\lambda$, allora la tensione $\ov \tau$ si riduce solamente alla componente scalare $\tlz$ che viene considerata costante per tutto lo spessore della sezione per la coordinata $\lambda$ considerata;
+    				\item $\tlz$ determina un \textbf{flusso} $\plz$ di tensione che deve essere coerente con il momento $\Mz$ applicato.
+    			\end{itemize}
+    		\end{concetto}
+    		
+    		Per poter risolvere il problema è dunque necessario definire il \textbf{flusso della tensione} $\plz(\lambda)$ dipendente dalla posizione $\lambda$, ma che si deve imporre dover essere costante lungo tutto il percorso (scegliendo opportuni valori $\tlz$):
+    		\begin{equation}
+    			\plz(\lambda) = \tlz(\lambda) \, b(\lambda)
+    		\end{equation}
+    		
+    		A questo punto è necessario determinare il valore del flusso $\plz$ in modo che, tramite delle equivalenze statiche, sia possibile valutare lo stato di tensione lungo la sezione. Considerando dunque un punto sulla sezione il campo $\tlz$ determina lungo un tratto $d\lambda$ una forza infinitesima 
+    		\[ d\ov T = \tlz  \underbrace{b(\lambda)\, d\lambda}_{dA}\]
+    		
+    		\figura{4}{1.5}{flusso-torcente}{forza $T$ dovuta al flusso della tensione e grandezze in gioco.}{flusso-torcente}
+    		
+    		Questo contributo determina dunque un certo momento $dM_z$ rispetto al baricentro della sezione; il momento complessivo può essere infatti calcolato per integrazione di questi contributi infinitesimi e dunque
+    		\[ M_z = \int_\Gamma \ov r\times d\ov T = \int_\Gamma r_\perp \tlz b(\lambda)\, d\lambda\]
+    		Osservando che il termine $\tlz b(\lambda)$ coincide con il flusso delle tensioni $\tlz$ (che deve essere costante) e che il termine $r_\perp(\lambda)\, d\lambda$ può essere considerato come il doppio dell'area determinata dai vettori $\ov r$ e $d\lambda$ si ricava che
+    		\begin{equation}
+    			\Mz = \plz \int_\Gamma 2\, s\Omega = 2\plz \Gamma = 2\tlz b(\lambda)\Omega \qquad \Rightarrow \quad \tlz = \frac{\Mz}{2b(\lambda)\Omega}
+    		\end{equation}
+    		Si evince dunque da questa relazione, dovendo essere $\plz$ costante, che il valore massimo di $\tlz$ si ha in corrispondenza del valore minimo dello spessore $b$.
+    		
+    		\paragraph{Seconda formula di Bredt} La seconda formula di Bredt si basa sull'analisi della deformata elastica, in particolare sul teorema di Clapeyron per il quale il lavoro delle azioni esterne $L_e = \frac 1 2 \Mz\Theta L$ deve essere uguale all'energia potenziale elastica $U_e$.
+    		
+    		Nota la formulazione $\psi=\frac{\tlz^2}{2G}$ del potenziale elastico complementare, è possibile calcolare per integrazione l'energia elastica della trave ottenendo che
+    		\[ U_e = L \int_\Gamma \frac{\tlz^2}{2G}b(\lambda)\, d\lambda = \frac L{2G}\int_\Gamma \frac{\Mz^2}{4\Omega^2}\frac{b(\lambda)}{b^2(\lambda)}\, d\lambda = \frac{\Mz^2L}{8G\Omega^2}\int_\Gamma \frac{d\lambda}{b(\lambda)} \]
+    		A questo punto potendo eguagliare le relazioni esplicite di $L_e$ ed $U_e$ è possibile calcolare la \textbf{deformata elastica} $\Theta$ e dunque la \textbf{rigidezza torsionale} $J_t$ della sezione chiusa a parete sottile:
+    		\begin{equation}
+    			\Theta = \frac{\Mz}{4G\Omega^2}\int_\Gamma \frac{d\lambda}{b(\lambda)} = \frac{\Mz}{4GJ_t} \qquad \leftarrow \quad J_t = \frac{4\Omega^2}{\int \frac{d\lambda}{b(\lambda)}}
+    		\end{equation}
+			
+			Questa legge integrale è dunque molto comoda per determinare la rigidezza torsionale di varie sezioni, in particolare per quelle semplici; considerando la sezione rettangolare cava mostrata in figura \ref{rettangolare-chiusa} è possibile determinarne la rigidezza torsionale integrando lungo l'asse della sezione; supponendo che gli spessori $b_1,b_2$ siano costanti nei loro tratti, allora si verifica che
+			\[ \left.\begin{aligned}
+				\int_\Gamma \frac{d\lambda}{b(\lambda)}&  = \frac{2\big(B-b_1\big)}{b_2} + \frac{2\big(H-b_2\big)}{b_1} \\ \Omega & = \big(B-b_1\big)\big(H-b_2\big)
+			\end{aligned} \right\} \qquad \Rightarrow \quad J_t = \frac{ 2 \big(B-b_1\big)^2\big(H-b_2\big)^2 }{ \frac{B-b_1}{b_2} + \frac{H-b_2}{b_1} }\]
+			
+			Tramite queste relazioni è infine possibile determinare in maniera esplicita il valore delle tensioni $\tlz$ nei tratti di spessore $b_1$ e $b_2$ rispettivamente pari a 
+			\[ \tau_{\lambda z,1} = \frac{\Mz}{2b_1\big(B-b_1\big)\big(H-b-2\big)} \qquad \tau_{\lambda z,2} = \frac{\Mz}{2b_2\big(B-b_1\big)\big(H-b-2\big)} \]
+			\figura{4}{1.5}{rettangolare-chiusa}{sezione rettangolare cava a pareti sottili.}{rettangolare-chiusa}    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
