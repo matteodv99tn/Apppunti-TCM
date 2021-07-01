@@ -100,18 +100,40 @@
 		
 		E' inoltre possibile asserire delle considerazioni sul \textbf{verso} della tensione $\tyz$: scelta infatti l'area $A^*$ se si calcola $\tlz > 0$, allora la tensione è \textbf{entrante nell'area} $A^*$ che si sta considerando, mentre al contrario se $\tyz < 0$ il verso è opposto e dunque uscente dall'area.
 		
+	\subsection{Analisi del taglio deviato}
+		In generale una trave non è sottoposta ad un'azione di taglio puramente retto, ma è soggetta ad un \textbf{taglio deviato} (cui è associato un momento deviato) in quanto è possibile considerare l'azione tagliante come
+		\[\ov T = \Tx\vers i + \Ty \vers j\]
+		In particolare per quanto riguarda la flessione deviata ne è nota la formulazione esplicita del campo scalare $\szz$ (pag. \pageref{sec:fless:deviata}) e dunque è possibile ricavarne la derivata rispetto alla coordinata assiale:
+		\[ \pd \szz z = \frac \Ty \Ixx y + \Tx \Iyy x \]
+		Sfruttando un ragionamento analogo al calcolo del taglio retto è possibile determinare la componente $\tyz$ della tensione $\ov \tau$ scegliendo una corda perpendicolare all'asse $y$ e valutando gli integrali rispetto all'area sottesa a tale linea, e dunque
+		\[ \tyz = \frac 1 {b(y)} \left(\frac \Ty \Ixx \int_{A^*} y\, dA + \frac \Tx \Iyy \int_{A^*} x\, dA\right) = \frac 1  {b(y)} \left(\frac{\Ty S_x^*(y)}{\Ixx} + \frac{\Tx S_y^*(y)}{\Iyy} \right) \]
+		\begin{nota}
+			Per travi a sezione simmetriche è possibile osservare che i momenti statici sono nulli rispetto agli assi di simmetria; questo significa, per esempio, che la componente $\tyz$ di una trave a sezione doppiamente simmetrica lungo gli assi $x,y$ dipende solamente dalla componente $T_y$ (in quanto a $T_x$ è associato il momento $S_y^*$ che è sempre nullo).
+		\end{nota}
 		
+	\subsection{Sezioni piene a geometria semplice}
+	\subsubsection{Sezione rettangolare}
+		Considerando una sezione rettangolare di dimensione orizzontale $b$ (lungo l'asse $x$) e dimensione verticale $h$, essendo la sezione doppiamente simmetrica allora il centro di taglio coincide con il baricentro e le azioni taglianti sono disaccoppiate.
 		
+		\figura{4}{2}{taglio-rettangolo-a}{sezione rettangolare di una trave e coordinate principali di riferimento.}{taglio-rettangolo-a}
 		
+		Considerando di applicare solamente un'azione di taglio $\Ty$, per calcolare lo stato di tensione $\tyz$ ad essa associato è sufficiente calcolare i parametri geometrici della sezione e le variabili in $y$ in maniera esplicita. In particolare il momento di inerzia rispetto all'asse orizzontale vale $\Ixx = \frac 1 {12}bh^3$; la lunghezza della corda parallela all'asse $x$ sarà sempre costante e pari a $b(y) = b$. A questo punto è necessario calcolare il momento statico $S^*_x(y)$ determinato come il prodotto della posizione del baricentro dell'area $A^*$ per il valore dell'area stessa:
+		\[y_c = \frac 12\left( \frac h 2 + y\right) \quad A^* = b \left(\frac h 2 - y \right) \qquad \Rightarrow \quad S_x^* = A^* y_c = \frac{bh^2}{8} \left[ 1 - \left(\frac{2y}{h}\right)^2 \right]\]
+		Avendo determinato tutti gli elementi costitutivi dell'equazione \ref{eq:taglio:retto} (pag. \pageref{eq:taglio:retto}) è sufficiente determinare l'espressione esplicita dello stato di tensione che vale dunque
+		\begin{equation}
+			\tyz = \frac{\Ty S_x^*}{\Ixx b} = \frac 3 2 \frac \Ty{bh}  \left[ 1 - \left(\frac{2y}{h}\right)^2 \right]
+		\end{equation}
 		
+		Da questa relazione si evince che il valore di massimo della componente di tensione $\tyz$ è associata al valore massimo del momento statico che è associato alla quota $y=0$ e dunque
+		\[\tau_{yz,max} = \tyz(0) = \frac 3 2 \frac \Ty A\] 
+		Dall'analisi delle condizioni al contorno (e anche a livello intuitivo) si osserva che la componente $\txz$ (associata al solo taglio $T_y$) è sempre nulla lungo tutta la corda considerata.
 		
+		Il valore della componente $\tyz$ (al variare di $y$) assume una forma parabolica (con valore massimo per $y=0$ e valore nullo agli estremi del rettangolo), come si può vedere in figura \ref{taglio-rettangolo-b}; inoltre nelle operazione di verifica/resistenza è necessario considerare anche l'effetto del campo $\szz$ che può essere calcolata in maniera analitica noto che
+		\[ \szz = \frac \Mx \Ixx y = -\frac{\Ty\big( L-z \big)}{\Ixx} y \qquad \Rightarrow \quad \sigma_{zz,max}= - \frac{6\Ty\big( L-z \big) }{bh^2}\]
 		
+		Si osserva dunque che in generale, essendo $L,z \gg b,h$, nelle operazioni di verifica e taglio
 		
-		
-		
-		
-		
-		
+		\figura{7}{1}{taglio-rettangolo-b}{profili delle componenti $\tyz$ e $\szz$ della tensione di una trave a sezione rettangolare soggetta a taglio retto $\Ty$.}{taglio-rettangolo-b}
 		
 		
 		
