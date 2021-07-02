@@ -126,6 +126,13 @@
 		
 		Da questa relazione si evince che il valore di massimo della componente di tensione $\tyz$ è associata al valore massimo del momento statico che è associato alla quota $y=0$ e dunque
 		\[\tau_{yz,max} = \tyz(0) = \frac 3 2 \frac \Ty A\] 
+		\begin{concetto}
+			Per le sezioni più comuni si tende a definire il \textbf{fattore di taglio} $\eta_t$ come il rapporto tra la tensione massima nella sezione calcolata tra Jourawsky e la tensione che si dovrebbe avere nominalmente $\tau_{yz,nom} = T_y/A$; nel caso particolare di sezione rettangolare si dimostra che
+			\begin{equation} \label{eq:taglio:fattore}
+				\tau_{yz,max} = \frac 3 2 \frac \Ty A \quad \tau_{yz,nom} = \frac \Ty A \qquad \Rightarrow \quad \eta_t = \frac{\tau_{yz,max}}{\tau_{yz,nom}} = \frac 3 2
+			\end{equation}
+		\end{concetto}
+		
 		Dall'analisi delle condizioni al contorno (e anche a livello intuitivo) si osserva che la componente $\txz$ (associata al solo taglio $T_y$) è sempre nulla lungo tutta la corda considerata.
 		
 		Il valore della componente $\tyz$ (al variare di $y$) assume una forma parabolica (con valore massimo per $y=0$ e valore nullo agli estremi del rettangolo), come si può vedere in figura \ref{taglio-rettangolo-b}; inoltre nelle operazione di verifica/resistenza è necessario considerare anche l'effetto del campo $\szz$ che può essere calcolata in maniera analitica noto che
@@ -134,6 +141,62 @@
 		Si osserva dunque che in generale, essendo $L,z \gg b,h$, nelle operazioni di verifica/dimensionamento la condizione più stringente è determinata dalla tensione normale $\szz$ associata alla flessione (e dunque in generale il taglio si trascura).
 		
 		\figura{7}{1}{taglio-rettangolo-b}{profili delle componenti $\tyz$ e $\szz$ della tensione di una trave a sezione rettangolare soggetta a taglio retto $\Ty$.}{taglio-rettangolo-b}
+		
+		L'ipotesi di Jourawsky si basa sull'assumere la distribuzione della tensione $\tyz$ come costante lungo tutta la corda, tuttavia nella realtà è possibile osservare degli scostamenti, anche significativi, nella distribuzione delle tensioni, in particolare nel valutare il valore massimo della componente di tensione per effettuare verifiche e dimensionamenti. In particolare per rapporti $b/h$ inferiori al valore $1/2$ l'errore che si commette a valutare il picco di tensione è pari al $3\%$, e dunque si può trascurare. Alzando il rapporto $b/h = 2$ l'errore tra valore reale e nominale aumenta al $40\%$ e l'errore è maggiore del $100\%$ per $b/h>4$.
+		
+	\subsubsection{Sezione circolare}
+		Si consideri ora una trave a sezione circolare mostrata in figura \ref{taglio-circolare-a} sottoposta al solo taglio $T_y$. Per semplificare l'analisi si preferisce ricondurre tutte le grandezze in funzione dell'angolo $\phi$ al centro mostrato.
+		\figura{3.2}{2}{taglio-circolare-a}{schema di riferimento per l'analisi a taglio di una trave a sezione circolare.}{taglio-circolare-a}
+		
+		Così facendo è possibile esprimere la quota $y$ della corda in funzione del raggio tramite la relazione $y = R\cos\phi$; dall'analisi è anche possibile calcolare la lunghezza della corda $b(\phi) = 2R \sin\phi$ e il momento statico dell'area sottesa $S_x^* = \frac 2 3 \big(R\sin\phi\big)^3$. Essendo noto il momento d'inerzia $I_{xx} = \frac pi 4 R^4$ allora si può calcolare la componente di tensione $\tyz$ che risulta valere
+		\begin{align*}
+			\tyz &  = \frac {\Ty S_x^*}{b\,\Ixx} = \frac 4 3 \Ty \frac{\sin^2\phi}{\pi R^2} = \frac 4{3\pi} \frac \Ty {R^2} \left(1-\cos^2\phi\right) \\
+			&  = \frac 4{3\pi} \frac \Ty {R^2} \left(1-\frac{y^2}{R^2}\right)
+		\end{align*}
+		Anche in questo caso l'andamento del modulo della tensione $\tyz$ presenta un andamento parabolico con valore massimo alla quota $y = R$ e valore nullo per $y = \pm R$. Si evince dunque che il fattore di taglio (eq. \ref{eq:taglio:fattore}) per la sezione circolare vale
+		\[ \eta_t = \frac{\tau_{yz,max}}{\tau_{yz,nom}} = \frac 4 3  \]
+		
+		\vspace{3mm}
+		A questo punto è necessario analizzare le componenti $\txz$ che rendono il campo $\ov\tau$ tangente al mantello in ogni punto della sezione; noto che il versore $\vers n_\Gamma = (\alpha_x,\alpha_y)$ dipende dall'angolo $\phi$ e che vale $\alpha_y/\alpha_x= 1/\tan\phi$, imponendo le condizioni al contorno si osserva che
+		\begin{align*}
+			\txz & = -\frac {2x}b\tyz \frac{\alpha_x}{\alpha_y} = - \frac{2x}{b} \frac 4 3 \frac \Ty A \sin^2\phi \frac 1 {\tan\phi} \\
+			\xrightarrow{x = b/2 = R\sin\phi} & = -\frac 4 3 \frac{\Ty}{\pi R^2}\sin\phi\cos\phi	
+		\end{align*}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
