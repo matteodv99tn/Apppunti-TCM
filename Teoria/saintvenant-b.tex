@@ -192,8 +192,18 @@
 		
 		\figura{7}{1}{taglio-T-a}{flussi di tensione per taglio retto $\Ty$ (a sinistra) e $\Tx$ (a destra).}{taglio-T-a}
 		
+		Si parta a considerare l'azione $\Ty$ cui è associato il momento flettente $\Mx$ (distribuzione mostrata in figura \ref{taglio-T-b}). Considerando la metà sinistra dell'ala superiore, partendo dal punto $A_1$, è possibile osservare che il momento statico $S_x^*$ dipendente dalla coordinata $\lambda_1$ vale $\lambda_1 b_1 \frac H 2$. A questo punto si determina $\tlz = \txz$ che risulta valere
+		\[ \txz = \frac {\Ty S_x^*}{b\Ixx} = \frac{\Ty \lambda_1 b_1 H/2}{I_{xx,1}b_1} = \frac{\Ty H}{2 I_{xx,1}} \lambda_1 \]
+		In maniera speculare è possibile determinare lo stato $\txz$ per la parte destra dell'ala superiore. Il valore massimo dello stato di tensione si ha in corrispondenza della coordinata $\lambda_1 = \lambda_2 = B/2$ con un valore di 
+		\[ \tau_{xz,1,max} = \frac{\Ty BH}{4 I_{xx,1}b_1} \]
+		\figura{5}{1.5}{taglio-T-b}{schema di riferimento per la determinazione dello stato di tensione dovuto a $T_y$ e distribuzione associata al momento $M_z$.}{taglio-T-b}
+		\figura{6}{2}{taglio-T-c}{due metodi di rappresentazione della tensione sull'ala del profilo a doppia T: a sinistra si rappresenta a diagramma il modulo della tensione e si correla il verso delle tensioni (tramite le frecce), mentre nel secondo metodo il diagramma di azione interna rappresenta modulo e verso dell'azione.}{taglio-T-c}
 		
-		
+		Considerando invece la parte dell'anima, il momento statico $S_x^*(y)$ può essere valutato per via integrale e dunque determinare lo stato di tensione
+		\[ S_x^*(y) = b_1 B\frac H2 + \int_y^{H/2}b_2y'\, dy' = b_1 B \frac H 2 + b_2 \left(\frac{H^2}{8} - \frac{y^2}{2}\right)  \]
+		Si osserva dunque che il profilo della tensione $\tyz$ assume forma parabolica e in particolare il valore agli estremi dell'anima coincide con la somma dei flussi di tensione entranti dalle ali. Considerando infatti che i flussi delle tensioni sulle ali valgono $\Phi_{xz,1} = \Phi_{xz,2} = \frac \Ty\Ixx \frac{BH}{4}b_1$ e $\Phi_{yz,3} = \frac \Ty {2\Ixx} \frac{BH} 4 b_1$, allora si osserva che
+		\[ \Phi_{xz,1} + \Phi_{xz,2} = \Phi_{yz,3} \]
+		\figura{5}{1.5}{taglio-T-d}{distribuzione del modulo della tensione $\tlz$ lungo le varie parti che compongono la sezione a doppia T.}{taglio-T-d}
 		
 		
 		
