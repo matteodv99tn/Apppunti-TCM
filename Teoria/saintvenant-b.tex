@@ -74,7 +74,7 @@
 		\begin{concetto}
 			Questa forza deve dunque essere contro-bilanciata dall'azione reciproca di $\tyz$ che, in questo caso, risulta valere $dF = \tau_{yz,m} b(y)\, dz$: eguagliando dunque i termini $dN = dF$ è possibile esplicitare il valor medio della componente $\tyz$, che prende il nome di \textbf{tensione di Jourawsky}, dell'area sottesa $A^*$ tramite l'espressione
 			\begin{equation} \label{eq:taglio:retto}
-				\tau_{yz,m} = \frac{\Ty  }{\Ixx \, b(y)}\int_{A^*} y\, dA  = \frac{\Ty  }{\Ixx \, b(y)} S_x^*
+				\tau_{yz,m} = \frac{\Ty  }{\Ixx \, b(y)}\int_{A^*} y\, dA  = \frac{\Ty  }{\Ixx} \frac {S_x^*(y)}{ b(y)}
 			\end{equation}
 		\end{concetto}
 		Si può dunque osservare che l'integrale $\int_{A^*}y\,dA = S_x^*$ rappresenta il momento statico dell'area $A^*$ valutato rispetto all'asse $x$; in questa espressione va notato come il rapporto $T_y/\Ixx$ sia una proprietà fissa della trave, mentre $S_x^*/b$ è una funzione dipendente dalla posizione $y$ rispetto alla quale si sceglie di posizionare la corda (infatti variando $y$ varia sia l'area che determina il momento statico, sia in generale la lunghezza della corda stessa).
@@ -205,15 +205,115 @@
 		\[ \Phi_{xz,1} + \Phi_{xz,2} = \Phi_{yz,3} \]
 		\figura{5}{1.5}{taglio-T-d}{distribuzione del modulo della tensione $\tlz$ lungo le varie parti che compongono la sezione a doppia T.}{taglio-T-d}
 		
+		Come è possibile osservare in figura \ref{taglio-T-d}, il punto critico in cui si ha la concentrazione delle azioni di tensione sono le giunture tra anima e ali della sezione: in questa zona si ha di fatto una perturbazione dello stato di tensione il cui modulo effettivo, in valore assoluto, può essere valutato tramite il \textbf{coefficiente di Treffetz} $K$ (dipendente dallo spessore $b$ dell'anima e dal raggio di raccordo $\rho$ tra anima e ali):
+		\[K = \frac{\tau_{\lambda z,reale}}{\tlz} = \max\left\{  1.74 \sqrt{\frac b\rho},1 \right\}  \]
 		
+		\vspace{3mm}
+		Considerando ora la sezione come sottoposta solamente a taglio $\Tx$, facendo riferimento allo schema riportato in figura \ref{taglio-T-e}, è possibile determinare il momento statico $S_y^*$ utile a determinare il campo $\tlz = \txz$ sulle ali della sezione:
+		\[ S_y^*(x) = \int_{A^*} x \, dA = b_1\left( \frac B 2 -x\right) \left(\frac B 2 + x\right) \qquad \Rightarrow \quad \tlz = \frac{\Tx}{\Iyy b_1}\left[\frac{b_1}{2} \left(\frac{B^2}{4}-x^2\right) \right] \]
+		Si osserva così che il profilo della tensione $\txz$ sulle ali assume forma parabolica con valore nullo agli estremi e valore massimo nel centro della sezione pari a $\frac \Tx \Iyy \frac {B^2}8$. Analizzando l'anima invece, essendo tale sezione simmetrica rispetto all'asse $y$, si evince che il momento $S_x^*$ è sempre nullo e dunque $\tlz = 0$ in ogni punto.
+		\figura{5}{1.5}{taglio-T-e}{schema di riferimento per la determinazione dello stato di tensione dovuto all'azione di taglio $T_x$.}{taglio-T-e}
+	
+	\subsubsection{Sezioni aperte a parete sottile non simmetriche}
+		Nel caso più generico di una sezione (non doppiamente simmetrica) il cui carico non passa per il centro di taglio, allora è possibile osservare che si ha la formazione di uno stato di tensione, che oltre a quello di taglio studiato da Jourawsky,  è dovuto alla torsione.
 		
+		Per capire questo tipo di effetto si consideri la \textbf{sezione a C}, a semplice simmetria, il cui schema è mostrato in figura \ref{taglio-C-a}.
 		
+		\figura{6.5}{1}{taglio-C-a}{schema di riferimento (a sinistra) e distribuzione delle tensioni (a destra) di una sezione a C.}{taglio-C-a}	
 		
+		Analizzando lo stato di tensione di Jourawsky, tramite l'equazione \ref{eq:taglio:deviato} (pag. \pageref{eq:taglio:deviato}), è possibile ricavare in maniera esplicita le tensioni sull'anima (solo componente $\tyz$) e sulle ali ($\txz$) nel caso di sola azione $\Ty$ secondo le equazioni
+		\[ \textrm{anima: } \tyz = \frac \Ty \Ixx \left[ \frac{HBb_1}{2b_1} + \left(\frac {H^2}4 - y^2\right) \right] \qquad \textrm{ali: } \txz =\frac \Ty\Ixx \frac H 2 \lambda_1 \]
+		Si giustifica così il profilo lineare delle tensioni sulle ali e l'andamento parabolico sull'anima delle tensioni mostrato in figura \ref{taglio-C-a}.
+		\begin{nota}
+			In questo caso la simmetria della sezione è rispetto all'asse $x$, e dunque non ha senso studiare il taglio associato $\Tx$ in quanto, passando per il centro di taglio, non genererebbe alcuna azione torcente.
+		\end{nota}
 		
+		Integrando lo stato di tensione sull'asse è possibile osservare che lo stesso determina delle azioni risultanti $F_1,F_2$ (la cui posizione e verso di applicazione è mostrato in figura \ref{taglio-C-b}) di valori
+		\[ F_1 = \frac \Ty \Ixx \frac{HB^2}{4}b_1 \qquad F_2 = \Ty \]
 		
+		\figura{3}{2}{taglio-C-b}{forze determinate dallo stato di tensione $\tlz$ dovuto al taglio $\Ty$.}{taglio-C-b}	
 		
+		Si osserva così che la risultante di tali forze coincide effettivamente all'azione di taglio $\Ty$ della sezione, tuttavia rispetto al baricentro le tensioni sulle ali determinano una coppia di forze pari a
+		\[ \Mz = 2 F_1 \frac H 2 = \frac \Ty \Ixx \frac{H^2B^2}{4}b_1 \]
+		Tramite delle relazioni di equivalenza statica è possibile calcolare l'\textbf{eccentricità} $e$ dell'azione $\Ty$ che permette di modellare, oltre allo stato tensionale di taglio, anche gli effetti di torsione, definendo di fatto la posizione \textbf{centro di taglio} $C$:
+		\[ e = \frac \Mz \Ty = \frac{H^2B^2b_1}{4\Ixx} \]
+		\figura{7.5}{1}{taglio-C-c}{equivalenza statica che permette di determinare il centro di taglio.}{taglio-C-c}	
 		
+		A questo punto per concludere l'analisi dello stato di tensione è possibile sfruttare il principio di sovrapposizione degli effetti: considerando infatti un tratto della sezione lo stato di tensione $\ov \tau$ sarà determinato dal contributo costante dovuto alla tensione di Jourawsky, mentre sarà anche presente un contributo \textit{triangolare} dovuto al momento torcente $\Mz$ (determinato dal fatto che $\Ty$ non fosse applicata nel centro di taglio).
 		
+		\begin{osservazione}
+			Sezioni formate dall'unione di più lati rettilinei in un solo punto presentano centro di taglio coincidente con l'intersezione delle sezioni stesse.
+		\end{osservazione}
+		
+	\subsection{Sezioni chiuse a parete sottile}
+		Lo studio delle sezioni chiuse a parete sottile è più complesso in quanto le sole ipotesi (e relativo metodo) di Jourawsky non sono sufficienti a studiare completamente il problema. In generale per studiare una sezione biconnessa ci si riconduce ad una struttura monoconnessa 	\textit{tagliando} in un punto la sezione imponendo successivamente una compatibilità cinematica per garantire la continuità della sezione stessa.
+		
+		Nel caso particolare di \textbf{sezioni simmetriche} l'analisi risulta notevolmente semplificata in quanto è possibile ipotizzare che lo stato di tensione $\tlz$ si distribuisce in maniera speculare nella sezione rispetto all'asse di simmetria, e in particolare i flussi $\plz$ devono rimanere uguali lungo le due sotto-sezioni monoconnesse.
+		
+		\figura{3.5}{2}{taglio-chiusa}{schema di riferimento per l'analisi al taglio di una sezione chiusa a parete sottile.}{taglio-chiusa}
+		
+		Facendo particolare riferimento allo schema in figura \ref{taglio-chiusa} che assume valenza generale, è possibile affermare che i flussi $\Phi_{\lambda z,1}$ e $\Phi_{\lambda z,2}$ debbano essere uguale, e dunque
+		\begin{equation}
+			\Phi_{\lambda z,1} = \Phi_{\lambda z,2} = \frac{\Ty S_x^*}{2\Ixx} \qquad \Rightarrow \quad \tau_{\lambda z,1} = \tau_{\lambda z,2} = \frac{\Ty S_x^*}{2\Ixx b}
+		\end{equation}
+		\begin{nota}
+			In questo caso è mostrata la risposta della sezione al solo taglio $\Ty$, ma lo stesso concetto può essere esteso al taglio $\Tx$ e dunque al taglio deviato.
+		\end{nota}
+	
+	\subsection{Campo di deformazione}
+		Come già iniziato a vedere in figura \ref{fig:taglio:schemadeformazione} (pag. \pageref{fig:taglio:schemadeformazione}) depurando dalla deformata complessiva il campo dovuto alla sola componente di flessione, è possibile osservare che la deformata del solo taglio non varia la conformazione dell'asse (che pertanto rimane rettilineo) ma ne cambia solamente l'\textit{inclinazione}.
+		
+		In particolare anche in questo caso è possibile fare riferimento ai \textbf{campi di spostamento}:
+		\begin{itemize}
+			\item \textbf{primario}, associato alla variazione di inclinazione dell'asse. Noto infatti l'angolo di inclinazione $\gamma$ dell'asse deformato si determina la componente del campo $v$ dovuta al taglio secondo la relazione
+			\[ v = \gamma z\]
+			Da ciò si evince che lo scostamento verticale massimo sarà in corrispondenza dell'estremità, ossia $v_{max} = v(L) = \gamma L$;
+			\item \textbf{secondario}, dovuto all'effetto di ingobbamento, il cui effetto generalmente può essere trascurato in quanto il valor medio di scostamento $w$ dei punti della sezione è nullo
+			\[ w_\textrm{medio}  = 0 \]
+		\end{itemize}
+		\figura{7}{1}{taglio-def}{deformata di una trave dovuta al solo taglio, ossia depurata dalla deformata a flessione.}{taglio-def}
+		
+		\begin{osservazione}
+			In generale si osserva che i contributi dei campi $u,v$ a taglio possono essere trascurati per le travi in quanto per $L\gg H$ (con $H$ dimensione caratteristica della sezione) tali valori sono di molto inferiori rispetto ai campi dovuti alla flessione (derivante dal taglio stesso).
+		\end{osservazione}
+		
+		\paragraph{Considerazioni energetiche} Considerando che l'unica azione applicata nella trave di esempio (figura \ref{taglio-def}) sia una componente $T_y$ applicata all'estremità, allora è possibile analizzare la deformata tramite il teorema di Clapeyron, ossia confrontando il lavoro delle forze esterne con l'energia elastica:
+		\[ \underbrace{\frac 1 2 \Ty v(L) = \frac 1 2 \Ty \gamma L }_{L_{ext}} = \underbrace{\int_V \psi\, dV = \frac L {2G} \int_A \tau^2\, dA }_{U_e} \]
+		\begin{concetto}
+			Derivando quest'ultima relazione rispetto alla coordinata assiale è possibile così stabilire la variazione infinitesima dell'energia elastica lungo l'asse:
+			\begin{equation} \label{eq:taglio:der-energia}
+				\frac{dU_e}{dz} = \frac 1 2 \Ty \gamma = \frac 1 {2G}\int_A \tau\, dA
+			\end{equation}
+		\end{concetto}
+	
+		Tramite l'analisi di Jourawsky è stato possibile calcolare in maniera esplicita il valore della tensione $\tlz$ dipendente dal taglio $\Ty$ (eq. \ref{eq:taglio:retto}, pag. \pageref{eq:taglio:retto}), e dunque questo ci permette di definire in maniera esplicita la relazione tra angolo di deformazione $\gamma$ e taglio applicato $\Ty$. Considerando l'esempio della sezione rettangolare è possibile esprimere il campo della tensione come		
+		\[ \tlz = \frac{\Ty  }{\Ixx} \frac {S_x^*(y)}{ b(y)} = \frac \Ty \Ixx R(x,y) \qquad \textrm{ con } R(x,y) = \frac 1 2 \left( \frac{H^2}{4} - y^2 \right) \]
+		\begin{nota}
+			In generale $R(x,y)$ rappresenta il rapporto $S_x^*/b$ di una generica sezione soggetta a taglio.
+		\end{nota}
+		A questo punto calcolando esplicitamente la deformata si osserva che
+		\begin{align*}
+			\Ty \gamma_y & = \frac{\Ty^2}{G \Ixx^2} \int_A R^2(x,y)\, dA \\
+			\gamma_y & = \frac \Ty{G \Ixx^2} \int_A R^2(x,y)\, dA = \frac \Ty{AG} \underbrace{ \frac A {\Ixx^2} \int_A R^2(x,y)\, dA }_{\chi_y}
+		\end{align*}
+		\begin{concetto}
+			Nell'espressione precedente il termine $\chi_y$ prende il nome di \textbf{fattore di rigidezza a taglio} lungo l'asse $y$ (ma esiste analogamente il fattore $\chi_x$ rispetto all'altro asse) ed è di fatto una proprietà geometria della sezione che permette di determinare la \textbf{deformata elastica} a taglio tramite la relazione
+			\begin{equation} \label{eq:taglio:deformata}
+				\gamma_y = \Ty \frac{\chi_y}{GA} \qquad \gamma_x = \Tx \frac{\chi_x}{GA}
+			\end{equation}
+		\end{concetto}
+		I valori  dei fattori di rigidezza a taglio sono generalmente tabulati per sezioni \textit{standard} e vale in generale che il coefficiente numerico è compreso tra i valori
+		\[ \chi \in [1,\eta] \qquad \textrm{ dove } \eta \ | \ \tau_{\lambda z,max} = \eta \frac T A \]
+		ossia $\eta$ è il coefficiente che determina il valore massimo della tensione rispetto alla tensione nominale $\tau_{nom} = T/A$. 
+		\vspace{3mm}
+		
+		Queste relazioni valgono in generale nel caso di taglio retto, tuttavia nel caso di taglio deviato il campo $\tlz$ dipende contemporaneamente da entrambe le azioni di taglio (eq. \ref{eq:taglio:deviato}, pag. \pageref{eq:taglio:deviato}): considerando dunque questa relazione per la tensione è possibile osservare che nell'equazione \ref{eq:taglio:der-energia} dell'energia elastica compare un termine dovuto al lavoro mutuo che $\Tx$ esercita rispetto allo spostamento dovuto a $\Ty$ (e viceversa)
+		\[ \frac {dU_e}{dz} = \frac 1 {2GA} \Big( \Tx^2 \chi_x + \Ty^2 \chi_y + \underbrace{2\Tx\Ty \chi_{xy}}_\textrm{lavoro mutuo} \Big) \]
+		Ne consegue dunque che l'espressione della deformata elastica (eq. \ref{eq:taglio:deformata}) assume la forma del tipo
+		\[ \gamma_y = \Ty \frac{\chi_y}{GA} + \chi_{xy} \frac \Tx {GA} \qquad \gamma_x = \Tx \frac{\chi_x}{GA} + \chi_{xy} \frac \Ty {GA} \]
+		
+		Si può inoltre dimostrare che se la sezione presenta almeno un asse di simmetria allora il fattore di rigidezza a taglio mutuo è nullo:
+		\[ \textrm{asse di simmetria: } \qquad \Rightarrow \quad \chi_{xy} = 0 \]
 		
 		
 		
